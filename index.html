@@ -27,7 +27,7 @@
         body {
             background-color: #f9f9f9;
             color: #333;
-            line-height: 1.4;
+            line-height: 1.6;
             overflow-x: hidden;
         }
         
@@ -35,15 +35,15 @@
             width: 95%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 8px;
+            padding: 0 15px;
         }
         
         /* Header Styles */
         header {
             background: var(--gradient);
             color: white;
-            padding: 6px 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 12px 0;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -58,16 +58,16 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 10px;
         }
         
         .logo i {
-            font-size: 18px;
+            font-size: 24px;
             color: var(--accent);
         }
         
         .logo h1 {
-            font-size: 15px;
+            font-size: 20px;
             font-weight: 700;
         }
         
@@ -81,15 +81,15 @@
             background: none;
             border: none;
             color: white;
-            font-size: 16px;
+            font-size: 20px;
             cursor: pointer;
-            padding: 4px;
+            padding: 5px;
         }
         
         nav ul {
             display: flex;
             list-style: none;
-            gap: 12px;
+            gap: 20px;
         }
         
         nav a {
@@ -97,9 +97,9 @@
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
-            font-size: 12px;
-            padding: 3px 6px;
-            border-radius: 4px;
+            font-size: 16px;
+            padding: 6px 12px;
+            border-radius: 5px;
         }
         
         nav a:hover {
@@ -111,7 +111,7 @@
         .hero {
             background: var(--gradient);
             color: white;
-            padding: 35px 0;
+            padding: 80px 0;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -135,15 +135,15 @@
         }
         
         .hero h2 {
-            font-size: 20px;
-            margin-bottom: 10px;
+            font-size: 36px;
+            margin-bottom: 20px;
             line-height: 1.3;
         }
         
         .hero p {
-            font-size: 13px;
+            font-size: 18px;
             max-width: 700px;
-            margin: 0 auto 15px;
+            margin: 0 auto 30px;
             opacity: 0.9;
         }
         
@@ -151,20 +151,20 @@
             display: inline-block;
             background-color: var(--accent);
             color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
+            padding: 14px 28px;
+            border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
             border: none;
             cursor: pointer;
-            font-size: 12px;
+            font-size: 16px;
         }
         
         .btn:hover {
             background-color: #c0392b;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
         }
         
         .btn-whatsapp {
@@ -177,8 +177,8 @@
         
         .btn-secondary {
             background-color: transparent;
-            border: 1px solid white;
-            margin-left: 6px;
+            border: 2px solid white;
+            margin-left: 15px;
         }
         
         .btn-secondary:hover {
@@ -187,40 +187,40 @@
         
         /* Hosting Section */
         .hosting {
-            padding: 30px 0;
+            padding: 80px 0;
             background-color: #f9f9f9;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 50px;
         }
         
         .section-title h2 {
-            font-size: 20px;
+            font-size: 36px;
             color: var(--primary);
-            margin-bottom: 6px;
+            margin-bottom: 15px;
         }
         
         .section-title p {
             color: #666;
-            max-width: 500px;
+            max-width: 600px;
             margin: 0 auto;
-            font-size: 13px;
+            font-size: 18px;
         }
         
         .hosting-packages {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-top: 20px;
+            gap: 25px;
+            margin-top: 40px;
         }
         
         .hosting-package {
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.1);
-            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            padding: 30px;
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
@@ -230,61 +230,61 @@
         }
         
         .hosting-package:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
         
         .hosting-package.featured {
-            border: 2px solid var(--accent);
-            transform: scale(1.02);
+            border: 3px solid var(--accent);
+            transform: scale(1.05);
         }
         
         .hosting-package.featured:hover {
-            transform: scale(1.02) translateY(-3px);
+            transform: scale(1.05) translateY(-8px);
         }
         
         .package-badge {
             background: var(--accent);
             color: white;
-            padding: 4px 8px;
-            border-radius: 10px;
-            font-size: 10px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
             font-weight: 700;
             display: inline-block;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
             align-self: flex-start;
             text-transform: uppercase;
         }
         
         .package-header {
             text-align: center;
-            margin-bottom: 12px;
-            padding-bottom: 10px;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
             border-bottom: 1px solid #f0f0f0;
         }
         
         .package-header h3 {
-            font-size: 16px;
+            font-size: 24px;
             color: var(--primary);
-            margin-bottom: 6px;
+            margin-bottom: 15px;
             font-weight: 700;
         }
         
         .price-container {
-            margin: 10px 0;
+            margin: 20px 0;
             position: relative;
         }
         
         .price-old {
             text-decoration: line-through;
             color: #999;
-            font-size: 11px;
+            font-size: 16px;
             display: block;
-            margin-bottom: 3px;
+            margin-bottom: 5px;
         }
         
         .price {
-            font-size: 22px;
+            font-size: 42px;
             font-weight: 800;
             color: var(--secondary);
             display: block;
@@ -292,7 +292,7 @@
         }
         
         .price span {
-            font-size: 11px;
+            font-size: 16px;
             color: #777;
             font-weight: normal;
         }
@@ -300,26 +300,26 @@
         .discount-badge {
             background: linear-gradient(135deg, #e74c3c, #c0392b);
             color: white;
-            padding: 5px 8px;
-            border-radius: 12px;
-            font-size: 11px;
+            padding: 10px 16px;
+            border-radius: 25px;
+            font-size: 16px;
             font-weight: 700;
-            margin-top: 6px;
+            margin-top: 15px;
             display: inline-block;
-            box-shadow: 0 2px 6px rgba(231, 76, 60, 0.3);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
         }
         
         .features-list {
             list-style: none;
-            margin-bottom: 12px;
+            margin-bottom: 25px;
             flex-grow: 1;
         }
         
         .features-list li {
-            padding: 5px 0;
+            padding: 12px 0;
             display: flex;
             align-items: center;
-            font-size: 11px;
+            font-size: 16px;
             border-bottom: 1px solid #f8f8f8;
         }
         
@@ -329,9 +329,9 @@
         
         .features-list li i {
             color: var(--success);
-            margin-right: 5px;
-            font-size: 10px;
-            min-width: 10px;
+            margin-right: 12px;
+            font-size: 14px;
+            min-width: 16px;
         }
         
         .features-list li .fa-times {
@@ -340,200 +340,80 @@
         
         .package-actions {
             margin-top: auto;
-            padding-top: 10px;
+            padding-top: 20px;
             border-top: 1px solid #f0f0f0;
-        }
-        
-        /* Features Section */
-        .features {
-            padding: 30px 0;
-            background-color: white;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-        }
-        
-        .feature-card {
-            text-align: center;
-            padding: 15px 10px;
-            border-radius: 8px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            background: white;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
-        }
-        
-        .feature-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 12px;
-            color: white;
-            font-size: 16px;
-        }
-        
-        .feature-card h3 {
-            font-size: 14px;
-            margin-bottom: 8px;
-            color: var(--primary);
-            font-weight: 600;
-        }
-        
-        .feature-card p {
-            color: #666;
-            font-size: 11px;
-            line-height: 1.3;
-        }
-        
-        /* FAQ Section */
-        .faq {
-            padding: 30px 0;
-            background-color: #f9f9f9;
-        }
-        
-        .faq-grid {
-            max-width: 800px;
-            margin: 20px auto 0;
-        }
-        
-        .faq-item {
-            margin-bottom: 10px;
-            border-radius: 6px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-        
-        .faq-question {
-            padding: 12px 14px;
-            background: #f9f9f9;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 600;
-            color: var(--primary);
-            transition: all 0.3s;
-            font-size: 13px;
-        }
-        
-        .faq-question:hover {
-            background: #f0f0f0;
-        }
-        
-        .faq-question i {
-            transition: transform 0.3s;
-            font-size: 11px;
-        }
-        
-        .faq-answer {
-            padding: 0 14px;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            background: white;
-        }
-        
-        .faq-answer p {
-            padding: 12px 0;
-            color: #555;
-            line-height: 1.4;
-            font-size: 12px;
-        }
-        
-        .faq-item.active .faq-question {
-            background: var(--gradient);
-            color: white;
-        }
-        
-        .faq-item.active .faq-question i {
-            transform: rotate(180deg);
-        }
-        
-        .faq-item.active .faq-answer {
-            max-height: 500px;
         }
         
         /* Process Section */
         .process {
             background-color: var(--light);
-            padding: 30px 0;
+            padding: 80px 0;
         }
         
         .process-steps {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            margin-top: 20px;
+            gap: 25px;
+            margin-top: 50px;
         }
         
         .step {
             text-align: center;
-            padding: 15px 10px;
+            padding: 30px 20px;
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
             transition: transform 0.3s;
         }
         
         .step:hover {
-            transform: translateY(-2px);
+            transform: translateY(-8px);
         }
         
         .step-number {
-            width: 30px;
-            height: 30px;
+            width: 60px;
+            height: 60px;
             background: var(--gradient);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 10px;
+            margin: 0 auto 20px;
             color: white;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 24px;
         }
         
         .step h4 {
-            font-size: 13px;
-            margin-bottom: 6px;
+            font-size: 20px;
+            margin-bottom: 15px;
             color: var(--primary);
             font-weight: 600;
         }
         
         .step p {
             color: #666;
-            font-size: 11px;
-            line-height: 1.2;
+            font-size: 16px;
+            line-height: 1.5;
         }
         
         /* CTA Section */
         .cta {
-            padding: 35px 0;
+            padding: 80px 0;
             background: var(--gradient);
             color: white;
             text-align: center;
         }
         
         .cta h2 {
-            font-size: 20px;
-            margin-bottom: 10px;
+            font-size: 36px;
+            margin-bottom: 20px;
         }
         
         .cta p {
-            font-size: 13px;
+            font-size: 18px;
             max-width: 600px;
-            margin: 0 auto 20px;
+            margin: 0 auto 40px;
             opacity: 0.9;
         }
         
@@ -541,20 +421,20 @@
         footer {
             background: var(--dark);
             color: white;
-            padding: 30px 0 12px;
+            padding: 60px 0 25px;
         }
         
         .footer-content {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin-bottom: 15px;
+            gap: 30px;
+            margin-bottom: 30px;
         }
         
         .footer-column h4 {
-            font-size: 15px;
-            margin-bottom: 12px;
-            padding-bottom: 6px;
+            font-size: 20px;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
             border-bottom: 2px solid var(--accent);
         }
         
@@ -563,17 +443,17 @@
         }
         
         .footer-links li {
-            margin-bottom: 6px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 10px;
         }
         
         .footer-links a {
             color: #bbb;
             text-decoration: none;
             transition: color 0.3s;
-            font-size: 11px;
+            font-size: 16px;
         }
         
         .footer-links a:hover {
@@ -582,57 +462,57 @@
         
         .footer-links i {
             color: var(--accent);
-            width: 12px;
-            font-size: 11px;
+            width: 18px;
+            font-size: 16px;
         }
         
         .social-links {
             display: flex;
-            gap: 8px;
-            margin-top: 12px;
+            gap: 15px;
+            margin-top: 20px;
         }
         
         .social-links a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 30px;
-            height: 30px;
+            width: 45px;
+            height: 45px;
             background: rgba(255,255,255,0.1);
             border-radius: 50%;
             color: white;
             transition: all 0.3s;
-            font-size: 12px;
+            font-size: 18px;
         }
         
         .social-links a:hover {
             background: var(--accent);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
         }
         
         .copyright {
             text-align: center;
-            padding-top: 15px;
+            padding-top: 30px;
             border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 11px;
+            font-size: 14px;
             color: #bbb;
         }
         
         /* WhatsApp Float Button */
         .whatsapp-float {
             position: fixed;
-            bottom: 12px;
-            right: 12px;
+            bottom: 25px;
+            right: 25px;
             background-color: var(--whatsapp);
             color: white;
-            width: 40px;
-            height: 40px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            font-size: 26px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
             z-index: 1000;
             transition: all 0.3s;
             text-decoration: none;
@@ -647,7 +527,7 @@
         @media (max-width: 768px) {
             .container {
                 width: 98%;
-                padding: 0 6px;
+                padding: 0 10px;
             }
             
             .mobile-menu-btn {
@@ -661,7 +541,7 @@
                 left: 0;
                 right: 0;
                 background: var(--dark);
-                padding: 10px;
+                padding: 15px;
                 box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             }
             
@@ -671,105 +551,101 @@
             
             nav ul {
                 flex-direction: column;
-                gap: 6px;
+                gap: 10px;
             }
             
             .hero {
-                padding: 25px 0;
+                padding: 50px 0;
             }
             
             .hero h2 {
-                font-size: 18px;
+                font-size: 28px;
             }
             
             .hero p {
-                font-size: 12px;
+                font-size: 16px;
             }
             
             .btn-secondary {
                 margin-left: 0;
-                margin-top: 6px;
+                margin-top: 15px;
                 display: block;
             }
             
             /* Layout optimizat pentru telefon - 2 COLOANE */
             .hosting-packages {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
+                gap: 20px;
             }
+            
+            /* Asigurăm că pachetele sunt în ordinea corectă: Basic, Business, Premium */
+            .hosting-package:nth-child(1) { order: 1; } /* Basic */
+            .hosting-package:nth-child(2) { order: 2; } /* Business */
+            .hosting-package:nth-child(3) { order: 3; } /* Premium */
             
             .hosting-package.featured {
                 grid-column: 1 / -1;
-                order: -1;
-            }
-            
-            .features-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
+                order: 2 !important; /* Business devine al doilea și ocupă întreaga lățime */
             }
             
             .process-steps {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
+                gap: 20px;
             }
             
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
+                gap: 25px;
                 text-align: left;
             }
             
             .section-title h2 {
-                font-size: 18px;
+                font-size: 28px;
             }
             
             .section-title p {
-                font-size: 12px;
+                font-size: 16px;
             }
             
-            /* Ajustări pentru elementele mai mici pe telefon */
+            /* Ajustări pentru elementele pe telefon */
             .hosting-package {
-                padding: 12px 10px;
-            }
-            
-            .feature-card {
-                padding: 12px 8px;
+                padding: 25px 20px;
             }
             
             .step {
-                padding: 12px 8px;
+                padding: 25px 15px;
             }
             
             .footer-column {
-                padding: 0 3px;
+                padding: 0 5px;
             }
         }
         
         @media (max-width: 480px) {
             .logo h1 {
-                font-size: 13px;
-            }
-            
-            .hero h2 {
-                font-size: 16px;
-            }
-            
-            .package-header h3 {
-                font-size: 14px;
-            }
-            
-            .whatsapp-float {
-                width: 35px;
-                height: 35px;
-                font-size: 16px;
-            }
-            
-            .cta h2 {
                 font-size: 18px;
             }
             
+            .hero h2 {
+                font-size: 24px;
+            }
+            
+            .package-header h3 {
+                font-size: 20px;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 22px;
+            }
+            
+            .cta h2 {
+                font-size: 28px;
+            }
+            
             .cta p {
-                font-size: 12px;
+                font-size: 16px;
             }
             
             /* Layout pentru telefoane foarte mici */
@@ -777,8 +653,8 @@
                 grid-template-columns: 1fr;
             }
             
-            .features-grid {
-                grid-template-columns: 1fr;
+            .hosting-package.featured {
+                grid-column: 1;
             }
             
             .process-steps {
@@ -795,7 +671,7 @@
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(12px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
@@ -804,7 +680,7 @@
         }
         
         .fade-in {
-            animation: fadeInUp 0.4s ease-out;
+            animation: fadeInUp 0.6s ease-out;
         }
     </style>
 </head>
@@ -825,8 +701,6 @@
                 <nav id="mainNav">
                     <ul>
                         <li><a href="#hosting">Pachete</a></li>
-                        <li><a href="#features">Servicii</a></li>
-                        <li><a href="#faq">FAQ</a></li>
                         <li><a href="#process">Cum Funcționează</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
@@ -955,108 +829,6 @@
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="container">
-            <div class="section-title">
-                <h2>De Ce Să Alegi Serviciile Noastre?</h2>
-                <p>Oferim soluții complete pentru prezența ta online</p>
-            </div>
-            
-            <div class="features-grid">
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3>Lansare Rapidă</h3>
-                    <p>Site-ul tău va fi gata și online în maxim 7 zile, fără bătăi de cap.</p>
-                </div>
-                
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>Design Responsiv</h3>
-                    <p>Site-ul tău va arăta perfect pe orice dispozitiv: telefon, tabletă sau computer.</p>
-                </div>
-                
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Securitate Maximă</h3>
-                    <p>Certificate SSL incluse și protecție împotriva atacurilor cibernetice.</p>
-                </div>
-                
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3>Suport 24/7</h3>
-                    <p>Echipa noastră este disponibilă oricând ai nevoie de asistență.</p>
-                </div>
-                
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-sync"></i>
-                    </div>
-                    <h3>Actualizări Gratuite</h3>
-                    <p>În pachetele Business și Premium, actualizările de conținut sunt incluse.</p>
-                </div>
-                
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>SEO Integrat</h3>
-                    <p>Site-urile noastre sunt optimizate pentru motoarele de căutare.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="faq" id="faq">
-        <div class="container">
-            <div class="section-title">
-                <h2>Întrebări Frecvente</h2>
-                <p>Răspunsuri la cele mai comune întrebări</p>
-            </div>
-            
-            <div class="faq-grid">
-                <div class="faq-item fade-in">
-                    <div class="faq-question">
-                        <span>Cât durează până este gata site-ul?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Site-urile noastre sunt gata în maxim 7 zile lucrătoare de la confirmarea comenzii și primirea materialelor necesare (text, imagini, etc.).</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item fade-in">
-                    <div class="faq-question">
-                        <span>Pot face modificări ulterioare la site?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Da, în pachetele Business și Premium, modificările de conținut sunt incluse în preț. Pentru pachetul Basic, oferim serviciul de modificări la un cost suplimentar de €5/lună.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item fade-in">
-                    <div class="faq-question">
-                        <span>Ce se întâmplă dacă vreau să anulez serviciul?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Poți anula serviciul oricând, fără penalități. La anulare, site-ul tău va fi păstrat încă 30 de zile, pentru a-ți permite să migrezi conținutul.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Process Section -->
     <section class="process" id="process">
         <div class="container">
@@ -1110,7 +882,7 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h4>Your Web Builder</h4>
-                    <p style="font-size: 11px; color: #bbb; margin-bottom: 12px; line-height: 1.3;">
+                    <p style="font-size: 16px; color: #bbb; margin-bottom: 20px; line-height: 1.5;">
                         Site-uri web complete cu hosting inclus. Transformăm ideile tale în prezență online profesională.
                     </p>
                     <div class="social-links">
@@ -1126,15 +898,6 @@
                         <li><a href="#hosting">Basic - €15/lună</a></li>
                         <li><a href="#hosting">Business - €25/lună</a></li>
                         <li><a href="#hosting">Premium - €40/lună</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h4>Link-uri Utile</h4>
-                    <ul class="footer-links">
-                        <li><a href="#features">Servicii</a></li>
-                        <li><a href="#faq">FAQ</a></li>
-                        <li><a href="#process">Cum Funcționează</a></li>
                     </ul>
                 </div>
                 
@@ -1187,17 +950,9 @@
                 const targetElement = document.querySelector(targetId);
                 
                 window.scrollTo({
-                    top: targetElement.offsetTop - 50,
+                    top: targetElement.offsetTop - 80,
                     behavior: 'smooth'
                 });
-            });
-        });
-
-        // FAQ Accordion
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const item = question.parentNode;
-                item.classList.toggle('active');
             });
         });
 
@@ -1216,7 +971,7 @@
         }, observerOptions);
 
         // Observe elements for animation
-        document.querySelectorAll('.hosting-package, .feature-card, .faq-item, .step').forEach(el => {
+        document.querySelectorAll('.hosting-package, .step').forEach(el => {
             observer.observe(el);
         });
     </script>
