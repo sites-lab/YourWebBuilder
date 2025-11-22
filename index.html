@@ -692,29 +692,31 @@
                 display: block;
             }
             
+            /* Layout optimizat pentru telefon */
             .hosting-packages {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
                 gap: 12px;
             }
             
-            .hosting-package {
-                padding: 15px;
+            .hosting-package.featured {
+                grid-column: 1 / -1;
+                order: -1;
             }
             
             .features-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
             }
             
             .process-steps {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
                 gap: 12px;
             }
             
             .footer-content {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
                 gap: 20px;
-                text-align: center;
+                text-align: left;
             }
             
             .section-title h2 {
@@ -723,6 +725,23 @@
             
             .section-title p {
                 font-size: 13px;
+            }
+            
+            /* Ajustări pentru elementele mai mici pe telefon */
+            .hosting-package {
+                padding: 15px 12px;
+            }
+            
+            .feature-card {
+                padding: 15px 10px;
+            }
+            
+            .step {
+                padding: 15px 10px;
+            }
+            
+            .footer-column {
+                padding: 0 5px;
             }
         }
         
@@ -739,10 +758,6 @@
                 font-size: 16px;
             }
             
-            .step {
-                padding: 15px 10px;
-            }
-            
             .whatsapp-float {
                 width: 40px;
                 height: 40px;
@@ -755,6 +770,24 @@
             
             .cta p {
                 font-size: 13px;
+            }
+            
+            /* Layout pentru telefoane foarte mici */
+            .hosting-packages {
+                grid-template-columns: 1fr;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
             }
         }
         
