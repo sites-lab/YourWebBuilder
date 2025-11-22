@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Web Builder - Hosting Profesional</title>
+    <title>Your Web Builder - Site-uri Web cu Hosting</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -27,22 +27,22 @@
         body {
             background-color: #f9f9f9;
             color: #333;
-            line-height: 1.6;
+            line-height: 1.5;
             overflow-x: hidden;
         }
         
         .container {
-            width: 90%;
-            max-width: 1400px;
+            width: 95%;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 10px;
         }
         
-        /* Header Styles */
+        /* Header Styles - Compact */
         header {
             background: var(--gradient);
             color: white;
-            padding: 15px 0;
+            padding: 10px 0;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
@@ -53,22 +53,21 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
         }
         
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
         
         .logo i {
-            font-size: 28px;
+            font-size: 22px;
             color: var(--accent);
         }
         
         .logo h1 {
-            font-size: 22px;
+            font-size: 18px;
             font-weight: 700;
         }
         
@@ -76,11 +75,21 @@
             color: var(--accent);
         }
         
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
         nav ul {
             display: flex;
             list-style: none;
-            gap: 20px;
-            flex-wrap: wrap;
+            gap: 15px;
         }
         
         nav a {
@@ -97,59 +106,60 @@
         
         .contact-info {
             display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
+            gap: 12px;
         }
         
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 13px;
+            gap: 6px;
+            font-size: 12px;
         }
         
         .contact-item i {
             color: var(--accent);
+            font-size: 12px;
         }
         
-        /* Hero Section */
+        /* Hero Section - Compact */
         .hero {
             background: var(--gradient);
             color: white;
-            padding: 60px 0;
+            padding: 40px 0;
             text-align: center;
         }
         
         .hero h2 {
-            font-size: 32px;
-            margin-bottom: 15px;
-            line-height: 1.2;
+            font-size: 24px;
+            margin-bottom: 10px;
+            line-height: 1.3;
         }
         
         .hero p {
-            font-size: 18px;
-            max-width: 700px;
-            margin: 0 auto 25px;
+            font-size: 14px;
+            max-width: 600px;
+            margin: 0 auto 20px;
+            opacity: 0.9;
         }
         
         .btn {
             display: inline-block;
             background-color: var(--accent);
             color: white;
-            padding: 12px 25px;
-            border-radius: 30px;
+            padding: 10px 20px;
+            border-radius: 25px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
             border: none;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 14px;
         }
         
         .btn:hover {
             background-color: #c0392b;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
         
         .btn-whatsapp {
@@ -160,181 +170,112 @@
             background-color: #128C7E;
         }
         
-        /* Hosting Section */
+        /* Hosting Section - Compact */
         .hosting {
-            padding: 80px 0;
-            position: relative;
+            padding: 50px 0;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
         }
         
         .section-title h2 {
-            font-size: 32px;
+            font-size: 24px;
             color: var(--primary);
-            margin-bottom: 15px;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 70px;
-            height: 3px;
-            background-color: var(--accent);
+            margin-bottom: 10px;
         }
         
         .section-title p {
             color: #666;
-            max-width: 600px;
+            max-width: 500px;
             margin: 0 auto;
-        }
-        
-        .packages-container {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        /* Navigation Arrows - Moved to top */
-        .packages-navigation {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-        
-        .nav-arrow {
-            background: var(--gradient);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: none;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-        }
-        
-        .nav-arrow:hover {
-            transform: scale(1.1);
-            background: var(--accent);
+            font-size: 14px;
         }
         
         .hosting-packages {
-            display: flex;
-            gap: 25px;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            padding: 20px 10px;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-        
-        .hosting-packages::-webkit-scrollbar {
-            display: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
         }
         
         .hosting-package {
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 8px 40px rgba(0,0,0,0.12);
-            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 20px;
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
-            min-width: 350px;
-            flex: 1;
             height: auto;
             position: relative;
-            overflow: hidden;
-        }
-        
-        .hosting-package::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: var(--gradient);
+            border: 1px solid #eee;
         }
         
         .hosting-package:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
         }
         
         .hosting-package.featured {
-            border: 3px solid var(--accent);
-            transform: scale(1.05);
+            border: 2px solid var(--accent);
+            transform: scale(1.02);
         }
         
         .hosting-package.featured:hover {
-            transform: scale(1.05) translateY(-10px);
+            transform: scale(1.02) translateY(-5px);
         }
         
         .package-badge {
             background: var(--accent);
             color: white;
-            padding: 10px 25px;
-            border-radius: 25px;
-            font-size: 16px;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 12px;
             font-weight: 700;
             display: inline-block;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
             align-self: flex-start;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
         
         .package-header {
             text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 25px;
-            border-bottom: 2px solid #f0f0f0;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
         }
         
         .package-header h3 {
-            font-size: 28px;
+            font-size: 18px;
             color: var(--primary);
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             font-weight: 700;
         }
         
         .price-container {
-            margin: 25px 0;
+            margin: 15px 0;
         }
         
         .price-old {
             text-decoration: line-through;
             color: #999;
-            font-size: 22px;
+            font-size: 14px;
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
         }
         
         .price {
-            font-size: 48px;
+            font-size: 28px;
             font-weight: 800;
             color: var(--secondary);
             display: block;
             line-height: 1;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         
         .price span {
-            font-size: 20px;
+            font-size: 14px;
             color: #777;
             font-weight: normal;
         }
@@ -342,26 +283,35 @@
         .save-badge {
             background: var(--success);
             color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 16px;
+            padding: 4px 8px;
+            border-radius: 10px;
+            font-size: 11px;
             font-weight: 600;
-            margin-top: 12px;
+            margin-top: 8px;
             display: inline-block;
+        }
+        
+        .extra-cost {
+            background: #f39c12;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-size: 10px;
+            margin-left: 5px;
         }
         
         .features {
             list-style: none;
-            margin-bottom: 35px;
+            margin-bottom: 20px;
             flex-grow: 1;
         }
         
         .features li {
-            padding: 12px 0;
+            padding: 8px 0;
             display: flex;
             align-items: center;
-            font-size: 16px;
-            border-bottom: 1px solid #f5f5f5;
+            font-size: 13px;
+            border-bottom: 1px solid #f8f8f8;
         }
         
         .features li:last-child {
@@ -370,142 +320,44 @@
         
         .features li i {
             color: var(--success);
-            margin-right: 15px;
-            font-size: 16px;
-            min-width: 24px;
+            margin-right: 8px;
+            font-size: 12px;
+            min-width: 14px;
         }
         
         .package-actions {
             margin-top: auto;
-            padding-top: 30px;
-            border-top: 2px solid #f0f0f0;
+            padding-top: 15px;
+            border-top: 1px solid #f0f0f0;
         }
         
-        /* Process Section - Optimized for mobile */
+        /* Process Section - Compact */
         .process {
             background-color: var(--light);
-            padding: 80px 0;
+            padding: 50px 0;
         }
         
         .process-steps {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        @media (max-width: 768px) {
-            .process-steps {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .process-steps {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
         }
         
         .step {
             text-align: center;
-            padding: 35px 25px;
+            padding: 20px 15px;
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             transition: transform 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .step::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient);
         }
         
         .step:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            transform: translateY(-3px);
         }
         
         .step-icon {
-            width: 90px;
-            height: 90px;
-            background: var(--gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            color: white;
-            font-size: 32px;
-            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
-        }
-        
-        .step h4 {
-            font-size: 22px;
-            margin-bottom: 15px;
-            color: var(--primary);
-            font-weight: 700;
-        }
-        
-        .step p {
-            color: #666;
-            font-size: 16px;
-            line-height: 1.6;
-        }
-        
-        /* Contact Section - Optimized for mobile */
-        .contact {
-            padding: 80px 0;
-        }
-        
-        .contact-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-        
-        @media (max-width: 768px) {
-            .contact-container {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-        }
-        
-        .contact-info h3 {
-            font-size: 28px;
-            margin-bottom: 25px;
-            color: var(--primary);
-        }
-        
-        .contact-details {
-            margin-top: 30px;
-        }
-        
-        .contact-detail {
-            display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-            padding: 25px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: transform 0.3s;
-        }
-        
-        .contact-detail:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-        }
-        
-        .contact-detail i {
             width: 60px;
             height: 60px;
             background: var(--gradient);
@@ -513,41 +365,88 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            margin: 0 auto 15px;
             color: white;
-            margin-right: 20px;
-            flex-shrink: 0;
-            font-size: 24px;
+            font-size: 20px;
         }
         
-        /* Footer */
+        .step h4 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .step p {
+            color: #666;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+        
+        /* Contact Section - Compact */
+        .contact {
+            padding: 50px 0;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .contact-info h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .contact-details {
+            margin-top: 20px;
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        
+        .contact-detail i {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 15px;
+            flex-shrink: 0;
+            font-size: 16px;
+        }
+        
+        /* Footer - Compact */
         footer {
             background: var(--dark);
             color: white;
-            padding: 50px 0 25px;
+            padding: 30px 0 15px;
         }
         
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-bottom: 25px;
         }
         
         .footer-column h4 {
-            font-size: 20px;
-            margin-bottom: 25px;
-            position: relative;
-            padding-bottom: 15px;
-        }
-        
-        .footer-column h4::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background-color: var(--accent);
+            font-size: 16px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--accent);
         }
         
         .footer-links {
@@ -555,13 +454,14 @@
         }
         
         .footer-links li {
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
         
         .footer-links a {
             color: #bbb;
             text-decoration: none;
             transition: color 0.3s;
+            font-size: 13px;
         }
         
         .footer-links a:hover {
@@ -570,193 +470,189 @@
         
         .social-links {
             display: flex;
-            gap: 15px;
-            margin-top: 25px;
+            gap: 10px;
+            margin-top: 15px;
         }
         
         .social-links a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 44px;
-            height: 44px;
+            width: 35px;
+            height: 35px;
             background: rgba(255,255,255,0.1);
             border-radius: 50%;
             color: white;
             transition: all 0.3s;
-            font-size: 18px;
+            font-size: 14px;
         }
         
         .social-links a:hover {
             background: var(--accent);
-            transform: translateY(-3px);
+            transform: translateY(-2px);
         }
         
         .copyright {
             text-align: center;
-            padding-top: 30px;
+            padding-top: 20px;
             border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 15px;
+            font-size: 12px;
             color: #bbb;
         }
         
         /* WhatsApp Float Button */
         .whatsapp-float {
             position: fixed;
-            bottom: 25px;
-            right: 25px;
+            bottom: 20px;
+            right: 20px;
             background-color: var(--whatsapp);
             color: white;
-            width: 65px;
-            height: 65px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+            font-size: 22px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             z-index: 1000;
             transition: all 0.3s;
             text-decoration: none;
         }
         
         .whatsapp-float:hover {
-            transform: scale(1.15);
+            transform: scale(1.1);
             background-color: #128C7E;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
         }
         
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .hosting-package {
-                min-width: 320px;
-            }
-        }
-        
-        @media (max-width: 992px) {
-            .header-content {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-            }
-            
-            nav ul {
-                justify-content: center;
-            }
-            
-            .hero h2 {
-                font-size: 28px;
-            }
-            
-            .hosting-package.featured {
-                transform: scale(1);
-            }
-            
-            .hosting-package.featured:hover {
-                transform: translateY(-10px);
-            }
-            
-            .hosting-packages {
-                gap: 20px;
-            }
-            
-            .package-header h3 {
-                font-size: 24px;
-            }
-            
-            .price {
-                font-size: 42px;
-            }
-        }
-        
+        /* Responsive - Optimized for Mobile */
         @media (max-width: 768px) {
-            .hero {
-                padding: 50px 0;
+            .container {
+                width: 98%;
+                padding: 0 8px;
             }
             
-            .hero h2 {
-                font-size: 26px;
+            /* Mobile Menu */
+            .mobile-menu-btn {
+                display: block;
             }
             
-            .hero p {
-                font-size: 16px;
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--dark);
+                padding: 15px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             }
             
-            .hosting, .process, .contact {
-                padding: 60px 0;
-            }
-            
-            .section-title h2 {
-                font-size: 28px;
-            }
-            
-            .hosting-package {
-                min-width: 300px;
-                padding: 30px;
-            }
-            
-            .price {
-                font-size: 38px;
-            }
-            
-            .nav-arrow {
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .logo h1 {
-                font-size: 20px;
+            nav.active {
+                display: block;
             }
             
             nav ul {
+                flex-direction: column;
                 gap: 10px;
             }
             
-            nav a {
-                font-size: 13px;
+            .contact-info {
+                display: none;
             }
             
-            .contact-info {
-                justify-content: center;
+            .hero {
+                padding: 30px 0;
             }
             
             .hero h2 {
-                font-size: 24px;
+                font-size: 20px;
+            }
+            
+            .hero p {
+                font-size: 13px;
+            }
+            
+            .hosting-packages {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .hosting-package {
+                padding: 15px;
+            }
+            
+            .process-steps {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                text-align: center;
             }
             
             .section-title h2 {
-                font-size: 24px;
+                font-size: 20px;
             }
             
             .price {
-                font-size: 36px;
-            }
-            
-            .whatsapp-float {
-                width: 55px;
-                height: 55px;
                 font-size: 24px;
-                bottom: 20px;
-                right: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo h1 {
+                font-size: 16px;
             }
             
-            .package-badge {
-                font-size: 14px;
-                padding: 8px 20px;
+            .hero h2 {
+                font-size: 18px;
+            }
+            
+            .package-header h3 {
+                font-size: 16px;
             }
             
             .step {
-                padding: 25px 20px;
+                padding: 15px 10px;
             }
             
             .step-icon {
-                width: 70px;
-                height: 70px;
-                font-size: 28px;
+                width: 50px;
+                height: 50px;
+                font-size: 18px;
             }
+            
+            .whatsapp-float {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
         }
     </style>
 </head>
@@ -770,7 +666,11 @@
                     <h1>Your <span>Web Builder</span></h1>
                 </div>
                 
-                <nav>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <nav id="mainNav">
                     <ul>
                         <li><a href="#hosting">Pachete</a></li>
                         <li><a href="#process">Cum Funcționează</a></li>
@@ -783,10 +683,6 @@
                         <i class="fas fa-phone"></i>
                         <span>+40 729 552 767</span>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>boghack18@gmail.com</span>
-                    </div>
                 </div>
             </div>
         </div>
@@ -795,8 +691,8 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h2>Site-uri Web Complete cu Hosting Inclus</h2>
-            <p>Primești site-ul gata făcut + hosting profesionist într-un singur pachet</p>
+            <h2>Site-uri Web Complete cu Hosting</h2>
+            <p>Site gata făcut + hosting profesionist - totul într-un pachet</p>
             <a href="#hosting" class="btn">Vezi Pachetele</a>
         </div>
     </section>
@@ -806,118 +702,103 @@
         <div class="container">
             <div class="section-title">
                 <h2>Pachete Complete</h2>
-                <p>Site profesionist + hosting inclus - totul într-un singur preț lunar</p>
+                <p>Alege pachetul perfect pentru afacerea ta</p>
             </div>
             
-            <div class="packages-container">
-                <!-- Navigation Arrows - Moved to top -->
-                <div class="packages-navigation">
-                    <button class="nav-arrow" id="scroll-left">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="nav-arrow" id="scroll-right">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
+            <div class="hosting-packages">
+                <!-- Basic Plan -->
+                <div class="hosting-package fade-in">
+                    <div class="package-badge">Basic</div>
+                    <div class="package-header">
+                        <h3>Basic</h3>
+                        <div class="price-container">
+                            <span class="price-old">€17/lună</span>
+                            <div class="price">€12<span>/lună</span></div>
+                            <div class="save-badge">Economisești €5</div>
+                        </div>
+                        <p>Perfect pentru început</p>
+                    </div>
+                    
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Site Basic gata făcut</li>
+                        <li><i class="fas fa-check"></i> Design responsiv modern</li>
+                        <li><i class="fas fa-check"></i> Până la 5 pagini</li>
+                        <li><i class="fas fa-check"></i> Formular de contact</li>
+                        <li><i class="fas fa-check"></i> Hosting inclus</li>
+                        <li><i class="fas fa-check"></i> 10GB Storage</li>
+                        <li><i class="fas fa-check"></i> SSL Certificate</li>
+                        <li><i class="fas fa-check"></i> Suport 24/7</li>
+                        <li><i class="fas fa-times"></i> <strong>Modificări conținut: +€5/lună</strong></li>
+                    </ul>
+                    
+                    <div class="package-actions">
+                        <a href="https://wa.me/40729552767?text=Salut!%20Sunt%20interesat%20de%20pachetul%20Basic%20la%2012€/lună" class="btn btn-whatsapp" style="width: 100%; text-align: center;">
+                            <i class="fab fa-whatsapp"></i> Comandă
+                        </a>
+                    </div>
                 </div>
                 
-                <div class="hosting-packages" id="packages-slider">
-                    <!-- Basic Plan -->
-                    <div class="hosting-package">
-                        <div class="package-badge">Basic</div>
-                        <div class="package-header">
-                            <h3>Basic</h3>
-                            <div class="price-container">
-                                <span class="price-old">€17/lună</span>
-                                <div class="price">€12<span>/lună</span></div>
-                                <div class="save-badge">Economisești €5</div>
-                            </div>
-                            <p>Perfect pentru afaceri mici</p>
+                <!-- Business Plan -->
+                <div class="hosting-package featured fade-in">
+                    <div class="package-badge">Business</div>
+                    <div class="package-header">
+                        <h3>Business</h3>
+                        <div class="price-container">
+                            <span class="price-old">€25/lună</span>
+                            <div class="price">€20<span>/lună</span></div>
+                            <div class="save-badge">Economisești €5</div>
                         </div>
-                        
-                        <ul class="features">
-                            <li><i class="fas fa-check"></i> <strong>Site Basic Gata Făcut</strong></li>
-                            <li><i class="fas fa-check"></i> Design responsiv modern</li>
-                            <li><i class="fas fa-check"></i> Până la 5 pagini</li>
-                            <li><i class="fas fa-check"></i> Formular de contact</li>
-                            <li><i class="fas fa-check"></i> Integrare social media</li>
-                            <li><i class="fas fa-check"></i> <strong>Hosting Inclus</strong></li>
-                            <li><i class="fas fa-check"></i> 10GB Storage</li>
-                            <li><i class="fas fa-check"></i> SSL Certificate</li>
-                            <li><i class="fas fa-check"></i> Suport 24/7</li>
-                            <li><i class="fas fa-check"></i> Backup săptămânal</li>
-                        </ul>
-                        
-                        <div class="package-actions">
-                            <a href="https://wa.me/40729552767?text=Salut!%20Sunt%20interesat%20de%20pachetul%20Basic%20la%2012€/lună" class="btn btn-whatsapp" style="width: 100%; text-align: center;">
-                                <i class="fab fa-whatsapp"></i> Comandă
-                            </a>
-                        </div>
+                        <p>Ideal pentru afaceri</p>
                     </div>
                     
-                    <!-- Business Plan -->
-                    <div class="hosting-package featured">
-                        <div class="package-badge">Business</div>
-                        <div class="package-header">
-                            <h3>Business</h3>
-                            <div class="price-container">
-                                <span class="price-old">€25/lună</span>
-                                <div class="price">€20<span>/lună</span></div>
-                                <div class="save-badge">Economisești €5</div>
-                            </div>
-                            <p>Ideal pentru afaceri în creștere</p>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Site Business gata făcut</li>
+                        <li><i class="fas fa-check"></i> Design premium</li>
+                        <li><i class="fas fa-check"></i> Până la 10 pagini</li>
+                        <li><i class="fas fa-check"></i> Sistem administrare</li>
+                        <li><i class="fas fa-check"></i> Galerie foto/video</li>
+                        <li><i class="fas fa-check"></i> Hosting Business inclus</li>
+                        <li><i class="fas fa-check"></i> 50GB Storage</li>
+                        <li><i class="fas fa-check"></i> Modificări conținut incluse</li>
+                        <li><i class="fas fa-check"></i> Suport priority</li>
+                    </ul>
+                    
+                    <div class="package-actions">
+                        <a href="https://wa.me/40729552767?text=Salut!%20Sunt%20interesat%20de%20pachetul%20Business%20la%2020€/lună" class="btn btn-whatsapp" style="width: 100%; text-align: center;">
+                            <i class="fab fa-whatsapp"></i> Comandă
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Premium Plan -->
+                <div class="hosting-package fade-in">
+                    <div class="package-badge">Premium</div>
+                    <div class="package-header">
+                        <h3>Premium</h3>
+                        <div class="price-container">
+                            <span class="price-old">€40/lună</span>
+                            <div class="price">€35<span>/lună</span></div>
+                            <div class="save-badge">Economisești €5</div>
                         </div>
-                        
-                        <ul class="features">
-                            <li><i class="fas fa-check"></i> <strong>Site Business Gata Făcut</strong></li>
-                            <li><i class="fas fa-check"></i> Design premium personalizat</li>
-                            <li><i class="fas fa-check"></i> Până la 10 pagini</li>
-                            <li><i class="fas fa-check"></i> Sistem de administrare</li>
-                            <li><i class="fas fa-check"></i> Galerie foto/video</li>
-                            <li><i class="fas fa-check"></i> <strong>Hosting Business Inclus</strong></li>
-                            <li><i class="fas fa-check"></i> 50GB Storage</li>
-                            <li><i class="fas fa-check"></i> Performanță îmbunătățită</li>
-                            <li><i class="fas fa-check"></i> Suport priority 24/7</li>
-                            <li><i class="fas fa-check"></i> Backup zilnic</li>
-                        </ul>
-                        
-                        <div class="package-actions">
-                            <a href="https://wa.me/40729552767?text=Salut!%20Sunt%20interesat%20de%20pachetul%20Business%20la%2020€/lună" class="btn btn-whatsapp" style="width: 100%; text-align: center;">
-                                <i class="fab fa-whatsapp"></i> Comandă
-                            </a>
-                        </div>
+                        <p>Soluție completă</p>
                     </div>
                     
-                    <!-- Premium Plan -->
-                    <div class="hosting-package">
-                        <div class="package-badge">Premium</div>
-                        <div class="package-header">
-                            <h3>Premium</h3>
-                            <div class="price-container">
-                                <span class="price-old">€40/lună</span>
-                                <div class="price">€35<span>/lună</span></div>
-                                <div class="save-badge">Economisești €5</div>
-                            </div>
-                            <p>Soluție completă pentru afaceri mari</p>
-                        </div>
-                        
-                        <ul class="features">
-                            <li><i class="fas fa-check"></i> <strong>Site Premium Gata Făcut</strong></li>
-                            <li><i class="fas fa-check"></i> Design luxury complet personalizat</li>
-                            <li><i class="fas fa-check"></i> Număr nelimitat de pagini</li>
-                            <li><i class="fas fa-check"></i> Sistem avansat de administrare</li>
-                            <li><i class="fas fa-check"></i> Blog integrat</li>
-                            <li><i class="fas fa-check"></i> <strong>Hosting Premium Inclus</strong></li>
-                            <li><i class="fas fa-check"></i> 100GB Storage</li>
-                            <li><i class="fas fa-check"></i> Performanță maximă</li>
-                            <li><i class="fas fa-check"></i> Suport dedicated 24/7</li>
-                            <li><i class="fas fa-check"></i> Backup în timp real</li>
-                        </ul>
-                        
-                        <div class="package-actions">
-                            <a href="https://wa.me/40729552767?text=Salut!%20Sunt%20interesat%20de%20pachetul%20Premium%20la%2035€/lună" class="btn btn-whatsapp" style="width: 100%; text-align: center;">
-                                <i class="fab fa-whatsapp"></i> Comandă
-                            </a>
-                        </div>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Site Premium gata făcut</li>
+                        <li><i class="fas fa-check"></i> Design luxury personalizat</li>
+                        <li><i class="fas fa-check"></i> Pagini nelimitate</li>
+                        <li><i class="fas fa-check"></i> Sistem avansat</li>
+                        <li><i class="fas fa-check"></i> Blog integrat</li>
+                        <li><i class="fas fa-check"></i> Hosting Premium inclus</li>
+                        <li><i class="fas fa-check"></i> 100GB Storage</li>
+                        <li><i class="fas fa-check"></i> Modificări conținut incluse</li>
+                        <li><i class="fas fa-check"></i> Suport dedicated</li>
+                    </ul>
+                    
+                    <div class="package-actions">
+                        <a href="https://wa.me/40729552767?text=Salut!%20Sunt%20interesat%20de%20pachetul%20Premium%20la%2035€/lună" class="btn btn-whatsapp" style="width: 100%; text-align: center;">
+                            <i class="fab fa-whatsapp"></i> Comandă
+                        </a>
                     </div>
                 </div>
             </div>
@@ -933,36 +814,36 @@
             </div>
             
             <div class="process-steps">
-                <div class="step">
+                <div class="step fade-in">
                     <div class="step-icon">
-                        <i class="fas fa-comments"></i>
+                        <i class="fas fa-comment"></i>
                     </div>
-                    <h4>Alegere Pachet</h4>
-                    <p>Alegeți pachetul potrivit și ne contactați pe WhatsApp</p>
+                    <h4>Alege Pachet</h4>
+                    <p>Selectezi pachetul și ne contactezi</p>
                 </div>
                 
-                <div class="step">
+                <div class="step fade-in">
                     <div class="step-icon">
-                        <i class="fas fa-pencil-ruler"></i>
+                        <i class="fas fa-palette"></i>
                     </div>
                     <h4>Personalizare</h4>
-                    <p>Personalizăm site-ul cu informațiile și culorile afacerii tale</p>
+                    <p>Adaptăm site-ul pentru afacerea ta</p>
                 </div>
                 
-                <div class="step">
+                <div class="step fade-in">
                     <div class="step-icon">
                         <i class="fas fa-rocket"></i>
                     </div>
                     <h4>Lansare</h4>
-                    <p>Site-ul tău este live și funcționează perfect cu hosting inclus</p>
+                    <p>Site-ul tău este live și funcțional</p>
                 </div>
                 
-                <div class="step">
+                <div class="step fade-in">
                     <div class="step-icon">
-                        <i class="fas fa-headset"></i>
+                        <i class="fas fa-sync"></i>
                     </div>
-                    <h4>Suport 24/7</h4>
-                    <p>Oferim suport continuu pentru orice problemă sau întrebare</p>
+                    <h4>Actualizări</h4>
+                    <p>Modificăm conținutul după nevoie</p>
                 </div>
             </div>
         </div>
@@ -973,25 +854,24 @@
         <div class="container">
             <div class="section-title">
                 <h2>Contact</h2>
-                <p>Ai întrebări? Suntem aici să te ajutăm!</p>
+                <p>Suntem aici să te ajutăm</p>
             </div>
             
             <div class="contact-container">
                 <div class="contact-info">
-                    <h3>Informații de Contact</h3>
-                    <p>Nu ezita să ne contactezi pentru orice întrebări legate de pachetele noastre complete.</p>
+                    <h3>Date de Contact</h3>
                     
                     <div class="contact-details">
-                        <div class="contact-detail">
+                        <div class="contact-detail fade-in">
                             <i class="fab fa-whatsapp"></i>
                             <div>
                                 <h4>WhatsApp</h4>
                                 <p>+40 729 552 767</p>
-                                <small>Răspundem rapid pe WhatsApp</small>
+                                <small>Răspuns rapid</small>
                             </div>
                         </div>
                         
-                        <div class="contact-detail">
+                        <div class="contact-detail fade-in">
                             <i class="fas fa-envelope"></i>
                             <div>
                                 <h4>Email</h4>
@@ -1002,25 +882,24 @@
                 </div>
                 
                 <div class="contact-info">
-                    <h3>Suport & Program</h3>
-                    <p>Servicii de suport non-stop pentru clienții noștri.</p>
+                    <h3>Suport & Servicii</h3>
                     
                     <div class="contact-details">
-                        <div class="contact-detail">
+                        <div class="contact-detail fade-in">
                             <i class="fas fa-headset"></i>
                             <div>
                                 <h4>Suport Tehnic</h4>
                                 <p>Asistență 24/7</p>
-                                <small>Non-stop pentru orice problemă</small>
+                                <small>Non-stop</small>
                             </div>
                         </div>
                         
-                        <div class="contact-detail">
-                            <i class="fas fa-clock"></i>
+                        <div class="contact-detail fade-in">
+                            <i class="fas fa-edit"></i>
                             <div>
-                                <h4>Program Comenzi</h4>
-                                <p>Luni - Duminică</p>
-                                <small>8:00 - 22:00</small>
+                                <h4>Modificări Conținut</h4>
+                                <p>Inclus Business & Premium</p>
+                                <small>Basic: +€5/lună</small>
                             </div>
                         </div>
                     </div>
@@ -1035,7 +914,7 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h4>Your Web Builder</h4>
-                    <p>Site-uri web complete cu hosting inclus. Totul într-un singur pachet lunar.</p>
+                    <p style="font-size: 13px; color: #bbb; margin-bottom: 15px;">Site-uri complete cu hosting inclus</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
@@ -1049,7 +928,6 @@
                         <li><a href="#hosting">Basic - €12/lună</a></li>
                         <li><a href="#hosting">Business - €20/lună</a></li>
                         <li><a href="#hosting">Premium - €35/lună</a></li>
-                        <li><a href="#contact">Suport 24/7</a></li>
                     </ul>
                 </div>
                 
@@ -1070,83 +948,59 @@
     </footer>
 
     <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/40729552767?text=Salut!%20Am%20o%20întrebare%20despre%20pachetele%20de%20site%20%2B%20hosting." class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/40729552767?text=Salut!%20Am%20o%20întrebare%20despre%20pachetele%20de%20site." class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('header')) {
+                mainNav.classList.remove('active');
+            }
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
+                mainNav.classList.remove('active');
                 
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 
                 window.scrollTo({
-                    top: targetElement.offsetTop - 80,
+                    top: targetElement.offsetTop - 60,
                     behavior: 'smooth'
                 });
             });
         });
 
-        // Scroll functionality for packages
-        const packagesSlider = document.getElementById('packages-slider');
-        const scrollLeft = document.getElementById('scroll-left');
-        const scrollRight = document.getElementById('scroll-right');
-        const packageWidth = 350 + 25; // width + gap
-
-        scrollLeft.addEventListener('click', () => {
-            packagesSlider.scrollBy({
-                left: -packageWidth,
-                behavior: 'smooth'
-            });
-        });
-
-        scrollRight.addEventListener('click', () => {
-            packagesSlider.scrollBy({
-                left: packageWidth,
-                behavior: 'smooth'
-            });
-        });
-
-        // Add animation to elements on scroll
+        // Add fade-in animation on scroll
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            rootMargin: '0px 0px -20px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add('fade-in');
                 }
             });
         }, observerOptions);
 
-        // Observe pricing cards
-        document.querySelectorAll('.hosting-package').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            observer.observe(card);
-        });
-
-        // Observe process steps
-        document.querySelectorAll('.step').forEach(step => {
-            step.style.opacity = '0';
-            step.style.transform = 'translateY(20px)';
-            step.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            observer.observe(step);
-        });
-
-        // Observe contact details
-        document.querySelectorAll('.contact-detail').forEach(detail => {
-            detail.style.opacity = '0';
-            detail.style.transform = 'translateY(20px)';
-            detail.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            observer.observe(detail);
+        // Observe elements for animation
+        document.querySelectorAll('.hosting-package, .step, .contact-detail').forEach(el => {
+            observer.observe(el);
         });
     </script>
 </body>
