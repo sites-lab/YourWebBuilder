@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Web Builder - Site-uri Web Complete cu Hosting</title>
+    <title>Your Web Builder - Complete Websites with Hosting</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -37,6 +37,38 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 15px;
+        }
+        
+        /* Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            z-index: 1001;
+            display: flex;
+            gap: 5px;
+            background: white;
+            padding: 8px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .lang-btn {
+            padding: 8px 12px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .lang-btn:hover, .lang-btn.active {
+            background: var(--accent);
+            transform: translateY(-2px);
         }
         
         /* Header Styles */
@@ -877,6 +909,11 @@
                 padding: 0 10px;
             }
             
+            .language-switcher {
+                top: 70px;
+                right: 10px;
+            }
+            
             .mobile-menu-btn {
                 display: block;
             }
@@ -1087,13 +1124,20 @@
     </style>
 </head>
 <body>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-btn" data-lang="ro">RO</button>
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ru">RU</button>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="container">
             <div class="header-content">
                 <div class="logo">
                     <i class="fas fa-code"></i>
-                    <h1>Your <span>Web Builder</span></h1>
+                    <h1 data-i18n="logo.title">Your <span data-i18n="logo.accent">Web Builder</span></h1>
                 </div>
                 
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -1102,9 +1146,9 @@
                 
                 <nav id="mainNav">
                     <ul>
-                        <li><a href="#hosting">Pachete</a></li>
-                        <li><a href="#process">Cum Funcționează</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#hosting" data-i18n="nav.packages">Packages</a></li>
+                        <li><a href="#process" data-i18n="nav.how_it_works">How It Works</a></li>
+                        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -1115,10 +1159,10 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h2>Site-uri Web Complete cu Hosting Inclus</h2>
-                <p>Transformăm ideile tale în prezență online profesională. Site gata făcut + hosting profesionist - totul într-un pachet convenabil.</p>
-                <a href="#hosting" class="btn">Vezi Pachetele</a>
-                <a href="#contact" class="btn btn-secondary">Contactează-ne</a>
+                <h2 data-i18n="hero.title">Complete Websites with Hosting Included</h2>
+                <p data-i18n="hero.subtitle">Transform your ideas into professional online presence. Ready-made website + professional hosting - all in one convenient package.</p>
+                <a href="#hosting" class="btn" data-i18n="hero.cta_see_packages">See Packages</a>
+                <a href="#contact" class="btn btn-secondary" data-i18n="hero.cta_contact">Contact Us</a>
             </div>
         </div>
     </section>
@@ -1127,128 +1171,128 @@
     <section class="hosting" id="hosting">
         <div class="container">
             <div class="section-title">
-                <h2>Pachete Complete</h2>
-                <p>Alege pachetul perfect pentru afacerea ta</p>
+                <h2 data-i18n="packages.title">Complete Packages</h2>
+                <p data-i18n="packages.subtitle">Choose the perfect package for your business</p>
             </div>
             
             <!-- Desktop Packages -->
             <div class="hosting-packages">
                 <!-- Basic Plan -->
                 <div class="hosting-package fade-in">
-                    <div class="package-badge">Basic</div>
+                    <div class="package-badge" data-i18n="plans.basic">Basic</div>
                     <div class="package-header">
-                        <h3>Basic</h3>
+                        <h3 data-i18n="plans.basic">Basic</h3>
                         <div class="price-container">
                             <div class="price-options">
                                 <div class="price-option active" data-period="monthly">
-                                    <div class="price-period">1 Lună</div>
-                                    <div class="price">€20<span>/lună</span></div>
+                                    <div class="price-period" data-i18n="pricing.1_month">1 Month</div>
+                                    <div class="price">€20<span data-i18n="pricing.per_month">/month</span></div>
                                 </div>
                                 <div class="price-option" data-period="yearly">
-                                    <div class="price-period">12 Luni</div>
-                                    <div class="price">€17<span>/lună</span></div>
+                                    <div class="price-period" data-i18n="pricing.12_months">12 Months</div>
+                                    <div class="price">€17<span data-i18n="pricing.per_month">/month</span></div>
                                 </div>
                             </div>
                         </div>
-                        <p>Perfect pentru început</p>
+                        <p data-i18n="plans.basic_description">Perfect for starting out</p>
                     </div>
                     
                     <ul class="features-list">
-                        <li><i class="fas fa-check"></i> Site Basic gata făcut</li>
-                        <li><i class="fas fa-check"></i> Design responsiv modern</li>
-                        <li><i class="fas fa-check"></i> Până la 5 pagini</li>
-                        <li><i class="fas fa-check"></i> Formular de contact</li>
-                        <li><i class="fas fa-check"></i> Hosting inclus</li>
-                        <li><i class="fas fa-check"></i> 10GB Storage</li>
-                        <li><i class="fas fa-check"></i> SSL Certificate</li>
-                        <li><i class="fas fa-check"></i> Suport 24/7</li>
-                        <li><i class="fas fa-times"></i> Domeniu inclus</li>
-                        <li><i class="fas fa-times"></i> Schimbări conținut</li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.basic_site">Basic ready-made website</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.responsive_design">Modern responsive design</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.up_to_5_pages">Up to 5 pages</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.contact_form">Contact form</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.hosting_included">Hosting included</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.10gb_storage">10GB Storage</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.ssl_certificate">SSL Certificate</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.support_24_7">24/7 Support</span></li>
+                        <li><i class="fas fa-times"></i> <span data-i18n="features.domain_included">Domain included</span></li>
+                        <li><i class="fas fa-times"></i> <span data-i18n="features.content_changes">Content changes</span></li>
                     </ul>
                     
                     <div class="package-actions">
                         <a href="#" class="choose-plan-btn" data-plan="basic">
-                            <i class="fas fa-arrow-right"></i> Alege Planul
+                            <i class="fas fa-arrow-right"></i> <span data-i18n="cta.choose_plan">Choose Plan</span>
                         </a>
                     </div>
                 </div>
                 
                 <!-- Business Plan -->
                 <div class="hosting-package featured fade-in">
-                    <div class="package-badge">Business</div>
+                    <div class="package-badge" data-i18n="plans.business">Business</div>
                     <div class="package-header">
-                        <h3>Business</h3>
+                        <h3 data-i18n="plans.business">Business</h3>
                         <div class="price-container">
                             <div class="price-options">
                                 <div class="price-option active" data-period="monthly">
-                                    <div class="price-period">1 Lună</div>
-                                    <div class="price">€35<span>/lună</span></div>
+                                    <div class="price-period" data-i18n="pricing.1_month">1 Month</div>
+                                    <div class="price">€35<span data-i18n="pricing.per_month">/month</span></div>
                                 </div>
                                 <div class="price-option" data-period="yearly">
-                                    <div class="price-period">12 Luni</div>
-                                    <div class="price">€30<span>/lună</span></div>
+                                    <div class="price-period" data-i18n="pricing.12_months">12 Months</div>
+                                    <div class="price">€30<span data-i18n="pricing.per_month">/month</span></div>
                                 </div>
                             </div>
                         </div>
-                        <p>Ideal pentru afaceri</p>
+                        <p data-i18n="plans.business_description">Ideal for businesses</p>
                     </div>
                     
                     <ul class="features-list">
-                        <li><i class="fas fa-check"></i> Site Business gata făcut</li>
-                        <li><i class="fas fa-check"></i> Design premium</li>
-                        <li><i class="fas fa-check"></i> Până la 10 pagini</li>
-                        <li><i class="fas fa-check"></i> Sistem administrare</li>
-                        <li><i class="fas fa-check"></i> Galerie foto/video</li>
-                        <li><i class="fas fa-check"></i> Hosting Business inclus</li>
-                        <li><i class="fas fa-check"></i> 50GB Storage</li>
-                        <li><i class="fas fa-check"></i> Domeniu inclus</li>
-                        <li><i class="fas fa-check"></i> Schimbări conținut incluse</li>
-                        <li><i class="fas fa-check"></i> Suport priority</li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.business_site">Business ready-made website</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.premium_design">Premium design</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.up_to_10_pages">Up to 10 pages</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.admin_system">Admin system</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.photo_gallery">Photo/video gallery</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.business_hosting">Business hosting included</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.50gb_storage">50GB Storage</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.domain_included">Domain included</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.content_changes_included">Content changes included</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.priority_support">Priority support</span></li>
                     </ul>
                     
                     <div class="package-actions">
                         <a href="#" class="choose-plan-btn" data-plan="business">
-                            <i class="fas fa-arrow-right"></i> Alege Planul
+                            <i class="fas fa-arrow-right"></i> <span data-i18n="cta.choose_plan">Choose Plan</span>
                         </a>
                     </div>
                 </div>
                 
                 <!-- Premium Plan -->
                 <div class="hosting-package fade-in">
-                    <div class="package-badge">Premium</div>
+                    <div class="package-badge" data-i18n="plans.premium">Premium</div>
                     <div class="package-header">
-                        <h3>Premium</h3>
+                        <h3 data-i18n="plans.premium">Premium</h3>
                         <div class="price-container">
                             <div class="price-options">
                                 <div class="price-option active" data-period="monthly">
-                                    <div class="price-period">1 Lună</div>
-                                    <div class="price">€50<span>/lună</span></div>
+                                    <div class="price-period" data-i18n="pricing.1_month">1 Month</div>
+                                    <div class="price">€50<span data-i18n="pricing.per_month">/month</span></div>
                                 </div>
                                 <div class="price-option" data-period="yearly">
-                                    <div class="price-period">12 Luni</div>
-                                    <div class="price">€40<span>/lună</span></div>
+                                    <div class="price-period" data-i18n="pricing.12_months">12 Months</div>
+                                    <div class="price">€40<span data-i18n="pricing.per_month">/month</span></div>
                                 </div>
                             </div>
                         </div>
-                        <p>Soluție completă</p>
+                        <p data-i18n="plans.premium_description">Complete solution</p>
                     </div>
                     
                     <ul class="features-list">
-                        <li><i class="fas fa-check"></i> Site Premium gata făcut</li>
-                        <li><i class="fas fa-check"></i> Design luxury personalizat</li>
-                        <li><i class="fas fa-check"></i> Pagini nelimitate</li>
-                        <li><i class="fas fa-check"></i> Sistem avansat</li>
-                        <li><i class="fas fa-check"></i> Blog integrat</li>
-                        <li><i class="fas fa-check"></i> Hosting Premium inclus</li>
-                        <li><i class="fas fa-check"></i> 100GB Storage</li>
-                        <li><i class="fas fa-check"></i> Domeniu inclus</li>
-                        <li><i class="fas fa-check"></i> Schimbări conținut incluse</li>
-                        <li><i class="fas fa-check"></i> Suport dedicated</li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.premium_site">Premium ready-made website</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.luxury_design">Luxury custom design</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.unlimited_pages">Unlimited pages</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.advanced_system">Advanced system</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.blog_integrated">Integrated blog</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.premium_hosting">Premium hosting included</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.100gb_storage">100GB Storage</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.domain_included">Domain included</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.content_changes_included">Content changes included</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.dedicated_support">Dedicated support</span></li>
                     </ul>
                     
                     <div class="package-actions">
                         <a href="#" class="choose-plan-btn" data-plan="premium">
-                            <i class="fas fa-arrow-right"></i> Alege Planul
+                            <i class="fas fa-arrow-right"></i> <span data-i18n="cta.choose_plan">Choose Plan</span>
                         </a>
                     </div>
                 </div>
@@ -1257,127 +1301,127 @@
             <!-- Mobile Packages -->
             <div class="mobile-plan-container">
                 <div class="plan-navigation">
-                    <button class="plan-nav-btn active" data-plan="basic">Basic</button>
-                    <button class="plan-nav-btn" data-plan="business">Business</button>
-                    <button class="plan-nav-btn" data-plan="premium">Premium</button>
+                    <button class="plan-nav-btn active" data-plan="basic" data-i18n="plans.basic">Basic</button>
+                    <button class="plan-nav-btn" data-plan="business" data-i18n="plans.business">Business</button>
+                    <button class="plan-nav-btn" data-plan="premium" data-i18n="plans.premium">Premium</button>
                 </div>
 
                 <!-- Basic Plan Mobile -->
                 <div class="mobile-plan active" id="mobile-basic">
-                    <div class="package-badge">Basic</div>
+                    <div class="package-badge" data-i18n="plans.basic">Basic</div>
                     <div class="package-header">
-                        <h3>Basic</h3>
+                        <h3 data-i18n="plans.basic">Basic</h3>
                         <div class="price-container">
                             <div class="price-options">
                                 <div class="price-option active" data-period="monthly">
-                                    <div class="price-period">1 Lună</div>
-                                    <div class="price">€20<span>/lună</span></div>
+                                    <div class="price-period" data-i18n="pricing.1_month">1 Month</div>
+                                    <div class="price">€20<span data-i18n="pricing.per_month">/month</span></div>
                                 </div>
                                 <div class="price-option" data-period="yearly">
-                                    <div class="price-period">12 Luni</div>
-                                    <div class="price">€17<span>/lună</span></div>
+                                    <div class="price-period" data-i18n="pricing.12_months">12 Months</div>
+                                    <div class="price">€17<span data-i18n="pricing.per_month">/month</span></div>
                                 </div>
                             </div>
                         </div>
-                        <p>Perfect pentru început</p>
+                        <p data-i18n="plans.basic_description">Perfect for starting out</p>
                     </div>
                     
                     <ul class="features-list">
-                        <li><i class="fas fa-check"></i> Site Basic gata făcut</li>
-                        <li><i class="fas fa-check"></i> Design responsiv modern</li>
-                        <li><i class="fas fa-check"></i> Până la 5 pagini</li>
-                        <li><i class="fas fa-check"></i> Formular de contact</li>
-                        <li><i class="fas fa-check"></i> Hosting inclus</li>
-                        <li><i class="fas fa-check"></i> 10GB Storage</li>
-                        <li><i class="fas fa-check"></i> SSL Certificate</li>
-                        <li><i class="fas fa-check"></i> Suport 24/7</li>
-                        <li><i class="fas fa-times"></i> Domeniu inclus</li>
-                        <li><i class="fas fa-times"></i> Schimbări conținut</li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.basic_site">Basic ready-made website</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.responsive_design">Modern responsive design</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.up_to_5_pages">Up to 5 pages</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.contact_form">Contact form</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.hosting_included">Hosting included</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.10gb_storage">10GB Storage</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.ssl_certificate">SSL Certificate</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.support_24_7">24/7 Support</span></li>
+                        <li><i class="fas fa-times"></i> <span data-i18n="features.domain_included">Domain included</span></li>
+                        <li><i class="fas fa-times"></i> <span data-i18n="features.content_changes">Content changes</span></li>
                     </ul>
                     
                     <div class="package-actions">
                         <a href="#" class="choose-plan-btn" data-plan="basic">
-                            <i class="fas fa-arrow-right"></i> Alege Planul
+                            <i class="fas fa-arrow-right"></i> <span data-i18n="cta.choose_plan">Choose Plan</span>
                         </a>
                     </div>
                 </div>
 
                 <!-- Business Plan Mobile -->
                 <div class="mobile-plan featured" id="mobile-business">
-                    <div class="package-badge">Business</div>
+                    <div class="package-badge" data-i18n="plans.business">Business</div>
                     <div class="package-header">
-                        <h3>Business</h3>
+                        <h3 data-i18n="plans.business">Business</h3>
                         <div class="price-container">
                             <div class="price-options">
                                 <div class="price-option active" data-period="monthly">
-                                    <div class="price-period">1 Lună</div>
-                                    <div class="price">€35<span>/lună</span></div>
+                                    <div class="price-period" data-i18n="pricing.1_month">1 Month</div>
+                                    <div class="price">€35<span data-i18n="pricing.per_month">/month</span></div>
                                 </div>
                                 <div class="price-option" data-period="yearly">
-                                    <div class="price-period">12 Luni</div>
-                                    <div class="price">€30<span>/lună</span></div>
+                                    <div class="price-period" data-i18n="pricing.12_months">12 Months</div>
+                                    <div class="price">€30<span data-i18n="pricing.per_month">/month</span></div>
                                 </div>
                             </div>
                         </div>
-                        <p>Ideal pentru afaceri</p>
+                        <p data-i18n="plans.business_description">Ideal for businesses</p>
                     </div>
                     
                     <ul class="features-list">
-                        <li><i class="fas fa-check"></i> Site Business gata făcut</li>
-                        <li><i class="fas fa-check"></i> Design premium</li>
-                        <li><i class="fas fa-check"></i> Până la 10 pagini</li>
-                        <li><i class="fas fa-check"></i> Sistem administrare</li>
-                        <li><i class="fas fa-check"></i> Galerie foto/video</li>
-                        <li><i class="fas fa-check"></i> Hosting Business inclus</li>
-                        <li><i class="fas fa-check"></i> 50GB Storage</li>
-                        <li><i class="fas fa-check"></i> Domeniu inclus</li>
-                        <li><i class="fas fa-check"></i> Schimbări conținut incluse</li>
-                        <li><i class="fas fa-check"></i> Suport priority</li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.business_site">Business ready-made website</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.premium_design">Premium design</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.up_to_10_pages">Up to 10 pages</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.admin_system">Admin system</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.photo_gallery">Photo/video gallery</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.business_hosting">Business hosting included</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.50gb_storage">50GB Storage</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.domain_included">Domain included</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.content_changes_included">Content changes included</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.priority_support">Priority support</span></li>
                     </ul>
                     
                     <div class="package-actions">
                         <a href="#" class="choose-plan-btn" data-plan="business">
-                            <i class="fas fa-arrow-right"></i> Alege Planul
+                            <i class="fas fa-arrow-right"></i> <span data-i18n="cta.choose_plan">Choose Plan</span>
                         </a>
                     </div>
                 </div>
 
                 <!-- Premium Plan Mobile -->
                 <div class="mobile-plan" id="mobile-premium">
-                    <div class="package-badge">Premium</div>
+                    <div class="package-badge" data-i18n="plans.premium">Premium</div>
                     <div class="package-header">
-                        <h3>Premium</h3>
+                        <h3 data-i18n="plans.premium">Premium</h3>
                         <div class="price-container">
                             <div class="price-options">
                                 <div class="price-option active" data-period="monthly">
-                                    <div class="price-period">1 Lună</div>
-                                    <div class="price">€50<span>/lună</span></div>
+                                    <div class="price-period" data-i18n="pricing.1_month">1 Month</div>
+                                    <div class="price">€50<span data-i18n="pricing.per_month">/month</span></div>
                                 </div>
                                 <div class="price-option" data-period="yearly">
-                                    <div class="price-period">12 Luni</div>
-                                    <div class="price">€40<span>/lună</span></div>
+                                    <div class="price-period" data-i18n="pricing.12_months">12 Months</div>
+                                    <div class="price">€40<span data-i18n="pricing.per_month">/month</span></div>
                                 </div>
                             </div>
                         </div>
-                        <p>Soluție completă</p>
+                        <p data-i18n="plans.premium_description">Complete solution</p>
                     </div>
                     
                     <ul class="features-list">
-                        <li><i class="fas fa-check"></i> Site Premium gata făcut</li>
-                        <li><i class="fas fa-check"></i> Design luxury personalizat</li>
-                        <li><i class="fas fa-check"></i> Pagini nelimitate</li>
-                        <li><i class="fas fa-check"></i> Sistem avansat</li>
-                        <li><i class="fas fa-check"></i> Blog integrat</li>
-                        <li><i class="fas fa-check"></i> Hosting Premium inclus</li>
-                        <li><i class="fas fa-check"></i> 100GB Storage</li>
-                        <li><i class="fas fa-check"></i> Domeniu inclus</li>
-                        <li><i class="fas fa-check"></i> Schimbări conținut incluse</li>
-                        <li><i class="fas fa-check"></i> Suport dedicated</li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.premium_site">Premium ready-made website</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.luxury_design">Luxury custom design</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.unlimited_pages">Unlimited pages</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.advanced_system">Advanced system</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.blog_integrated">Integrated blog</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.premium_hosting">Premium hosting included</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.100gb_storage">100GB Storage</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.domain_included">Domain included</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.content_changes_included">Content changes included</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.dedicated_support">Dedicated support</span></li>
                     </ul>
                     
                     <div class="package-actions">
                         <a href="#" class="choose-plan-btn" data-plan="premium">
-                            <i class="fas fa-arrow-right"></i> Alege Planul
+                            <i class="fas fa-arrow-right"></i> <span data-i18n="cta.choose_plan">Choose Plan</span>
                         </a>
                     </div>
                 </div>
@@ -1389,93 +1433,93 @@
     <div class="order-page" id="orderPage">
         <div class="order-container">
             <div class="order-header">
-                <h2>Finalizează Comanda</h2>
-                <p>Alege-ți planul perfect pentru afacerea ta</p>
+                <h2 data-i18n="order.title">Complete Your Order</h2>
+                <p data-i18n="order.subtitle">Choose the perfect plan for your business</p>
             </div>
             <div class="order-content">
                 <div class="order-steps">
                     <div class="order-step">
-                        <h3><i class="fas fa-calendar-alt"></i> Perioada</h3>
+                        <h3><i class="fas fa-calendar-alt"></i> <span data-i18n="order.period">Period</span></h3>
                         <div class="period-options">
                             <div class="period-option active" data-period="monthly">
-                                <div class="period">1 Lună</div>
+                                <div class="period" data-i18n="pricing.1_month">1 Month</div>
                             </div>
                             <div class="period-option" data-period="yearly">
-                                <div class="period">12 Luni</div>
+                                <div class="period" data-i18n="pricing.12_months">12 Months</div>
                             </div>
                         </div>
                     </div>
 
                     <div class="order-step">
-                        <h3><i class="fas fa-box"></i> Plan</h3>
+                        <h3><i class="fas fa-box"></i> <span data-i18n="order.plan">Plan</span></h3>
                         <div class="plan-options">
                             <div class="plan-option active" data-plan="basic">
-                                <h4>Basic</h4>
-                                <div class="price" id="basicPrice">€20/lună</div>
+                                <h4 data-i18n="plans.basic">Basic</h4>
+                                <div class="price" id="basicPrice">€20<span data-i18n="pricing.per_month">/month</span></div>
                             </div>
                             <div class="plan-option" data-plan="business">
-                                <h4>Business</h4>
-                                <div class="price" id="businessPrice">€35/lună</div>
+                                <h4 data-i18n="plans.business">Business</h4>
+                                <div class="price" id="businessPrice">€35<span data-i18n="pricing.per_month">/month</span></div>
                             </div>
                             <div class="plan-option" data-plan="premium">
-                                <h4>Premium</h4>
-                                <div class="price" id="premiumPrice">€50/lună</div>
+                                <h4 data-i18n="plans.premium">Premium</h4>
+                                <div class="price" id="premiumPrice">€50<span data-i18n="pricing.per_month">/month</span></div>
                             </div>
                         </div>
                     </div>
 
                     <div class="order-step" id="domainStep">
-                        <h3><i class="fas fa-globe"></i> Domeniu</h3>
+                        <h3><i class="fas fa-globe"></i> <span data-i18n="order.domain">Domain</span></h3>
                         <div class="domain-options">
                             <div class="domain-option active" data-domain="none" data-price="0">
-                                <h4>Am domeniu</h4>
+                                <h4 data-i18n="domain.have_domain">I have a domain</h4>
                                 <div class="price" id="domainNonePrice">€0</div>
                             </div>
                             <div class="domain-option" data-domain="ro" data-price="7">
                                 <h4>.ro</h4>
                                 <div class="price" id="domainRoPrice">€7</div>
-                                <div class="domain-price">pe an</div>
+                                <div class="domain-price" data-i18n="pricing.per_year">per year</div>
                             </div>
                             <div class="domain-option" data-domain="com" data-price="12">
                                 <h4>.com</h4>
                                 <div class="price" id="domainComPrice">€12</div>
-                                <div class="domain-price">pe an</div>
+                                <div class="domain-price" data-i18n="pricing.per_year">per year</div>
                             </div>
                             <div class="domain-option" data-domain="eu" data-price="5">
                                 <h4>.eu</h4>
                                 <div class="price" id="domainEuPrice">€5</div>
-                                <div class="domain-price">pe an</div>
+                                <div class="domain-price" data-i18n="pricing.per_year">per year</div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="order-summary">
-                    <h3><i class="fas fa-receipt"></i> Sumar Comandă</h3>
+                    <h3><i class="fas fa-receipt"></i> <span data-i18n="order.summary">Order Summary</span></h3>
                     <div class="summary-item">
-                        <span>Plan <span id="planName">Basic</span></span>
+                        <span data-i18n="order.plan_label">Plan</span> <span id="planName" data-i18n="plans.basic">Basic</span>
                         <span id="planPrice">€20</span>
                     </div>
                     <div class="summary-item" id="domainItem">
-                        <span>Domeniu <span id="domainName">conectat</span></span>
+                        <span data-i18n="order.domain_label">Domain</span> <span id="domainName" data-i18n="domain.connected">connected</span>
                         <span id="domainPrice">€0</span>
                     </div>
                     <div class="summary-item">
-                        <span>Perioadă</span>
-                        <span id="periodText">1 Lună</span>
+                        <span data-i18n="order.period_label">Period</span>
+                        <span id="periodText" data-i18n="pricing.1_month">1 Month</span>
                     </div>
                     <div class="summary-item summary-total">
-                        <span>Total de Plată</span>
+                        <span data-i18n="order.total">Total Payment</span>
                         <span id="totalPrice">€20</span>
                     </div>
                 </div>
 
                 <div class="order-actions">
                     <button class="btn back-btn" id="backBtn">
-                        <i class="fas fa-arrow-left"></i> Înapoi
+                        <i class="fas fa-arrow-left"></i> <span data-i18n="cta.back">Back</span>
                     </button>
                     <button class="btn confirm-order-btn" id="confirmOrderBtn">
-                        <i class="fab fa-whatsapp"></i> Comandă pe WhatsApp
+                        <i class="fab fa-whatsapp"></i> <span data-i18n="cta.order_whatsapp">Order on WhatsApp</span>
                     </button>
                 </div>
             </div>
@@ -1486,33 +1530,33 @@
     <section class="process" id="process">
         <div class="container">
             <div class="section-title">
-                <h2>Cum Funcționează</h2>
-                <p>Procesul nostru simplu și rapid</p>
+                <h2 data-i18n="process.title">How It Works</h2>
+                <p data-i18n="process.subtitle">Our simple and fast process</p>
             </div>
             
             <div class="process-steps">
                 <div class="step fade-in">
                     <div class="step-number">1</div>
-                    <h4>Alege Pachet</h4>
-                    <p>Selectezi pachetul potrivit și ne contactezi prin WhatsApp sau email</p>
+                    <h4 data-i18n="process.step1_title">Choose Package</h4>
+                    <p data-i18n="process.step1_desc">Select the right package and contact us via WhatsApp or email</p>
                 </div>
                 
                 <div class="step fade-in">
                     <div class="step-number">2</div>
-                    <h4>Consultare</h4>
-                    <p>Discutăm detaliile proiectului și stabilim cerințele exacte</p>
+                    <h4 data-i18n="process.step2_title">Consultation</h4>
+                    <p data-i18n="process.step2_desc">We discuss project details and establish exact requirements</p>
                 </div>
                 
                 <div class="step fade-in">
                     <div class="step-number">3</div>
-                    <h4>Dezvoltare</h4>
-                    <p>Echipa noastră creează site-ul conform specificațiilor stabilite</p>
+                    <h4 data-i18n="process.step3_title">Development</h4>
+                    <p data-i18n="process.step3_desc">Our team creates the website according to established specifications</p>
                 </div>
                 
                 <div class="step fade-in">
                     <div class="step-number">4</div>
-                    <h4>Lansare</h4>
-                    <p>Site-ul tău este publicat și devine accesibil pe internet</p>
+                    <h4 data-i18n="process.step4_title">Launch</h4>
+                    <p data-i18n="process.step4_desc">Your website is published and becomes accessible on the internet</p>
                 </div>
             </div>
         </div>
@@ -1521,10 +1565,10 @@
     <!-- CTA Section -->
     <section class="cta">
         <div class="container">
-            <h2>Gata să îți creezi prezența online?</h2>
-            <p>Contactează-ne acum pentru o consultație gratuită și ofertă personalizată</p>
-            <a href="https://wa.me/40729552767?text=Salut!%20Vreau%20o%20consultatie%20despre%20un%20site%20web." class="btn btn-whatsapp">
-                <i class="fab fa-whatsapp"></i> Contactează-ne pe WhatsApp
+            <h2 data-i18n="cta.title">Ready to Create Your Online Presence?</h2>
+            <p data-i18n="cta.subtitle">Contact us now for a free consultation and personalized offer</p>
+            <a href="https://wa.me/40729552767?text=Hello!%20I%20want%20a%20consultation%20about%20a%20website." class="btn btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> <span data-i18n="cta.contact_whatsapp">Contact us on WhatsApp</span>
             </a>
         </div>
     </section>
@@ -1534,9 +1578,9 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h4>Your Web Builder</h4>
-                    <p style="font-size: 16px; color: #bbb; margin-bottom: 20px; line-height: 1.5;">
-                        Site-uri web complete cu hosting inclus. Transformăm ideile tale în prezență online profesională.
+                    <h4 data-i18n="footer.company">Your Web Builder</h4>
+                    <p style="font-size: 16px; color: #bbb; margin-bottom: 20px; line-height: 1.5;" data-i18n="footer.description">
+                        Complete websites with hosting included. We transform your ideas into professional online presence.
                     </p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -1546,36 +1590,449 @@
                 </div>
                 
                 <div class="footer-column">
-                    <h4>Pachete</h4>
+                    <h4 data-i18n="footer.packages">Packages</h4>
                     <ul class="footer-links">
-                        <li><a href="#hosting">Basic - de la €17/lună</a></li>
-                        <li><a href="#hosting">Business - de la €30/lună</a></li>
-                        <li><a href="#hosting">Premium - de la €40/lună</a></li>
+                        <li><a href="#hosting">Basic - from €17/month</a></li>
+                        <li><a href="#hosting">Business - from €30/month</a></li>
+                        <li><a href="#hosting">Premium - from €40/month</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
-                    <h4>Contact</h4>
+                    <h4 data-i18n="footer.contact">Contact</h4>
                     <ul class="footer-links">
                         <li><i class="fab fa-whatsapp"></i> +40 729 552 767</li>
                         <li><i class="fas fa-envelope"></i> boghack18@gmail.com</li>
-                        <li><i class="fas fa-clock"></i> Suport: 24/7</li>
+                        <li><i class="fas fa-clock"></i> <span data-i18n="footer.support">Support: 24/7</span></li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2024 Your Web Builder. Toate drepturile rezervate.</p>
+                <p>&copy; 2024 Your Web Builder. <span data-i18n="footer.rights">All rights reserved.</span></p>
             </div>
         </div>
     </footer>
 
     <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/40729552767?text=Salut!%20Am%20o%20întrebare%20despre%20pachetele%20de%20site." class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/40729552767?text=Hello!%20I%20have%20a%20question%20about%20website%20packages." class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <script>
+        // Language System
+        const translations = {
+            en: {
+                // Logo
+                "logo.title": "Your",
+                "logo.accent": "Web Builder",
+                
+                // Navigation
+                "nav.packages": "Packages",
+                "nav.how_it_works": "How It Works",
+                "nav.contact": "Contact",
+                
+                // Hero
+                "hero.title": "Complete Websites with Hosting Included",
+                "hero.subtitle": "Transform your ideas into professional online presence. Ready-made website + professional hosting - all in one convenient package.",
+                "hero.cta_see_packages": "See Packages",
+                "hero.cta_contact": "Contact Us",
+                
+                // Packages
+                "packages.title": "Complete Packages",
+                "packages.subtitle": "Choose the perfect package for your business",
+                
+                // Plans
+                "plans.basic": "Basic",
+                "plans.business": "Business",
+                "plans.premium": "Premium",
+                "plans.basic_description": "Perfect for starting out",
+                "plans.business_description": "Ideal for businesses",
+                "plans.premium_description": "Complete solution",
+                
+                // Features
+                "features.basic_site": "Basic ready-made website",
+                "features.responsive_design": "Modern responsive design",
+                "features.up_to_5_pages": "Up to 5 pages",
+                "features.contact_form": "Contact form",
+                "features.hosting_included": "Hosting included",
+                "features.10gb_storage": "10GB Storage",
+                "features.ssl_certificate": "SSL Certificate",
+                "features.support_24_7": "24/7 Support",
+                "features.domain_included": "Domain included",
+                "features.content_changes": "Content changes",
+                "features.business_site": "Business ready-made website",
+                "features.premium_design": "Premium design",
+                "features.up_to_10_pages": "Up to 10 pages",
+                "features.admin_system": "Admin system",
+                "features.photo_gallery": "Photo/video gallery",
+                "features.business_hosting": "Business hosting included",
+                "features.50gb_storage": "50GB Storage",
+                "features.content_changes_included": "Content changes included",
+                "features.priority_support": "Priority support",
+                "features.premium_site": "Premium ready-made website",
+                "features.luxury_design": "Luxury custom design",
+                "features.unlimited_pages": "Unlimited pages",
+                "features.advanced_system": "Advanced system",
+                "features.blog_integrated": "Integrated blog",
+                "features.premium_hosting": "Premium hosting included",
+                "features.100gb_storage": "100GB Storage",
+                "features.dedicated_support": "Dedicated support",
+                
+                // Pricing
+                "pricing.1_month": "1 Month",
+                "pricing.12_months": "12 Months",
+                "pricing.per_month": "/month",
+                "pricing.per_year": "per year",
+                
+                // CTA
+                "cta.choose_plan": "Choose Plan",
+                "cta.back": "Back",
+                "cta.order_whatsapp": "Order on WhatsApp",
+                "cta.contact_whatsapp": "Contact us on WhatsApp",
+                "cta.title": "Ready to Create Your Online Presence?",
+                "cta.subtitle": "Contact us now for a free consultation and personalized offer",
+                
+                // Order
+                "order.title": "Complete Your Order",
+                "order.subtitle": "Choose the perfect plan for your business",
+                "order.period": "Period",
+                "order.plan": "Plan",
+                "order.domain": "Domain",
+                "order.summary": "Order Summary",
+                "order.plan_label": "Plan",
+                "order.domain_label": "Domain",
+                "order.period_label": "Period",
+                "order.total": "Total Payment",
+                
+                // Domain
+                "domain.have_domain": "I have a domain",
+                "domain.connected": "connected",
+                
+                // Process
+                "process.title": "How It Works",
+                "process.subtitle": "Our simple and fast process",
+                "process.step1_title": "Choose Package",
+                "process.step1_desc": "Select the right package and contact us via WhatsApp or email",
+                "process.step2_title": "Consultation",
+                "process.step2_desc": "We discuss project details and establish exact requirements",
+                "process.step3_title": "Development",
+                "process.step3_desc": "Our team creates the website according to established specifications",
+                "process.step4_title": "Launch",
+                "process.step4_desc": "Your website is published and becomes accessible on the internet",
+                
+                // Footer
+                "footer.company": "Your Web Builder",
+                "footer.description": "Complete websites with hosting included. We transform your ideas into professional online presence.",
+                "footer.packages": "Packages",
+                "footer.contact": "Contact",
+                "footer.support": "Support: 24/7",
+                "footer.rights": "All rights reserved."
+            },
+            ro: {
+                // Logo
+                "logo.title": "Your",
+                "logo.accent": "Web Builder",
+                
+                // Navigation
+                "nav.packages": "Pachete",
+                "nav.how_it_works": "Cum Funcționează",
+                "nav.contact": "Contact",
+                
+                // Hero
+                "hero.title": "Site-uri Web Complete cu Hosting Inclus",
+                "hero.subtitle": "Transformăm ideile tale în prezență online profesională. Site gata făcut + hosting profesionist - totul într-un pachet convenabil.",
+                "hero.cta_see_packages": "Vezi Pachetele",
+                "hero.cta_contact": "Contactează-ne",
+                
+                // Packages
+                "packages.title": "Pachete Complete",
+                "packages.subtitle": "Alege pachetul perfect pentru afacerea ta",
+                
+                // Plans
+                "plans.basic": "Basic",
+                "plans.business": "Business",
+                "plans.premium": "Premium",
+                "plans.basic_description": "Perfect pentru început",
+                "plans.business_description": "Ideal pentru afaceri",
+                "plans.premium_description": "Soluție completă",
+                
+                // Features
+                "features.basic_site": "Site Basic gata făcut",
+                "features.responsive_design": "Design responsiv modern",
+                "features.up_to_5_pages": "Până la 5 pagini",
+                "features.contact_form": "Formular de contact",
+                "features.hosting_included": "Hosting inclus",
+                "features.10gb_storage": "10GB Storage",
+                "features.ssl_certificate": "SSL Certificate",
+                "features.support_24_7": "Suport 24/7",
+                "features.domain_included": "Domeniu inclus",
+                "features.content_changes": "Schimbări conținut",
+                "features.business_site": "Site Business gata făcut",
+                "features.premium_design": "Design premium",
+                "features.up_to_10_pages": "Până la 10 pagini",
+                "features.admin_system": "Sistem administrare",
+                "features.photo_gallery": "Galerie foto/video",
+                "features.business_hosting": "Hosting Business inclus",
+                "features.50gb_storage": "50GB Storage",
+                "features.content_changes_included": "Schimbări conținut incluse",
+                "features.priority_support": "Suport priority",
+                "features.premium_site": "Site Premium gata făcut",
+                "features.luxury_design": "Design luxury personalizat",
+                "features.unlimited_pages": "Pagini nelimitate",
+                "features.advanced_system": "Sistem avansat",
+                "features.blog_integrated": "Blog integrat",
+                "features.premium_hosting": "Hosting Premium inclus",
+                "features.100gb_storage": "100GB Storage",
+                "features.dedicated_support": "Suport dedicated",
+                
+                // Pricing
+                "pricing.1_month": "1 Lună",
+                "pricing.12_months": "12 Luni",
+                "pricing.per_month": "/lună",
+                "pricing.per_year": "pe an",
+                
+                // CTA
+                "cta.choose_plan": "Alege Planul",
+                "cta.back": "Înapoi",
+                "cta.order_whatsapp": "Comandă pe WhatsApp",
+                "cta.contact_whatsapp": "Contactează-ne pe WhatsApp",
+                "cta.title": "Gata să îți creezi prezența online?",
+                "cta.subtitle": "Contactează-ne acum pentru o consultație gratuită și ofertă personalizată",
+                
+                // Order
+                "order.title": "Finalizează Comanda",
+                "order.subtitle": "Alege-ți planul perfect pentru afacerea ta",
+                "order.period": "Perioada",
+                "order.plan": "Plan",
+                "order.domain": "Domeniu",
+                "order.summary": "Sumar Comandă",
+                "order.plan_label": "Plan",
+                "order.domain_label": "Domeniu",
+                "order.period_label": "Perioadă",
+                "order.total": "Total de Plată",
+                
+                // Domain
+                "domain.have_domain": "Am domeniu",
+                "domain.connected": "conectat",
+                
+                // Process
+                "process.title": "Cum Funcționează",
+                "process.subtitle": "Procesul nostru simplu și rapid",
+                "process.step1_title": "Alege Pachet",
+                "process.step1_desc": "Selectezi pachetul potrivit și ne contactezi prin WhatsApp sau email",
+                "process.step2_title": "Consultare",
+                "process.step2_desc": "Discutăm detaliile proiectului și stabilim cerințele exacte",
+                "process.step3_title": "Dezvoltare",
+                "process.step3_desc": "Echipa noastră creează site-ul conform specificațiilor stabilite",
+                "process.step4_title": "Lansare",
+                "process.step4_desc": "Site-ul tău este publicat și devine accesibil pe internet",
+                
+                // Footer
+                "footer.company": "Your Web Builder",
+                "footer.description": "Site-uri web complete cu hosting inclus. Transformăm ideile tale în prezență online profesională.",
+                "footer.packages": "Pachete",
+                "footer.contact": "Contact",
+                "footer.support": "Suport: 24/7",
+                "footer.rights": "Toate drepturile rezervate."
+            },
+            ru: {
+                // Logo
+                "logo.title": "Your",
+                "logo.accent": "Web Builder",
+                
+                // Navigation
+                "nav.packages": "Пакеты",
+                "nav.how_it_works": "Как Это Работает",
+                "nav.contact": "Контакты",
+                
+                // Hero
+                "hero.title": "Готовые Сайты с Хостингом Включительно",
+                "hero.subtitle": "Превращаем ваши идеи в профессиональное онлайн-присутствие. Готовый сайт + профессиональный хостинг - всё в одном удобном пакете.",
+                "hero.cta_see_packages": "Смотреть Пакеты",
+                "hero.cta_contact": "Связаться с Нами",
+                
+                // Packages
+                "packages.title": "Полные Пакеты",
+                "packages.subtitle": "Выберите идеальный пакет для вашего бизнеса",
+                
+                // Plans
+                "plans.basic": "Базовый",
+                "plans.business": "Бизнес",
+                "plans.premium": "Премиум",
+                "plans.basic_description": "Идеально для начала",
+                "plans.business_description": "Идеально для бизнеса",
+                "plans.premium_description": "Полное решение",
+                
+                // Features
+                "features.basic_site": "Базовый готовый сайт",
+                "features.responsive_design": "Современный адаптивный дизайн",
+                "features.up_to_5_pages": "До 5 страниц",
+                "features.contact_form": "Контактная форма",
+                "features.hosting_included": "Хостинг включен",
+                "features.10gb_storage": "10GB Хранилище",
+                "features.ssl_certificate": "SSL Сертификат",
+                "features.support_24_7": "Поддержка 24/7",
+                "features.domain_included": "Домен включен",
+                "features.content_changes": "Изменения контента",
+                "features.business_site": "Бизнес готовый сайт",
+                "features.premium_design": "Премиум дизайн",
+                "features.up_to_10_pages": "До 10 страниц",
+                "features.admin_system": "Система администрирования",
+                "features.photo_gallery": "Фото/видео галерея",
+                "features.business_hosting": "Бизнес хостинг включен",
+                "features.50gb_storage": "50GB Хранилище",
+                "features.content_changes_included": "Изменения контента включены",
+                "features.priority_support": "Приоритетная поддержка",
+                "features.premium_site": "Премиум готовый сайт",
+                "features.luxury_design": "Эксклюзивный дизайн",
+                "features.unlimited_pages": "Неограниченно страниц",
+                "features.advanced_system": "Продвинутая система",
+                "features.blog_integrated": "Интегрированный блог",
+                "features.premium_hosting": "Премиум хостинг включен",
+                "features.100gb_storage": "100GB Хранилище",
+                "features.dedicated_support": "Выделенная поддержка",
+                
+                // Pricing
+                "pricing.1_month": "1 Месяц",
+                "pricing.12_months": "12 Месяцев",
+                "pricing.per_month": "/месяц",
+                "pricing.per_year": "в год",
+                
+                // CTA
+                "cta.choose_plan": "Выбрать План",
+                "cta.back": "Назад",
+                "cta.order_whatsapp": "Заказать в WhatsApp",
+                "cta.contact_whatsapp": "Связаться в WhatsApp",
+                "cta.title": "Готовы Создать Свое Онлайн-Присутствие?",
+                "cta.subtitle": "Свяжитесь с нами для бесплатной консультации и персонализированного предложения",
+                
+                // Order
+                "order.title": "Завершите Заказ",
+                "order.subtitle": "Выберите идеальный план для вашего бизнеса",
+                "order.period": "Период",
+                "order.plan": "План",
+                "order.domain": "Домен",
+                "order.summary": "Сводка Заказа",
+                "order.plan_label": "План",
+                "order.domain_label": "Домен",
+                "order.period_label": "Период",
+                "order.total": "Итого к Оплате",
+                
+                // Domain
+                "domain.have_domain": "У меня есть домен",
+                "domain.connected": "подключен",
+                
+                // Process
+                "process.title": "Как Это Работает",
+                "process.subtitle": "Наш простой и быстрый процесс",
+                "process.step1_title": "Выберите Пакет",
+                "process.step1_desc": "Выберите подходящий пакет и свяжитесь с нами через WhatsApp или email",
+                "process.step2_title": "Консультация",
+                "process.step2_desc": "Обсуждаем детали проекта и устанавливаем точные требования",
+                "process.step3_title": "Разработка",
+                "process.step3_desc": "Наша команда создает сайт согласно установленным спецификациям",
+                "process.step4_title": "Запуск",
+                "process.step4_desc": "Ваш сайт публикуется и становится доступным в интернете",
+                
+                // Footer
+                "footer.company": "Your Web Builder",
+                "footer.description": "Готовые сайты с хостингом включительно. Превращаем ваши идеи в профессиональное онлайн-присутствие.",
+                "footer.packages": "Пакеты",
+                "footer.contact": "Контакты",
+                "footer.support": "Поддержка: 24/7",
+                "footer.rights": "Все права защищены."
+            }
+        };
+
+        // Current language
+        let currentLang = 'en';
+
+        // Auto-detect language
+        function detectLanguage() {
+            const browserLang = navigator.language || navigator.userLanguage;
+            const supportedLangs = ['en', 'ro', 'ru'];
+            
+            // Check if browser language is supported
+            if (supportedLangs.includes(browserLang.substring(0,2))) {
+                return browserLang.substring(0,2);
+            }
+            
+            // Check for stored language preference
+            const storedLang = localStorage.getItem('preferredLang');
+            if (storedLang && supportedLangs.includes(storedLang)) {
+                return storedLang;
+            }
+            
+            // Default to English
+            return 'en';
+        }
+
+        // Change language
+        function changeLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('preferredLang', lang);
+            
+            // Update all elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.value = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+            
+            // Update active language button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Update WhatsApp links with appropriate language
+            updateWhatsAppLinks(lang);
+        }
+
+        // Update WhatsApp links based on language
+        function updateWhatsAppLinks(lang) {
+            const messages = {
+                en: "Hello! I want a consultation about a website.",
+                ro: "Salut! Vreau o consultatie despre un site web.",
+                ru: "Здравствуйте! Я хочу консультацию о сайте."
+            };
+            
+            const questionMessages = {
+                en: "Hello! I have a question about website packages.",
+                ro: "Salut! Am o întrebare despre pachetele de site.",
+                ru: "Здравствуйте! У меня вопрос о пакетах сайтов."
+            };
+            
+            const encodedMessage = encodeURIComponent(messages[lang]);
+            const encodedQuestion = encodeURIComponent(questionMessages[lang]);
+            
+            // Update main CTA button
+            const mainCta = document.querySelector('.btn-whatsapp');
+            if (mainCta) {
+                mainCta.href = `https://wa.me/40729552767?text=${encodedMessage}`;
+            }
+            
+            // Update floating button
+            const floatBtn = document.querySelector('.whatsapp-float');
+            if (floatBtn) {
+                floatBtn.href = `https://wa.me/40729552767?text=${encodedQuestion}`;
+            }
+        }
+
+        // Initialize language
+        function initLanguage() {
+            const detectedLang = detectLanguage();
+            changeLanguage(detectedLang);
+        }
+
         // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mainNav = document.getElementById('mainNav');
@@ -1631,6 +2088,14 @@
             });
         });
 
+        // Language switcher
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                changeLanguage(lang);
+            });
+        });
+
         // Order System
         const orderPage = document.getElementById('orderPage');
         const choosePlanBtns = document.querySelectorAll('.choose-plan-btn');
@@ -1656,7 +2121,7 @@
         };
         
         const domainNames = {
-            none: 'conectat',
+            none: 'connected',
             ro: '.ro',
             com: '.com',
             eu: '.eu'
@@ -1738,9 +2203,9 @@
             const businessPrice = planPrices.business[selectedPeriod];
             const premiumPrice = planPrices.premium[selectedPeriod];
             
-            document.getElementById('basicPrice').textContent = `€${basicPrice}/lună`;
-            document.getElementById('businessPrice').textContent = `€${businessPrice}/lună`;
-            document.getElementById('premiumPrice').textContent = `€${premiumPrice}/lună`;
+            document.getElementById('basicPrice').textContent = `€${basicPrice}/month`;
+            document.getElementById('businessPrice').textContent = `€${businessPrice}/month`;
+            document.getElementById('premiumPrice').textContent = `€${premiumPrice}/month`;
         }
 
         // Update domain prices based on selected plan
@@ -1769,7 +2234,7 @@
             const planPrice = planPrices[selectedPlan][selectedPeriod];
             let domainPrice = domainPrices[selectedDomain];
             const domainName = domainNames[selectedDomain];
-            const periodText = selectedPeriod === 'monthly' ? '1 Lună' : '12 Luni';
+            const periodText = selectedPeriod === 'monthly' ? '1 Month' : '12 Months';
             
             // Domeniul este gratuit pentru planurile Business și Premium
             if (selectedPlan !== 'basic') {
@@ -1789,7 +2254,7 @@
             }
             
             document.getElementById('planName').textContent = planNames[selectedPlan];
-            document.getElementById('planPrice').textContent = `€${planPrice}${selectedPeriod === 'yearly' ? '/lună' : ''}`;
+            document.getElementById('planPrice').textContent = `€${planPrice}${selectedPeriod === 'yearly' ? '/month' : ''}`;
             document.getElementById('domainName').textContent = domainName;
             document.getElementById('domainPrice').textContent = selectedPlan === 'basic' && selectedDomain !== 'none' ? `€${domainPrice}` : '€0';
             document.getElementById('periodText').textContent = periodText;
@@ -1845,7 +2310,7 @@
             const planPrice = planPrices[selectedPlan][selectedPeriod];
             let domainPrice = domainPrices[selectedDomain];
             const domainName = domainNames[selectedDomain];
-            const periodText = selectedPeriod === 'monthly' ? '1 Lună' : '12 Luni';
+            const periodText = selectedPeriod === 'monthly' ? '1 Month' : '12 Months';
             
             // Domeniul este gratuit pentru planurile Business și Premium
             if (selectedPlan !== 'basic') {
@@ -1864,11 +2329,11 @@
                 totalPrice += domainPrice;
             }
             
-            const message = `Salut! Vreau să comand următorul pachet:
+            const message = `Hello! I want to order the following package:
             
 📦 Plan: ${planNames[selectedPlan]}
-⏰ Perioadă: ${periodText}
-${selectedPlan === 'basic' && selectedDomain !== 'none' ? `🌐 Domeniu: ${domainName}` : '🌐 Domeniu: Conectez domeniul existent'}
+⏰ Period: ${periodText}
+${selectedPlan === 'basic' && selectedDomain !== 'none' ? `🌐 Domain: ${domainName}` : '🌐 Domain: I connect existing domain'}
 💰 Total: €${totalPrice}`;
             
             const encodedMessage = encodeURIComponent(message);
@@ -1895,6 +2360,11 @@ ${selectedPlan === 'basic' && selectedDomain !== 'none' ? `🌐 Domeniu: ${domai
         // Observe elements for animation
         document.querySelectorAll('.hosting-package, .step').forEach(el => {
             observer.observe(el);
+        });
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initLanguage();
         });
     </script>
 </body>
