@@ -15,6 +15,7 @@
             --success: #2ecc71;
             --gradient: linear-gradient(135deg, #3498db, #2c3e50);
             --whatsapp: #25D366;
+            --discount: #ff6b6b;
         }
         
         * {
@@ -275,38 +276,74 @@
             position: relative;
         }
         
-        .price-old {
-            text-decoration: line-through;
-            color: #999;
-            font-size: 16px;
-            display: block;
-            margin-bottom: 5px;
+        .price-options {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .price-option {
+            text-align: center;
+            padding: 12px 15px;
+            border-radius: 12px;
+            background: #f8f9fa;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+            flex: 1;
+        }
+        
+        .price-option.active {
+            background: var(--gradient);
+            color: white;
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+        
+        .price-period {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .price-option.active .price-period {
+            color: white;
         }
         
         .price {
-            font-size: 42px;
+            font-size: 22px;
             font-weight: 800;
             color: var(--secondary);
             display: block;
             line-height: 1;
         }
         
+        .price-option.active .price {
+            color: white;
+        }
+        
         .price span {
-            font-size: 16px;
+            font-size: 14px;
             color: #777;
             font-weight: normal;
         }
         
-        .discount-badge {
-            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        .price-option.active .price span {
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .economy-badge {
+            background: linear-gradient(135deg, var(--discount), #e74c3c);
             color: white;
-            padding: 10px 16px;
-            border-radius: 25px;
-            font-size: 16px;
+            padding: 6px 10px;
+            border-radius: 15px;
+            font-size: 12px;
             font-weight: 700;
-            margin-top: 15px;
+            margin-top: 8px;
             display: inline-block;
-            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+            box-shadow: 0 3px 10px rgba(255, 107, 107, 0.3);
         }
         
         .features-list {
@@ -316,10 +353,10 @@
         }
         
         .features-list li {
-            padding: 12px 0;
+            padding: 10px 0;
             display: flex;
             align-items: center;
-            font-size: 16px;
+            font-size: 15px;
             border-bottom: 1px solid #f8f8f8;
         }
         
@@ -329,8 +366,8 @@
         
         .features-list li i {
             color: var(--success);
-            margin-right: 12px;
-            font-size: 14px;
+            margin-right: 10px;
+            font-size: 13px;
             min-width: 16px;
         }
         
@@ -342,6 +379,222 @@
             margin-top: auto;
             padding-top: 20px;
             border-top: 1px solid #f0f0f0;
+        }
+        
+        .choose-plan-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: var(--gradient);
+            color: white;
+            padding: 12px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .choose-plan-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* Order Page Styles */
+        .order-page {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+        
+        .order-container {
+            background: white;
+            margin: 50px auto;
+            max-width: 600px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .order-header {
+            background: var(--gradient);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .order-header h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .order-header p {
+            opacity: 0.9;
+            font-size: 16px;
+        }
+        
+        .order-content {
+            padding: 30px;
+        }
+        
+        .order-step {
+            margin-bottom: 30px;
+        }
+        
+        .order-step h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .order-step h3 i {
+            color: var(--accent);
+        }
+        
+        .plan-options, .period-options, .domain-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .plan-option, .period-option, .domain-option {
+            padding: 20px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+        }
+        
+        .plan-option:hover, .period-option:hover, .domain-option:hover {
+            border-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        .plan-option.active, .period-option.active, .domain-option.active {
+            border-color: var(--accent);
+            background: var(--gradient);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .plan-option h4, .domain-option h4 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        
+        .plan-option .price, .domain-option .price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .plan-option.active .price, .domain-option.active .price {
+            color: white;
+        }
+        
+        .period-option .period {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .period-option .price {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .period-option.active .price {
+            color: white;
+        }
+        
+        .domain-price {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .domain-option.active .domain-price {
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .free-domain {
+            color: var(--success);
+            font-weight: 600;
+        }
+        
+        .order-summary {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        
+        .order-summary h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .summary-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .summary-total {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 2px solid var(--accent);
+        }
+        
+        .order-actions {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .back-btn {
+            flex: 1;
+            background: #95a5a6;
+            color: white;
+        }
+        
+        .back-btn:hover {
+            background: #7f8c8d;
+        }
+        
+        .confirm-order-btn {
+            flex: 2;
+            background: var(--whatsapp);
+        }
+        
+        .confirm-order-btn:hover {
+            background: #128C7E;
         }
         
         /* Process Section */
@@ -578,14 +831,9 @@
                 gap: 20px;
             }
             
-            /* Asigurăm că pachetele sunt în ordinea corectă: Basic, Business, Premium */
-            .hosting-package:nth-child(1) { order: 1; } /* Basic */
-            .hosting-package:nth-child(2) { order: 2; } /* Business */
-            .hosting-package:nth-child(3) { order: 3; } /* Premium */
-            
             .hosting-package.featured {
                 grid-column: 1 / -1;
-                order: 2 !important; /* Business devine al doilea și ocupă întreaga lățime */
+                order: 2 !important;
             }
             
             .process-steps {
@@ -618,6 +866,24 @@
             
             .footer-column {
                 padding: 0 5px;
+            }
+            
+            .price-options {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .order-container {
+                margin: 20px;
+                max-width: none;
+            }
+            
+            .plan-options, .period-options, .domain-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .order-actions {
+                flex-direction: column;
             }
         }
         
@@ -736,9 +1002,16 @@
                     <div class="package-header">
                         <h3>Basic</h3>
                         <div class="price-container">
-                            <span class="price-old">€20/lună</span>
-                            <div class="price">€15<span>/lună</span></div>
-                            <div class="discount-badge">-25% REDUCERE</div>
+                            <div class="price-options">
+                                <div class="price-option active" data-period="monthly">
+                                    <div class="price-period">1 Lună</div>
+                                    <div class="price">€20<span>/lună</span></div>
+                                </div>
+                                <div class="price-option" data-period="yearly">
+                                    <div class="price-period">12 Luni</div>
+                                    <div class="price">€17<span>/lună</span></div>
+                                </div>
+                            </div>
                         </div>
                         <p>Perfect pentru început</p>
                     </div>
@@ -752,12 +1025,13 @@
                         <li><i class="fas fa-check"></i> 10GB Storage</li>
                         <li><i class="fas fa-check"></i> SSL Certificate</li>
                         <li><i class="fas fa-check"></i> Suport 24/7</li>
-                        <li><i class="fas fa-times"></i> Modificări conținut: +€5/lună</li>
+                        <li><i class="fas fa-times"></i> Domeniu inclus</li>
+                        <li><i class="fas fa-times"></i> Schimbări conținut</li>
                     </ul>
                     
                     <div class="package-actions">
-                        <a href="https://wa.me/40729552767?text=Salut!%20Sunt%20interesat%20de%20pachetul%20Basic%20la%2015€/lună" class="btn btn-whatsapp" style="width: 100%; text-align: center;">
-                            <i class="fab fa-whatsapp"></i> Comandă
+                        <a href="#" class="choose-plan-btn" data-plan="basic">
+                            <i class="fas fa-arrow-right"></i> Alege Planul
                         </a>
                     </div>
                 </div>
@@ -768,9 +1042,16 @@
                     <div class="package-header">
                         <h3>Business</h3>
                         <div class="price-container">
-                            <span class="price-old">€35/lună</span>
-                            <div class="price">€25<span>/lună</span></div>
-                            <div class="discount-badge">-29% REDUCERE</div>
+                            <div class="price-options">
+                                <div class="price-option active" data-period="monthly">
+                                    <div class="price-period">1 Lună</div>
+                                    <div class="price">€35<span>/lună</span></div>
+                                </div>
+                                <div class="price-option" data-period="yearly">
+                                    <div class="price-period">12 Luni</div>
+                                    <div class="price">€30<span>/lună</span></div>
+                                </div>
+                            </div>
                         </div>
                         <p>Ideal pentru afaceri</p>
                     </div>
@@ -783,13 +1064,14 @@
                         <li><i class="fas fa-check"></i> Galerie foto/video</li>
                         <li><i class="fas fa-check"></i> Hosting Business inclus</li>
                         <li><i class="fas fa-check"></i> 50GB Storage</li>
-                        <li><i class="fas fa-check"></i> Modificări conținut incluse</li>
+                        <li><i class="fas fa-check"></i> Domeniu inclus</li>
+                        <li><i class="fas fa-check"></i> Schimbări conținut incluse</li>
                         <li><i class="fas fa-check"></i> Suport priority</li>
                     </ul>
                     
                     <div class="package-actions">
-                        <a href="https://wa.me/40729552767?text=Salut!%20Sunt%20interesat%20de%20pachetul%20Business%20la%2025€/lună" class="btn btn-whatsapp" style="width: 100%; text-align: center;">
-                            <i class="fab fa-whatsapp"></i> Comandă
+                        <a href="#" class="choose-plan-btn" data-plan="business">
+                            <i class="fas fa-arrow-right"></i> Alege Planul
                         </a>
                     </div>
                 </div>
@@ -800,9 +1082,16 @@
                     <div class="package-header">
                         <h3>Premium</h3>
                         <div class="price-container">
-                            <span class="price-old">€65/lună</span>
-                            <div class="price">€40<span>/lună</span></div>
-                            <div class="discount-badge">-38% REDUCERE</div>
+                            <div class="price-options">
+                                <div class="price-option active" data-period="monthly">
+                                    <div class="price-period">1 Lună</div>
+                                    <div class="price">€50<span>/lună</span></div>
+                                </div>
+                                <div class="price-option" data-period="yearly">
+                                    <div class="price-period">12 Luni</div>
+                                    <div class="price">€40<span>/lună</span></div>
+                                </div>
+                            </div>
                         </div>
                         <p>Soluție completă</p>
                     </div>
@@ -815,19 +1104,118 @@
                         <li><i class="fas fa-check"></i> Blog integrat</li>
                         <li><i class="fas fa-check"></i> Hosting Premium inclus</li>
                         <li><i class="fas fa-check"></i> 100GB Storage</li>
-                        <li><i class="fas fa-check"></i> Modificări conținut incluse</li>
+                        <li><i class="fas fa-check"></i> Domeniu inclus</li>
+                        <li><i class="fas fa-check"></i> Schimbări conținut incluse</li>
                         <li><i class="fas fa-check"></i> Suport dedicated</li>
                     </ul>
                     
                     <div class="package-actions">
-                        <a href="https://wa.me/40729552767?text=Salut!%20Sunt%20interesat%20de%20pachetul%20Premium%20la%2040€/lună" class="btn btn-whatsapp" style="width: 100%; text-align: center;">
-                            <i class="fab fa-whatsapp"></i> Comandă
+                        <a href="#" class="choose-plan-btn" data-plan="premium">
+                            <i class="fas fa-arrow-right"></i> Alege Planul
                         </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Order Page -->
+    <div class="order-page" id="orderPage">
+        <div class="order-container">
+            <div class="order-header">
+                <h2>Finalizează Comanda</h2>
+                <p>Alege-ți planul perfect pentru afacerea ta</p>
+            </div>
+            <div class="order-content">
+                <div class="order-step">
+                    <h3><i class="fas fa-calendar-alt"></i> Perioada</h3>
+                    <div class="period-options">
+                        <div class="period-option active" data-period="monthly">
+                            <div class="period">1 Lună</div>
+                            <div class="price">€20</div>
+                        </div>
+                        <div class="period-option" data-period="yearly">
+                            <div class="period">12 Luni</div>
+                            <div class="price">€17/lună</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="order-step">
+                    <h3><i class="fas fa-box"></i> Alege Planul</h3>
+                    <div class="plan-options">
+                        <div class="plan-option active" data-plan="basic">
+                            <h4>Basic</h4>
+                            <div class="price" id="basicPrice">€20/lună</div>
+                        </div>
+                        <div class="plan-option" data-plan="business">
+                            <h4>Business</h4>
+                            <div class="price" id="businessPrice">€35/lună</div>
+                        </div>
+                        <div class="plan-option" data-plan="premium">
+                            <h4>Premium</h4>
+                            <div class="price" id="premiumPrice">€50/lună</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="order-step" id="domainStep">
+                    <h3><i class="fas fa-globe"></i> Alege Domeniul</h3>
+                    <div class="domain-options">
+                        <div class="domain-option active" data-domain="none" data-price="0">
+                            <h4>Am domeniu</h4>
+                            <div class="price">€0</div>
+                            <div class="domain-price">Conectez domeniul existent</div>
+                        </div>
+                        <div class="domain-option" data-domain="ro" data-price="7">
+                            <h4>.ro</h4>
+                            <div class="price">€7</div>
+                            <div class="domain-price">pe an</div>
+                        </div>
+                        <div class="domain-option" data-domain="com" data-price="12">
+                            <h4>.com</h4>
+                            <div class="price">€12</div>
+                            <div class="domain-price">pe an</div>
+                        </div>
+                        <div class="domain-option" data-domain="eu" data-price="5">
+                            <h4>.eu</h4>
+                            <div class="price">€5</div>
+                            <div class="domain-price">pe an</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="order-summary">
+                    <h3>Sumar Comandă</h3>
+                    <div class="summary-item">
+                        <span>Plan <span id="planName">Basic</span></span>
+                        <span id="planPrice">€20</span>
+                    </div>
+                    <div class="summary-item" id="domainItem">
+                        <span>Domeniu <span id="domainName">conectat</span></span>
+                        <span id="domainPrice">€0</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Perioadă</span>
+                        <span id="periodText">1 Lună</span>
+                    </div>
+                    <div class="summary-item summary-total">
+                        <span>Total de Plată</span>
+                        <span id="totalPrice">€20</span>
+                    </div>
+                </div>
+
+                <div class="order-actions">
+                    <button class="btn back-btn" id="backBtn">
+                        <i class="fas fa-arrow-left"></i> Înapoi
+                    </button>
+                    <button class="btn confirm-order-btn" id="confirmOrderBtn">
+                        <i class="fab fa-whatsapp"></i> Comandă pe WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Process Section -->
     <section class="process" id="process">
@@ -895,9 +1283,9 @@
                 <div class="footer-column">
                     <h4>Pachete</h4>
                     <ul class="footer-links">
-                        <li><a href="#hosting">Basic - €15/lună</a></li>
-                        <li><a href="#hosting">Business - €25/lună</a></li>
-                        <li><a href="#hosting">Premium - €40/lună</a></li>
+                        <li><a href="#hosting">Basic - de la €17/lună</a></li>
+                        <li><a href="#hosting">Business - de la €30/lună</a></li>
+                        <li><a href="#hosting">Premium - de la €40/lună</a></li>
                     </ul>
                 </div>
                 
@@ -954,6 +1342,229 @@
                     behavior: 'smooth'
                 });
             });
+        });
+
+        // Order System
+        const orderPage = document.getElementById('orderPage');
+        const choosePlanBtns = document.querySelectorAll('.choose-plan-btn');
+        const backBtn = document.getElementById('backBtn');
+        const confirmOrderBtn = document.getElementById('confirmOrderBtn');
+        const domainStep = document.getElementById('domainStep');
+        
+        let selectedPlan = 'basic';
+        let selectedPeriod = 'monthly';
+        let selectedDomain = 'none';
+        
+        const planPrices = {
+            basic: { monthly: 20, yearly: 17 },
+            business: { monthly: 35, yearly: 30 },
+            premium: { monthly: 50, yearly: 40 }
+        };
+        
+        const domainPrices = {
+            none: 0,
+            ro: 7,
+            com: 12,
+            eu: 5
+        };
+        
+        const domainNames = {
+            none: 'conectat',
+            ro: '.ro',
+            com: '.com',
+            eu: '.eu'
+        };
+
+        const planNames = {
+            basic: 'Basic',
+            business: 'Business',
+            premium: 'Premium'
+        };
+
+        // Open order page when clicking "Alege Planul"
+        choosePlanBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                selectedPlan = this.getAttribute('data-plan');
+                openOrderPage();
+            });
+        });
+
+        // Close order page
+        backBtn.addEventListener('click', closeOrderPage);
+        orderPage.addEventListener('click', function(e) {
+            if (e.target === orderPage) {
+                closeOrderPage();
+            }
+        });
+
+        // Period selection - FIRST STEP
+        document.querySelectorAll('.period-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.period-option').forEach(opt => opt.classList.remove('active'));
+                this.classList.add('active');
+                selectedPeriod = this.getAttribute('data-period');
+                updatePlanPrices();
+                updateSummary();
+            });
+        });
+
+        // Plan selection - SECOND STEP
+        document.querySelectorAll('.plan-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.plan-option').forEach(opt => opt.classList.remove('active'));
+                this.classList.add('active');
+                selectedPlan = this.getAttribute('data-plan');
+                
+                // Show/hide domain step based on plan
+                if (selectedPlan === 'basic') {
+                    domainStep.style.display = 'block';
+                } else {
+                    domainStep.style.display = 'block';
+                    // Auto-select "Am domeniu" for Business/Premium
+                    document.querySelectorAll('.domain-option').forEach(opt => opt.classList.remove('active'));
+                    document.querySelector('.domain-option[data-domain="none"]').classList.add('active');
+                    selectedDomain = 'none';
+                }
+                
+                updateSummary();
+            });
+        });
+
+        // Domain selection
+        document.querySelectorAll('.domain-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.domain-option').forEach(opt => opt.classList.remove('active'));
+                this.classList.add('active');
+                selectedDomain = this.getAttribute('data-domain');
+                updateSummary();
+            });
+        });
+
+        // Update plan prices based on selected period
+        function updatePlanPrices() {
+            const basicPrice = planPrices.basic[selectedPeriod];
+            const businessPrice = planPrices.business[selectedPeriod];
+            const premiumPrice = planPrices.premium[selectedPeriod];
+            
+            document.getElementById('basicPrice').textContent = `€${basicPrice}/lună`;
+            document.getElementById('businessPrice').textContent = `€${businessPrice}/lună`;
+            document.getElementById('premiumPrice').textContent = `€${premiumPrice}/lună`;
+        }
+
+        // Update order summary
+        function updateSummary() {
+            const planPrice = planPrices[selectedPlan][selectedPeriod];
+            let domainPrice = domainPrices[selectedDomain];
+            const domainName = domainNames[selectedDomain];
+            const periodText = selectedPeriod === 'monthly' ? '1 Lună' : '12 Luni';
+            
+            // Domeniul este gratuit pentru planurile Business și Premium
+            if (selectedPlan !== 'basic') {
+                domainPrice = 0;
+            }
+            
+            let totalPrice;
+            if (selectedPeriod === 'monthly') {
+                totalPrice = planPrice;
+            } else {
+                totalPrice = planPrice * 12;
+            }
+            
+            // Add domain price only for Basic plan
+            if (selectedPlan === 'basic' && selectedDomain !== 'none') {
+                totalPrice += domainPrice;
+            }
+            
+            document.getElementById('planName').textContent = planNames[selectedPlan];
+            document.getElementById('planPrice').textContent = `€${planPrice}${selectedPeriod === 'yearly' ? '/lună' : ''}`;
+            document.getElementById('domainName').textContent = domainName;
+            document.getElementById('domainPrice').textContent = selectedPlan === 'basic' && selectedDomain !== 'none' ? `€${domainPrice}` : '€0';
+            document.getElementById('periodText').textContent = periodText;
+            document.getElementById('totalPrice').textContent = `€${totalPrice}`;
+            
+            // Show/hide domain item
+            const domainItem = document.getElementById('domainItem');
+            if (selectedPlan === 'basic' && selectedDomain !== 'none') {
+                domainItem.style.display = 'flex';
+            } else {
+                domainItem.style.display = 'flex';
+            }
+        }
+
+        // Open order page
+        function openOrderPage() {
+            // Set initial selections based on clicked plan
+            document.querySelectorAll('.plan-option').forEach(opt => opt.classList.remove('active'));
+            document.querySelector(`.plan-option[data-plan="${selectedPlan}"]`).classList.add('active');
+            
+            // Reset to monthly and no domain
+            selectedPeriod = 'monthly';
+            selectedDomain = 'none';
+            document.querySelectorAll('.period-option').forEach(opt => opt.classList.remove('active'));
+            document.querySelector('.period-option[data-period="monthly"]').classList.add('active');
+            document.querySelectorAll('.domain-option').forEach(opt => opt.classList.remove('active'));
+            document.querySelector('.domain-option[data-domain="none"]').classList.add('active');
+            
+            // Update prices and summary
+            updatePlanPrices();
+            
+            // Show/hide domain step
+            if (selectedPlan === 'basic') {
+                domainStep.style.display = 'block';
+            } else {
+                domainStep.style.display = 'block';
+            }
+            
+            updateSummary();
+            orderPage.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close order page
+        function closeOrderPage() {
+            orderPage.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Confirm order and send WhatsApp message
+        confirmOrderBtn.addEventListener('click', function() {
+            const planPrice = planPrices[selectedPlan][selectedPeriod];
+            let domainPrice = domainPrices[selectedDomain];
+            const domainName = domainNames[selectedDomain];
+            const periodText = selectedPeriod === 'monthly' ? '1 Lună' : '12 Luni';
+            
+            // Domeniul este gratuit pentru planurile Business și Premium
+            if (selectedPlan !== 'basic') {
+                domainPrice = 0;
+            }
+            
+            let totalPrice;
+            if (selectedPeriod === 'monthly') {
+                totalPrice = planPrice;
+            } else {
+                totalPrice = planPrice * 12;
+            }
+            
+            // Add domain price only for Basic plan
+            if (selectedPlan === 'basic' && selectedDomain !== 'none') {
+                totalPrice += domainPrice;
+            }
+            
+            const message = `Salut! Vreau să comand următorul pachet:
+            
+📦 Plan: ${planNames[selectedPlan]}
+⏰ Perioadă: ${periodText}
+${selectedPlan === 'basic' && selectedDomain !== 'none' ? `🌐 Domeniu: ${domainName}` : '🌐 Domeniu: Conectez domeniul existent'}
+💰 Total: €${totalPrice}
+
+Te rog confirmă comanda!`;
+            
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/40729552767?text=${encodedMessage}`;
+            
+            window.open(whatsappUrl, '_blank');
+            closeOrderPage();
         });
 
         // Add fade-in animation on scroll
