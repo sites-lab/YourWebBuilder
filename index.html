@@ -215,6 +215,7 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 25px;
             margin-top: 40px;
+            align-items: stretch;
         }
         
         .hosting-package {
@@ -225,7 +226,7 @@
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
-            height: auto;
+            height: 100%;
             position: relative;
             border: 1px solid #eee;
         }
@@ -237,11 +238,22 @@
         
         .hosting-package.featured {
             border: 3px solid var(--accent);
-            transform: scale(1.05);
+            position: relative;
         }
         
-        .hosting-package.featured:hover {
-            transform: scale(1.05) translateY(-8px);
+        .hosting-package.featured::before {
+            content: 'POPULAR';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            z-index: 2;
         }
         
         .package-badge {
@@ -298,7 +310,6 @@
             background: var(--gradient);
             color: white;
             border-color: var(--accent);
-            transform: scale(1.05);
         }
         
         .price-period {
@@ -488,7 +499,6 @@
             border-color: var(--accent);
             background: var(--gradient);
             color: white;
-            transform: scale(1.05);
         }
         
         .plan-option h4, .domain-option h4 {
@@ -777,6 +787,21 @@
         }
         
         /* Responsive */
+        @media (max-width: 1024px) {
+            .hosting-packages {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+            
+            .hosting-package.featured {
+                grid-column: span 2;
+            }
+            
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
         @media (max-width: 768px) {
             .container {
                 width: 98%;
@@ -825,19 +850,21 @@
                 display: block;
             }
             
-            /* Layout optimizat pentru telefon - 2 COLOANE */
+            /* Layout optimizat pentru telefon - 1 COLOANĂ */
             .hosting-packages {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
+                grid-template-columns: 1fr;
+                gap: 30px;
+                max-width: 500px;
+                margin-left: auto;
+                margin-right: auto;
             }
             
             .hosting-package.featured {
-                grid-column: 1 / -1;
-                order: 2 !important;
+                grid-column: 1;
             }
             
             .process-steps {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr;
                 gap: 20px;
             }
             
@@ -919,10 +946,6 @@
                 grid-template-columns: 1fr;
             }
             
-            .hosting-package.featured {
-                grid-column: 1;
-            }
-            
             .process-steps {
                 grid-template-columns: 1fr;
             }
@@ -930,6 +953,10 @@
             .footer-content {
                 grid-template-columns: 1fr;
                 text-align: center;
+            }
+            
+            .footer-links li {
+                justify-content: center;
             }
         }
         
