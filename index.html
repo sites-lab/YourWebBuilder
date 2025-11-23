@@ -1132,11 +1132,9 @@
                     <div class="period-options">
                         <div class="period-option active" data-period="monthly">
                             <div class="period">1 Lună</div>
-                            <div class="price">€20</div>
                         </div>
                         <div class="period-option" data-period="yearly">
                             <div class="period">12 Luni</div>
-                            <div class="price">€17/lună</div>
                         </div>
                     </div>
                 </div>
@@ -1164,22 +1162,22 @@
                     <div class="domain-options">
                         <div class="domain-option active" data-domain="none" data-price="0">
                             <h4>Am domeniu</h4>
-                            <div class="price">€0</div>
+                            <div class="price" id="domainNonePrice">€0</div>
                             <div class="domain-price">Conectez domeniul existent</div>
                         </div>
                         <div class="domain-option" data-domain="ro" data-price="7">
                             <h4>.ro</h4>
-                            <div class="price">€7</div>
+                            <div class="price" id="domainRoPrice">€7</div>
                             <div class="domain-price">pe an</div>
                         </div>
                         <div class="domain-option" data-domain="com" data-price="12">
                             <h4>.com</h4>
-                            <div class="price">€12</div>
+                            <div class="price" id="domainComPrice">€12</div>
                             <div class="domain-price">pe an</div>
                         </div>
                         <div class="domain-option" data-domain="eu" data-price="5">
                             <h4>.eu</h4>
-                            <div class="price">€5</div>
+                            <div class="price" id="domainEuPrice">€5</div>
                             <div class="domain-price">pe an</div>
                         </div>
                     </div>
@@ -1405,6 +1403,7 @@
                 this.classList.add('active');
                 selectedPeriod = this.getAttribute('data-period');
                 updatePlanPrices();
+                updateDomainPrices();
                 updateSummary();
             });
         });
@@ -1415,6 +1414,9 @@
                 document.querySelectorAll('.plan-option').forEach(opt => opt.classList.remove('active'));
                 this.classList.add('active');
                 selectedPlan = this.getAttribute('data-plan');
+                
+                // Update domain prices based on selected plan
+                updateDomainPrices();
                 
                 // Show/hide domain step based on plan
                 if (selectedPlan === 'basic') {
@@ -1450,6 +1452,27 @@
             document.getElementById('basicPrice').textContent = `€${basicPrice}/lună`;
             document.getElementById('businessPrice').textContent = `€${businessPrice}/lună`;
             document.getElementById('premiumPrice').textContent = `€${premiumPrice}/lună`;
+        }
+
+        // Update domain prices based on selected plan
+        function updateDomainPrices() {
+            const domainNonePrice = document.getElementById('domainNonePrice');
+            const domainRoPrice = document.getElementById('domainRoPrice');
+            const domainComPrice = document.getElementById('domainComPrice');
+            const domainEuPrice = document.getElementById('domainEuPrice');
+            
+            if (selectedPlan === 'basic') {
+                domainNonePrice.textContent = '€0';
+                domainRoPrice.textContent = '€7';
+                domainComPrice.textContent = '€12';
+                domainEuPrice.textContent = '€5';
+            } else {
+                // Business and Premium plans include free domain
+                domainNonePrice.textContent = '€0';
+                domainRoPrice.textContent = '€0';
+                domainComPrice.textContent = '€0';
+                domainEuPrice.textContent = '€0';
+            }
         }
 
         // Update order summary
@@ -1508,6 +1531,7 @@
             
             // Update prices and summary
             updatePlanPrices();
+            updateDomainPrices();
             
             // Show/hide domain step
             if (selectedPlan === 'basic') {
@@ -1556,9 +1580,7 @@
 📦 Plan: ${planNames[selectedPlan]}
 ⏰ Perioadă: ${periodText}
 ${selectedPlan === 'basic' && selectedDomain !== 'none' ? `🌐 Domeniu: ${domainName}` : '🌐 Domeniu: Conectez domeniul existent'}
-💰 Total: €${totalPrice}
-
-Te rog confirmă comanda!`;
+💰 Total: €${totalPrice}`;
             
             const encodedMessage = encodeURIComponent(message);
             const whatsappUrl = `https://wa.me/40729552767?text=${encodedMessage}`;
