@@ -4,32 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Web Builder - Complete Websites with Hosting</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --accent: #e74c3c;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
-            --success: #2ecc71;
-            --gradient: linear-gradient(135deg, #3498db, #2c3e50);
+            --primary: #0f172a;
+            --secondary: #4f46e5;
+            --accent: #7c3aed;
+            --light: #f1f5f9;
+            --dark: #020617;
+            --success: #22c55e;
+            --gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #ec4899 100%);
+            --gradient-dark: linear-gradient(135deg, #4338ca 0%, #6d28d9 50%, #db2777 100%);
+            --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
             --whatsapp: #25D366;
-            --discount: #ff6b6b;
+            --discount: #f43f5e;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --border: #cbd5e1;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.1), 0 2px 4px -1px rgba(79, 70, 229, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(79, 70, 229, 0.15), 0 4px 6px -2px rgba(79, 70, 229, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(79, 70, 229, 0.2), 0 10px 10px -5px rgba(79, 70, 229, 0.1);
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background-color: #f9f9f9;
-            color: #333;
-            line-height: 1.6;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #ffffff;
+            color: var(--text-primary);
+            line-height: 1.7;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
         .container {
@@ -42,44 +56,53 @@
         /* Language Switcher */
         .language-switcher {
             position: fixed;
-            top: 80px;
-            right: 20px;
+            top: 90px;
+            right: 24px;
             z-index: 1001;
             display: flex;
-            gap: 5px;
+            gap: 6px;
             background: white;
-            padding: 8px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 6px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
         }
         
         .lang-btn {
-            padding: 8px 12px;
-            background: var(--primary);
-            color: white;
+            padding: 8px 14px;
+            background: transparent;
+            color: var(--text-primary);
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 8px;
             font-weight: 600;
-            font-size: 14px;
-            transition: all 0.3s;
+            font-size: 13px;
+            transition: all 0.2s ease;
             border: none;
             cursor: pointer;
         }
         
-        .lang-btn:hover, .lang-btn.active {
-            background: var(--accent);
-            transform: translateY(-2px);
+        .lang-btn:hover {
+            background: var(--light);
+        }
+        
+        .lang-btn.active {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+            transform: scale(1.05);
         }
         
         /* Header Styles */
         header {
-            background: var(--gradient);
-            color: white;
-            padding: 12px 0;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            color: var(--text-primary);
+            padding: 18px 0;
+            box-shadow: var(--shadow-sm);
             position: sticky;
             top: 0;
             z-index: 1000;
+            border-bottom: 1px solid var(--border);
         }
         
         .header-content {
@@ -91,21 +114,29 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
         
         .logo i {
-            font-size: 24px;
-            color: var(--accent);
+            font-size: 28px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .logo h1 {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
         }
         
         .logo span {
-            color: var(--accent);
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         /* Mobile Menu */
@@ -113,10 +144,16 @@
             display: none;
             background: none;
             border: none;
-            color: white;
-            font-size: 20px;
+            color: var(--text-primary);
+            font-size: 22px;
             cursor: pointer;
-            padding: 5px;
+            padding: 8px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        
+        .mobile-menu-btn:hover {
+            background: var(--light);
         }
         
         nav ul {
@@ -126,25 +163,25 @@
         }
         
         nav a {
-            color: white;
+            color: var(--text-primary);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
-            font-size: 16px;
-            padding: 6px 12px;
-            border-radius: 5px;
+            transition: all 0.2s ease;
+            font-size: 15px;
+            padding: 8px 16px;
+            border-radius: 8px;
         }
         
         nav a:hover {
-            color: var(--accent);
-            background: rgba(255,255,255,0.1);
+            color: var(--secondary);
+            background: rgba(99, 102, 241, 0.08);
         }
         
         /* Hero Section */
         .hero {
-            background: var(--gradient);
+            background: var(--gradient-hero);
             color: white;
-            padding: 80px 0;
+            padding: 120px 0 100px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -157,210 +194,339 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.05)" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-            background-size: cover;
-            background-position: bottom;
+            background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 50% 20%, rgba(236, 72, 153, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+            animation: float 20s ease-in-out infinite;
         }
         
-        .hero-content {
-            position: relative;
-            z-index: 1;
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
         }
         
-        .hero h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
-            line-height: 1.3;
-        }
+         .hero-content {
+             position: relative;
+             z-index: 1;
+         }
+         
+         .hero h2 {
+             font-size: 48px;
+             font-weight: 800;
+             margin-bottom: 24px;
+             line-height: 1.2;
+             letter-spacing: -1px;
+             animation: fadeInUp 0.8s ease-out;
+         }
+         
+         .hero p {
+             font-size: 20px;
+             max-width: 720px;
+             margin: 0 auto 40px;
+             opacity: 0.95;
+             font-weight: 400;
+             line-height: 1.6;
+             animation: fadeInUp 0.8s ease-out 0.2s both;
+         }
+         
+         .hero .btn {
+             animation: fadeInUp 0.8s ease-out 0.4s both;
+         }
+         
+         @keyframes fadeInUp {
+             from {
+                 opacity: 0;
+                 transform: translateY(30px);
+             }
+             to {
+                 opacity: 1;
+                 transform: translateY(0);
+             }
+         }
         
-        .hero p {
-            font-size: 18px;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            opacity: 0.9;
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--accent);
-            color: white;
-            padding: 14px 28px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        
-        .btn:hover {
-            background-color: #c0392b;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-        }
+         .btn {
+             display: inline-block;
+             background: var(--gradient);
+             color: white;
+             padding: 16px 32px;
+             border-radius: 12px;
+             text-decoration: none;
+             font-weight: 600;
+             transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+             border: none;
+             cursor: pointer;
+             font-size: 16px;
+             box-shadow: var(--shadow-lg);
+             letter-spacing: -0.2px;
+             position: relative;
+             overflow: hidden;
+         }
+         
+         .btn::before {
+             content: '';
+             position: absolute;
+             top: 50%;
+             left: 50%;
+             width: 0;
+             height: 0;
+             border-radius: 50%;
+             background: rgba(255, 255, 255, 0.3);
+             transform: translate(-50%, -50%);
+             transition: width 0.6s ease, height 0.6s ease;
+         }
+         
+         .btn:hover::before {
+             width: 300px;
+             height: 300px;
+         }
+         
+         .btn:hover {
+             transform: translateY(-4px) scale(1.05);
+             box-shadow: 0 15px 35px -5px rgba(79, 70, 229, 0.4);
+             background: var(--gradient-dark);
+         }
+         
+         .btn:active {
+             transform: translateY(-2px) scale(1.02);
+         }
         
         .btn-whatsapp {
-            background-color: var(--whatsapp);
+            background: var(--whatsapp);
         }
         
         .btn-whatsapp:hover {
-            background-color: #128C7E;
+            background: #20ba5a;
+        }
+
+        .btn-design {
+            background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+            margin-left: 16px;
+        }
+        
+        .btn-design:hover {
+            background: linear-gradient(135deg, #7C3AED 0%, #DB2777 100%);
         }
         
         .btn-secondary {
-            background-color: transparent;
-            border: 2px solid white;
-            margin-left: 15px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            margin-left: 16px;
+            backdrop-filter: blur(10px);
         }
         
         .btn-secondary:hover {
-            background-color: rgba(255,255,255,0.1);
+            background-color: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
         }
         
         /* Hosting Section */
         .hosting {
-            padding: 80px 0;
-            background-color: #f9f9f9;
+            padding: 100px 0;
+            background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 64px;
         }
         
         .section-title h2 {
-            font-size: 36px;
-            color: var(--primary);
-            margin-bottom: 15px;
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            letter-spacing: -1px;
         }
         
         .section-title p {
-            color: #666;
-            max-width: 600px;
+            color: var(--text-secondary);
+            max-width: 640px;
             margin: 0 auto;
             font-size: 18px;
+            font-weight: 400;
         }
         
         .hosting-packages {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-            margin-top: 40px;
+            gap: 32px;
+            margin-top: 48px;
             align-items: stretch;
         }
         
-        .hosting-package {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-            padding: 30px;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            position: relative;
-            border: 1px solid #eee;
-        }
-        
-        .hosting-package:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
+         .hosting-package {
+             background: white;
+             border-radius: 20px;
+             box-shadow: var(--shadow);
+             padding: 40px 32px;
+             transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+             display: flex;
+             flex-direction: column;
+             height: 100%;
+             position: relative;
+             border: 1px solid var(--border);
+             overflow: hidden;
+         }
+         
+         .hosting-package::before {
+             content: '';
+             position: absolute;
+             top: 0;
+             left: -100%;
+             width: 100%;
+             height: 100%;
+             background: linear-gradient(90deg, transparent, rgba(79, 70, 229, 0.05), transparent);
+             transition: left 0.6s ease;
+         }
+         
+         .hosting-package:hover::before {
+             left: 100%;
+         }
+         
+         .hosting-package:hover {
+             transform: translateY(-12px) scale(1.02);
+             box-shadow: 0 25px 50px -12px rgba(79, 70, 229, 0.25);
+             border-color: rgba(99, 102, 241, 0.4);
+         }
         
         .hosting-package.featured {
-            border: 3px solid var(--accent);
+            border: 2px solid var(--secondary);
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(to bottom, #ffffff 0%, #f0f4ff 100%);
             position: relative;
         }
         
-        .hosting-package.featured::before {
-            content: 'POPULAR';
+        .hosting-package.featured::after {
+            content: '';
             position: absolute;
-            top: -12px;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -14px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--accent);
+            background: var(--gradient);
             color: white;
-            padding: 6px 20px;
-            border-radius: 20px;
+            padding: 8px 24px;
+            border-radius: 24px;
             font-size: 12px;
             font-weight: 700;
             z-index: 2;
+            letter-spacing: 0.5px;
+            box-shadow: var(--shadow-lg);
         }
         
         .package-badge {
-            background: var(--accent);
+            background: var(--gradient);
             color: white;
             padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 14px;
+            border-radius: 10px;
+            font-size: 12px;
             font-weight: 700;
             display: inline-block;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             align-self: flex-start;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .package-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
         }
         
         .package-header {
             text-align: center;
-            margin-bottom: 25px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #f0f0f0;
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
         }
         
         .package-header h3 {
-            font-size: 24px;
-            color: var(--primary);
-            margin-bottom: 15px;
+            font-size: 28px;
+            color: var(--text-primary);
+            margin-bottom: 16px;
             font-weight: 700;
+            letter-spacing: -0.5px;
         }
         
         .price-container {
-            margin: 20px 0;
+            margin: 24px 0;
             position: relative;
         }
         
         .price-options {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-bottom: 15px;
+            gap: 12px;
+            margin-bottom: 16px;
         }
         
         .price-option {
             text-align: center;
-            padding: 12px 15px;
-            border-radius: 12px;
-            background: #f8f9fa;
-            border: 2px solid transparent;
+            padding: 14px 16px;
+            border-radius: 10px;
+            background: var(--light);
+            border: 2px solid var(--border);
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
             flex: 1;
+        }
+        
+        .price-option:hover {
+            border-color: var(--secondary);
         }
         
         .price-option.active {
             background: var(--gradient);
             color: white;
-            border-color: var(--accent);
+            border-color: var(--secondary);
+            box-shadow: var(--shadow-lg);
+            transform: scale(1.02);
         }
         
         .price-period {
-            font-size: 13px;
-            color: #666;
-            margin-bottom: 8px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         .price-option.active .price-period {
-            color: white;
+            color: rgba(255,255,255,0.9);
         }
         
         .price {
-            font-size: 22px;
+            font-size: 26px;
             font-weight: 800;
             color: var(--secondary);
             display: block;
-            line-height: 1;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
         }
         
         .price-option.active .price {
@@ -369,8 +535,8 @@
         
         .price span {
             font-size: 14px;
-            color: #777;
-            font-weight: normal;
+            color: var(--text-secondary);
+            font-weight: 500;
         }
         
         .price-option.active .price span {
@@ -378,50 +544,69 @@
         }
         
         .economy-badge {
-            background: linear-gradient(135deg, var(--discount), #e74c3c);
+            background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
             color: white;
-            padding: 6px 10px;
-            border-radius: 15px;
-            font-size: 12px;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 11px;
             font-weight: 700;
-            margin-top: 8px;
+            margin-top: 6px;
             display: inline-block;
-            box-shadow: 0 3px 10px rgba(255, 107, 107, 0.3);
+            box-shadow: 0 4px 12px rgba(244, 63, 94, 0.4);
+            animation: pulse-badge 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-badge {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
         
         .features-list {
             list-style: none;
-            margin-bottom: 25px;
+            margin-bottom: 32px;
             flex-grow: 1;
         }
         
         .features-list li {
-            padding: 10px 0;
+            padding: 12px 0;
             display: flex;
             align-items: center;
             font-size: 15px;
-            border-bottom: 1px solid #f8f8f8;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border);
+            transition: color 0.2s;
         }
         
         .features-list li:last-child {
             border-bottom: none;
         }
         
+        .features-list li:hover {
+            color: var(--secondary);
+        }
+        
         .features-list li i {
-            color: var(--success);
-            margin-right: 10px;
-            font-size: 13px;
-            min-width: 16px;
+            color: #22c55e;
+            margin-right: 12px;
+            font-size: 14px;
+            min-width: 18px;
+            filter: drop-shadow(0 2px 4px rgba(34, 197, 94, 0.3));
+        }
+        
+        .features-list li:hover i {
+            transform: scale(1.2);
+            color: #16a34a;
         }
         
         .features-list li .fa-times {
-            color: #e74c3c;
+            color: #f43f5e;
+            filter: drop-shadow(0 2px 4px rgba(244, 63, 94, 0.3));
         }
         
         .package-actions {
             margin-top: auto;
-            padding-top: 20px;
-            border-top: 1px solid #f0f0f0;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
         }
         
         .choose-plan-btn {
@@ -430,44 +615,52 @@
             text-align: center;
             background: var(--gradient);
             color: white;
-            padding: 12px;
-            border-radius: 10px;
+            padding: 14px;
+            border-radius: 12px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             border: none;
             cursor: pointer;
             font-size: 16px;
+            box-shadow: var(--shadow);
         }
         
         .choose-plan-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: var(--shadow-lg);
+            background: var(--gradient-dark);
         }
 
         /* Plan Navigation for Mobile */
         .plan-navigation {
             display: none;
             justify-content: center;
-            gap: 15px;
-            margin-bottom: 30px;
+            gap: 12px;
+            margin-bottom: 32px;
             flex-wrap: wrap;
         }
         
         .plan-nav-btn {
-            padding: 12px 20px;
-            background: #f8f9fa;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
+            padding: 12px 24px;
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 12px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
+            color: var(--text-primary);
+        }
+        
+        .plan-nav-btn:hover {
+            border-color: var(--secondary);
         }
         
         .plan-nav-btn.active {
             background: var(--gradient);
             color: white;
-            border-color: var(--accent);
+            border-color: var(--secondary);
+            box-shadow: var(--shadow);
         }
         
         /* Mobile Plan Container */
@@ -475,75 +668,122 @@
             display: none;
         }
         
-        /* Order Page Styles */
-        .order-page {
-            display: none;
-            position: fixed;
+         /* Order Page Styles */
+         .order-page {
+             display: none;
+             position: fixed;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             background: rgba(15, 23, 42, 0.85);
+             backdrop-filter: blur(8px);
+             z-index: 2000;
+             overflow-y: auto;
+             opacity: 0;
+             transition: opacity 0.3s ease;
+         }
+         
+         .order-container {
+             background: white;
+             margin: 40px auto;
+             max-width: 840px;
+             border-radius: 24px;
+             box-shadow: var(--shadow-xl);
+             overflow: hidden;
+             transform: scale(0.95);
+             opacity: 0;
+             transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+         }
+        
+        .order-header {
+            background: var(--gradient-hero);
+            color: white;
+            padding: 32px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .order-header::before {
+            content: '';
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 2000;
-            overflow-y: auto;
-        }
-        
-        .order-container {
-            background: white;
-            margin: 30px auto;
-            max-width: 800px;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            overflow: hidden;
-        }
-        
-        .order-header {
-            background: var(--gradient);
-            color: white;
-            padding: 25px 30px;
-            text-align: center;
+            background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0%, transparent 70%);
+            pointer-events: none;
         }
         
         .order-header h2 {
-            font-size: 24px;
+            font-size: 28px;
+            font-weight: 800;
             margin-bottom: 8px;
+            letter-spacing: -0.5px;
         }
         
         .order-header p {
-            opacity: 0.9;
-            font-size: 15px;
+            opacity: 0.95;
+            font-size: 16px;
+            font-weight: 400;
         }
         
         .order-content {
-            padding: 25px 30px;
+            padding: 40px;
         }
         
         .order-steps {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-bottom: 30px;
+            gap: 24px;
+            margin-bottom: 32px;
         }
         
         .order-step {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 12px;
-            border-left: 4px solid var(--accent);
+            background: var(--light);
+            padding: 24px;
+            border-radius: 16px;
+            border-left: 4px solid var(--secondary);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        
+        .order-step::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--gradient);
+            border-radius: 16px 0 0 16px;
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .order-step:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateX(4px);
+        }
+        
+        .order-step:hover::before {
+            transform: scaleY(1);
         }
         
         .order-step h3 {
             font-size: 18px;
-            margin-bottom: 15px;
-            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-primary);
             display: flex;
             align-items: center;
             gap: 10px;
         }
         
         .order-step h3 i {
-            color: var(--accent);
-            font-size: 16px;
+            color: var(--secondary);
+            font-size: 18px;
         }
         
         .period-options {
@@ -566,50 +806,133 @@
             gap: 12px;
             margin-bottom: 0;
         }
-        
-        .plan-option, .period-option, .domain-option {
-            padding: 16px 12px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            background: white;
+
+        /* Modifications Section Styles */
+        .modifications-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 0;
         }
         
-        .plan-option:hover, .period-option:hover, .domain-option:hover {
-            border-color: var(--secondary);
-        }
+         .plan-option, .period-option, .domain-option, .modification-option {
+             padding: 18px 16px;
+             border: 2px solid var(--border);
+             border-radius: 12px;
+             text-align: center;
+             cursor: pointer;
+             transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+             background: white;
+             position: relative;
+             overflow: hidden;
+         }
+         
+         .plan-option::before, .period-option::before, .domain-option::before, .modification-option::before {
+             content: '';
+             position: absolute;
+             top: 50%;
+             left: 50%;
+             width: 0;
+             height: 0;
+             border-radius: 50%;
+             background: rgba(79, 70, 229, 0.1);
+             transform: translate(-50%, -50%);
+             transition: width 0.6s ease, height 0.6s ease;
+         }
+         
+         .plan-option:hover::before, .period-option:hover::before, .domain-option:hover::before, .modification-option:hover::before {
+             width: 300px;
+             height: 300px;
+         }
+         
+         .plan-option:hover, .period-option:hover, .domain-option:hover, .modification-option:hover {
+             border-color: var(--secondary);
+             box-shadow: var(--shadow-lg);
+             transform: translateY(-2px);
+         }
+         
+         .plan-option.active, .period-option.active, .domain-option.active, .modification-option.active {
+             border-color: var(--secondary);
+             background: var(--gradient);
+             color: white;
+             box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
+             transform: scale(1.05) translateY(-2px);
+         }
+         
+         .plan-option.active::before, .period-option.active::before, .domain-option.active::before,          .modification-option.active::before {
+             background: rgba(255, 255, 255, 0.2);
+         }
+         
+         /* Premium plan - modifications included indicator */
+         .modification-option {
+             position: relative;
+         }
+         
+         .modification-option.disabled {
+             opacity: 0.5;
+             cursor: not-allowed;
+         }
+         
+         /* Add a badge for included features when Premium is selected */
+         .premium-plan .modification-option.active[data-modification="none"]::after {
+             content: 'Included in Premium';
+             position: absolute;
+             top: -10px;
+             right: -10px;
+             background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+             color: white;
+             padding: 5px 12px;
+             border-radius: 12px;
+             font-size: 10px;
+             font-weight: 700;
+             box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+             animation: pulse-badge 2s ease-in-out infinite;
+             white-space: nowrap;
+             z-index: 10;
+         }
+         
+         /* Show included badge for domain in Business/Premium */
+         .order-step:has(.plan-option.active[data-plan="business"]) .domain-option.active[data-domain="none"]::after,
+         .order-step:has(.plan-option.active[data-plan="premium"]) .domain-option.active[data-domain="none"]::after {
+             content: 'Included';
+             position: absolute;
+             top: -10px;
+             right: -10px;
+             background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+             color: white;
+             padding: 5px 12px;
+             border-radius: 12px;
+             font-size: 10px;
+             font-weight: 700;
+             box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+             animation: pulse-badge 2s ease-in-out infinite;
+             z-index: 10;
+         }
         
-        .plan-option.active, .period-option.active, .domain-option.active {
-            border-color: var(--accent);
-            background: var(--gradient);
-            color: white;
-        }
-        
-        .plan-option h4, .domain-option h4 {
-            font-size: 16px;
-            margin-bottom: 6px;
-        }
-        
-        .plan-option .price, .domain-option .price {
-            font-size: 18px;
+        .plan-option h4, .domain-option h4, .modification-option h4 {
+            font-size: 17px;
             font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .plan-option .price, .domain-option .price, .modification-option .price {
+            font-size: 20px;
+            font-weight: 800;
             color: var(--secondary);
         }
         
-        .plan-option.active .price, .domain-option.active .price {
+        .plan-option.active .price, .domain-option.active .price, .modification-option.active .price {
             color: white;
         }
         
         .period-option .period {
             font-size: 15px;
             font-weight: 600;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
         }
         
         .period-option .price {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 700;
             color: var(--secondary);
         }
@@ -620,7 +943,7 @@
         
         .domain-price {
             font-size: 13px;
-            color: #666;
+            color: var(--text-secondary);
             margin-top: 4px;
         }
         
@@ -634,32 +957,47 @@
         }
         
         .order-summary {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 12px;
-            margin: 25px 0;
-            border-left: 4px solid var(--accent);
+            background: linear-gradient(to right, var(--light) 0%, #f8faff 100%);
+            padding: 24px;
+            border-radius: 16px;
+            margin: 32px 0;
+            border-left: 4px solid var(--secondary);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.1);
+            position: relative;
+        }
+        
+        .order-summary::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--gradient);
+            border-radius: 16px 0 0 16px;
         }
         
         .order-summary h3 {
-            font-size: 18px;
-            margin-bottom: 15px;
-            color: var(--primary);
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-primary);
             display: flex;
             align-items: center;
             gap: 10px;
         }
         
         .order-summary h3 i {
-            color: var(--accent);
+            color: var(--secondary);
         }
         
         .summary-item {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 8px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+            font-size: 15px;
         }
         
         .summary-item:last-child {
@@ -668,70 +1006,193 @@
             padding-bottom: 0;
         }
         
-        .summary-total {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-top: 8px;
-            padding-top: 8px;
-            border-top: 2px solid var(--accent);
-        }
+         .summary-total {
+             font-size: 18px;
+             font-weight: 800;
+             color: var(--text-primary);
+             margin-top: 12px;
+             padding-top: 12px;
+             border-top: 2px solid;
+             border-image: var(--gradient) 1;
+             background: linear-gradient(to right, transparent, rgba(79, 70, 229, 0.05), transparent);
+             transition: all 0.3s ease;
+         }
+         
+         #totalPrice {
+             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+             display: inline-block;
+             background: var(--gradient);
+             -webkit-background-clip: text;
+             -webkit-text-fill-color: transparent;
+             background-clip: text;
+             font-size: 24px;
+         }
         
         .order-actions {
             display: flex;
-            gap: 12px;
+            gap: 16px;
         }
         
         .back-btn {
             flex: 1;
-            background: #95a5a6;
+            background: #64748b;
             color: white;
-            padding: 12px;
+            padding: 14px;
+            border-radius: 12px;
         }
         
         .back-btn:hover {
-            background: #7f8c8d;
+            background: #475569;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
         }
         
         .confirm-order-btn {
             flex: 2;
-            background: var(--whatsapp);
-            padding: 12px;
+            background: linear-gradient(135deg, #25D366 0%, #20ba5a 100%);
+            padding: 14px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
         }
         
         .confirm-order-btn:hover {
-            background: #128C7E;
+            background: linear-gradient(135deg, #20ba5a 0%, #1da851 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
         }
         
         /* Process Section */
         .process {
-            background-color: var(--light);
-            padding: 80px 0;
+            background-color: white;
+            padding: 100px 0;
         }
         
         .process-steps {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
+            gap: 32px;
+            margin-top: 64px;
+        }
+        
+         .step {
+             text-align: center;
+             padding: 40px 32px;
+             background: var(--light);
+             border-radius: 16px;
+             box-shadow: var(--shadow);
+             transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+             border: 1px solid var(--border);
+             position: relative;
+             overflow: hidden;
+         }
+         
+         .step::before {
+             content: '';
+             position: absolute;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             background: var(--gradient);
+             opacity: 0;
+             transition: opacity 0.4s ease;
+             z-index: 0;
+         }
+         
+         .step:hover::before {
+             opacity: 0.05;
+         }
+         
+         .step > * {
+             position: relative;
+             z-index: 1;
+         }
+         
+         .step:hover {
+             transform: translateY(-10px) scale(1.03);
+             box-shadow: 0 20px 40px -12px rgba(79, 70, 229, 0.3);
+             border-color: rgba(99, 102, 241, 0.3);
+         }
+        
+        .step-number {
+            width: 64px;
+            height: 64px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            color: white;
+            font-weight: 800;
+            font-size: 28px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .step-number::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            background: var(--gradient);
+            opacity: 0.5;
+            z-index: -1;
+            filter: blur(12px);
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+        
+        .step h4 {
+            font-size: 22px;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+        
+        .step p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        /* NEW: Why Choose Us Section */
+        .why-choose {
+            padding: 100px 0;
+            background: linear-gradient(to bottom, #f8fafc 0%, #ffffff 100%);
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
             margin-top: 50px;
         }
         
-        .step {
-            text-align: center;
-            padding: 30px 20px;
+        .benefit-card {
             background: white;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-            transition: transform 0.3s;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+            text-align: center;
         }
         
-        .step:hover {
-            transform: translateY(-8px);
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
         }
         
-        .step-number {
-            width: 60px;
-            height: 60px;
+        .benefit-icon {
+            width: 70px;
+            height: 70px;
             background: var(--gradient);
             border-radius: 50%;
             display: flex;
@@ -739,48 +1200,216 @@
             justify-content: center;
             margin: 0 auto 20px;
             color: white;
-            font-weight: bold;
-            font-size: 24px;
+            font-size: 28px;
         }
         
-        .step h4 {
+        .benefit-card h4 {
             font-size: 20px;
             margin-bottom: 15px;
-            color: var(--primary);
+            color: var(--text-primary);
+        }
+        
+        .benefit-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        /* NEW: Website Examples Section */
+        .examples {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .example-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+        }
+        
+        .example-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .example-image {
+            height: 200px;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 18px;
             font-weight: 600;
         }
         
-        .step p {
-            color: #666;
-            font-size: 16px;
+        .example-content {
+            padding: 24px;
+        }
+        
+        .example-content h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+        
+        .example-content p {
+            color: var(--text-secondary);
+            font-size: 14px;
             line-height: 1.5;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: 100px 0;
+            background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            background: var(--light);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: rgba(79, 70, 229, 0.05);
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 500px;
+        }
+        
+        /* Floating Notification */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: var(--gradient);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            z-index: 1002;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: translateX(-150%);
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        .notification-close {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
         }
         
         /* CTA Section */
         .cta {
-            padding: 80px 0;
-            background: var(--gradient);
+            padding: 100px 0;
+            background: var(--gradient-hero);
             color: white;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(236, 72, 153, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+            animation: float 20s ease-in-out infinite;
         }
         
         .cta h2 {
-            font-size: 36px;
+            font-size: 42px;
+            font-weight: 800;
             margin-bottom: 20px;
+            letter-spacing: -1px;
+            position: relative;
+            z-index: 1;
         }
         
         .cta p {
-            font-size: 18px;
-            max-width: 600px;
-            margin: 0 auto 40px;
-            opacity: 0.9;
+            font-size: 20px;
+            max-width: 640px;
+            margin: 0 auto 48px;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
         }
         
         /* Footer */
         footer {
-            background: var(--dark);
-            color: white;
-            padding: 60px 0 25px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            color: rgba(255, 255, 255, 0.9);
+            padding: 80px 0 32px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(79, 70, 229, 0.1) 0%, transparent 50%);
+            pointer-events: none;
         }
         
         .footer-content {
@@ -792,9 +1421,24 @@
         
         .footer-column h4 {
             font-size: 20px;
-            margin-bottom: 25px;
+            font-weight: 700;
+            margin-bottom: 24px;
             padding-bottom: 12px;
-            border-bottom: 2px solid var(--accent);
+            border-bottom: 2px solid;
+            border-image: linear-gradient(90deg, var(--secondary), var(--accent)) 1;
+            color: white;
+            position: relative;
+        }
+        
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: var(--gradient);
+            border-radius: 2px;
         }
         
         .footer-links {
@@ -802,87 +1446,129 @@
         }
         
         .footer-links li {
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
         
         .footer-links a {
-            color: #bbb;
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
-            transition: color 0.3s;
-            font-size: 16px;
+            transition: all 0.2s;
+            font-size: 15px;
         }
         
         .footer-links a:hover {
-            color: var(--accent);
+            color: white;
+            transform: translateX(4px);
         }
         
         .footer-links i {
-            color: var(--accent);
-            width: 18px;
+            color: var(--secondary);
+            width: 20px;
             font-size: 16px;
         }
         
         .social-links {
             display: flex;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 12px;
+            margin-top: 24px;
         }
         
         .social-links a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 45px;
-            height: 45px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
             color: white;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             font-size: 18px;
+            backdrop-filter: blur(10px);
         }
         
         .social-links a:hover {
-            background: var(--accent);
-            transform: translateY(-3px);
+            background: var(--gradient);
+            transform: translateY(-4px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.4);
         }
         
         .copyright {
             text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 14px;
-            color: #bbb;
+            color: rgba(255, 255, 255, 0.6);
         }
         
         /* WhatsApp Float Button */
         .whatsapp-float {
             position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background-color: var(--whatsapp);
+            bottom: 32px;
+            right: 32px;
+            background: linear-gradient(135deg, #25D366 0%, #20ba5a 100%);
             color: white;
-            width: 60px;
-            height: 60px;
+            width: 64px;
+            height: 64px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 26px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            font-size: 28px;
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
             z-index: 1000;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
+            animation: pulse-whatsapp 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-whatsapp {
+            0%, 100% { box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 8px 32px rgba(37, 211, 102, 0.6); }
         }
         
         .whatsapp-float:hover {
-            transform: scale(1.1);
-            background-color: #128C7E;
+            transform: scale(1.15) translateY(-4px);
+            background: linear-gradient(135deg, #20ba5a 0%, #1da851 100%);
+            box-shadow: 0 12px 40px rgba(37, 211, 102, 0.5);
+        }
+
+        /* Design Button Float */
+        .design-float {
+            position: fixed;
+            bottom: 110px;
+            right: 32px;
+            background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+            color: white;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 8px 24px rgba(139, 92, 246, 0.4);
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            animation: pulse-design 2s ease-in-out infinite;
         }
         
-        /* Responsive */
+        @keyframes pulse-design {
+            0%, 100% { box-shadow: 0 8px 24px rgba(139, 92, 246, 0.4); }
+            50% { box-shadow: 0 8px 32px rgba(139, 92, 246, 0.6); }
+        }
+        
+        .design-float:hover {
+            transform: scale(1.15) translateY(-4px);
+            background: linear-gradient(135deg, #7C3AED 0%, #DB2777 100%);
+            box-shadow: 0 12px 40px rgba(139, 92, 246, 0.5);
+        }
+        
+        /* Enhanced Mobile Styles */
         @media (max-width: 1024px) {
             .hosting-packages {
                 grid-template-columns: repeat(2, 1fr);
@@ -897,9 +1583,21 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .examples-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
             .order-steps {
                 grid-template-columns: 1fr;
                 gap: 15px;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         
@@ -924,9 +1622,10 @@
                 top: 100%;
                 left: 0;
                 right: 0;
-                background: var(--dark);
-                padding: 15px;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                background: white;
+                padding: 16px;
+                box-shadow: var(--shadow-lg);
+                border-top: 1px solid var(--border);
             }
             
             nav.active {
@@ -935,25 +1634,36 @@
             
             nav ul {
                 flex-direction: column;
-                gap: 10px;
+                gap: 8px;
+            }
+            
+            nav a {
+                padding: 12px 16px;
+                border-radius: 8px;
             }
             
             .hero {
-                padding: 50px 0;
+                padding: 80px 0 60px;
             }
             
             .hero h2 {
-                font-size: 28px;
+                font-size: 32px;
             }
             
             .hero p {
-                font-size: 16px;
+                font-size: 17px;
             }
             
-            .btn-secondary {
+            .btn-secondary, .btn-design {
                 margin-left: 0;
-                margin-top: 15px;
+                margin-top: 16px;
                 display: block;
+                width: 100%;
+            }
+            
+            .btn {
+                width: 100%;
+                margin-bottom: 12px;
             }
             
             /* MOBILE: Ascunde toate planurile și arată doar navigația */
@@ -971,11 +1681,12 @@
             
             .mobile-plan {
                 background: white;
-                border-radius: 15px;
-                box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-                padding: 25px 20px;
-                margin-bottom: 20px;
+                border-radius: 20px;
+                box-shadow: var(--shadow);
+                padding: 32px 24px;
+                margin-bottom: 24px;
                 display: none;
+                border: 1px solid var(--border);
             }
             
             .mobile-plan.active {
@@ -983,23 +1694,27 @@
             }
             
             .mobile-plan.featured {
-                border: 3px solid var(--accent);
+                border: 2px solid var(--secondary);
+                box-shadow: var(--shadow-lg);
+                background: linear-gradient(to bottom, #ffffff 0%, #fafbff 100%);
                 position: relative;
             }
             
             .mobile-plan.featured::before {
                 content: 'POPULAR';
                 position: absolute;
-                top: -12px;
+                top: -14px;
                 left: 50%;
                 transform: translateX(-50%);
-                background: var(--accent);
+                background: var(--gradient);
                 color: white;
-                padding: 6px 20px;
-                border-radius: 20px;
+                padding: 8px 24px;
+                border-radius: 24px;
                 font-size: 12px;
                 font-weight: 700;
                 z-index: 2;
+                letter-spacing: 0.5px;
+                box-shadow: var(--shadow-lg);
             }
             
             .process-steps {
@@ -1007,14 +1722,22 @@
                 gap: 20px;
             }
             
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .examples-grid {
+                grid-template-columns: 1fr;
+            }
+            
             .footer-content {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr;
                 gap: 25px;
                 text-align: left;
             }
             
             .section-title h2 {
-                font-size: 28px;
+                font-size: 32px;
             }
             
             .section-title p {
@@ -1023,16 +1746,20 @@
             
             /* Ajustări pentru elementele pe telefon */
             .step {
-                padding: 25px 15px;
+                padding: 32px 24px;
+            }
+            
+            .benefit-card {
+                padding: 24px;
             }
             
             .footer-column {
-                padding: 0 5px;
+                padding: 0 8px;
             }
             
             .price-options {
                 flex-direction: column;
-                gap: 10px;
+                gap: 12px;
             }
             
             .order-container {
@@ -1040,8 +1767,13 @@
                 max-width: none;
             }
             
+            .order-content {
+                padding: 24px;
+            }
+            
             .order-steps {
                 grid-template-columns: 1fr;
+                gap: 16px;
             }
             
             .domain-options {
@@ -1050,6 +1782,48 @@
             
             .order-actions {
                 flex-direction: column;
+            }
+            
+            .cta h2 {
+                font-size: 32px;
+            }
+            
+            .cta p {
+                font-size: 17px;
+            }
+
+            .design-float {
+                bottom: 110px;
+                right: 10px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+            
+            /* FAQ */
+            .faq-question {
+                padding: 15px;
+                font-size: 15px;
+            }
+            
+            .faq-answer {
+                padding: 0 15px;
+            }
+            
+            .faq-item.active .faq-answer {
+                padding: 15px;
+            }
+            
+            /* Notification */
+            .notification {
+                left: 10px;
+                right: 10px;
+                bottom: 90px;
+                transform: translateY(150%);
+            }
+            
+            .notification.show {
+                transform: translateY(0);
             }
         }
         
@@ -1106,20 +1880,16 @@
             }
         }
         
-        /* Animation */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
         
-        .fade-in {
-            animation: fadeInUp 0.6s ease-out;
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
         }
     </style>
 </head>
@@ -1148,6 +1918,9 @@
                     <ul>
                         <li><a href="#hosting" data-i18n="nav.packages">Packages</a></li>
                         <li><a href="#process" data-i18n="nav.how_it_works">How It Works</a></li>
+                        <li><a href="#why-choose" data-i18n="nav.why_choose">Why Choose Us</a></li>
+                        <li><a href="#examples" data-i18n="nav.examples">Website Examples</a></li>
+                        <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
                         <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
                     </ul>
                 </nav>
@@ -1163,6 +1936,9 @@
                 <p data-i18n="hero.subtitle">Transform your ideas into professional online presence. Ready-made website + professional hosting - all in one convenient package.</p>
                 <a href="#hosting" class="btn" data-i18n="hero.cta_see_packages">See Packages</a>
                 <a href="#contact" class="btn btn-secondary" data-i18n="hero.cta_contact">Contact Us</a>
+                <a href="https://sites-lab.github.io/WebBuilderPro" class="btn btn-design" target="_blank">
+                    <i class="fas fa-palette"></i> I want a design for my site
+                </a>
             </div>
         </div>
     </section>
@@ -1186,11 +1962,11 @@
                             <div class="price-options">
                                 <div class="price-option active" data-period="monthly">
                                     <div class="price-period" data-i18n="pricing.1_month">1 Month</div>
-                                    <div class="price">€20<span data-i18n="pricing.per_month">/month</span></div>
+                                    <div class="price">€30<span data-i18n="pricing.per_month">/month</span></div>
                                 </div>
                                 <div class="price-option" data-period="yearly">
                                     <div class="price-period" data-i18n="pricing.12_months">12 Months</div>
-                                    <div class="price">€17<span data-i18n="pricing.per_month">/month</span></div>
+                                    <div class="price">€27<span data-i18n="pricing.per_month">/month</span></div>
                                     <div class="economy-badge">Save €36</div>
                                 </div>
                             </div>
@@ -1204,7 +1980,7 @@
                         <li><i class="fas fa-check"></i> <span data-i18n="features.up_to_5_pages">Up to 5 pages</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.contact_form">Contact form</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.hosting_included">Hosting included</span></li>
-                        <li><i class="fas fa-check"></i> <span data-i18n="features.10gb_storage">10GB Storage</span></li>
+                        <li><i class="fas fa-check"></i> <span>2GB Storage</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.ssl_certificate">SSL Certificate</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.support_24_7">24/7 Support</span></li>
                         <li><i class="fas fa-times"></i> <span data-i18n="features.domain_included">Domain included</span></li>
@@ -1220,6 +1996,7 @@
                 
                 <!-- Business Plan -->
                 <div class="hosting-package featured fade-in">
+                    <div class="popular-badge">POPULAR</div>
                     <div class="package-badge" data-i18n="plans.business">Business</div>
                     <div class="package-header">
                         <h3 data-i18n="plans.business">Business</h3>
@@ -1227,11 +2004,11 @@
                             <div class="price-options">
                                 <div class="price-option active" data-period="monthly">
                                     <div class="price-period" data-i18n="pricing.1_month">1 Month</div>
-                                    <div class="price">€35<span data-i18n="pricing.per_month">/month</span></div>
+                                    <div class="price">€60<span data-i18n="pricing.per_month">/month</span></div>
                                 </div>
                                 <div class="price-option" data-period="yearly">
                                     <div class="price-period" data-i18n="pricing.12_months">12 Months</div>
-                                    <div class="price">€30<span data-i18n="pricing.per_month">/month</span></div>
+                                    <div class="price">€55<span data-i18n="pricing.per_month">/month</span></div>
                                     <div class="economy-badge">Save €60</div>
                                 </div>
                             </div>
@@ -1246,9 +2023,9 @@
                         <li><i class="fas fa-check"></i> <span data-i18n="features.admin_system">Admin system</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.photo_gallery">Photo/video gallery</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.business_hosting">Business hosting included</span></li>
-                        <li><i class="fas fa-check"></i> <span data-i18n="features.50gb_storage">50GB Storage</span></li>
+                        <li><i class="fas fa-check"></i> <span>10GB Storage</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.domain_included">Domain included</span></li>
-                        <li><i class="fas fa-check"></i> <span data-i18n="features.content_changes_included">Content changes included</span></li>
+                        <li><i class="fas fa-times"></i> <span data-i18n="features.content_changes">Content changes</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.priority_support">Priority support</span></li>
                     </ul>
                     
@@ -1268,12 +2045,12 @@
                             <div class="price-options">
                                 <div class="price-option active" data-period="monthly">
                                     <div class="price-period" data-i18n="pricing.1_month">1 Month</div>
-                                    <div class="price">€50<span data-i18n="pricing.per_month">/month</span></div>
+                                    <div class="price">€100<span data-i18n="pricing.per_month">/month</span></div>
                                 </div>
                                 <div class="price-option" data-period="yearly">
                                     <div class="price-period" data-i18n="pricing.12_months">12 Months</div>
-                                    <div class="price">€40<span data-i18n="pricing.per_month">/month</span></div>
-                                    <div class="economy-badge">Save €120</div>
+                                    <div class="price">€85<span data-i18n="pricing.per_month">/month</span></div>
+                                    <div class="economy-badge">Save €180</div>
                                 </div>
                             </div>
                         </div>
@@ -1287,7 +2064,7 @@
                         <li><i class="fas fa-check"></i> <span data-i18n="features.advanced_system">Advanced system</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.blog_integrated">Integrated blog</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.premium_hosting">Premium hosting included</span></li>
-                        <li><i class="fas fa-check"></i> <span data-i18n="features.100gb_storage">100GB Storage</span></li>
+                        <li><i class="fas fa-check"></i> <span>20GB Storage</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.domain_included">Domain included</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.content_changes_included">Content changes included</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.dedicated_support">Dedicated support</span></li>
@@ -1318,11 +2095,11 @@
                             <div class="price-options">
                                 <div class="price-option active" data-period="monthly">
                                     <div class="price-period" data-i18n="pricing.1_month">1 Month</div>
-                                    <div class="price">€20<span data-i18n="pricing.per_month">/month</span></div>
+                                    <div class="price">€30<span data-i18n="pricing.per_month">/month</span></div>
                                 </div>
                                 <div class="price-option" data-period="yearly">
                                     <div class="price-period" data-i18n="pricing.12_months">12 Months</div>
-                                    <div class="price">€17<span data-i18n="pricing.per_month">/month</span></div>
+                                    <div class="price">€27<span data-i18n="pricing.per_month">/month</span></div>
                                 </div>
                             </div>
                         </div>
@@ -1335,7 +2112,7 @@
                         <li><i class="fas fa-check"></i> <span data-i18n="features.up_to_5_pages">Up to 5 pages</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.contact_form">Contact form</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.hosting_included">Hosting included</span></li>
-                        <li><i class="fas fa-check"></i> <span data-i18n="features.10gb_storage">10GB Storage</span></li>
+                        <li><i class="fas fa-check"></i> <span>2GB Storage</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.ssl_certificate">SSL Certificate</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.support_24_7">24/7 Support</span></li>
                         <li><i class="fas fa-times"></i> <span data-i18n="features.domain_included">Domain included</span></li>
@@ -1358,11 +2135,11 @@
                             <div class="price-options">
                                 <div class="price-option active" data-period="monthly">
                                     <div class="price-period" data-i18n="pricing.1_month">1 Month</div>
-                                    <div class="price">€35<span data-i18n="pricing.per_month">/month</span></div>
+                                    <div class="price">€60<span data-i18n="pricing.per_month">/month</span></div>
                                 </div>
                                 <div class="price-option" data-period="yearly">
                                     <div class="price-period" data-i18n="pricing.12_months">12 Months</div>
-                                    <div class="price">€30<span data-i18n="pricing.per_month">/month</span></div>
+                                    <div class="price">€55<span data-i18n="pricing.per_month">/month</span></div>
                                 </div>
                             </div>
                         </div>
@@ -1376,9 +2153,9 @@
                         <li><i class="fas fa-check"></i> <span data-i18n="features.admin_system">Admin system</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.photo_gallery">Photo/video gallery</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.business_hosting">Business hosting included</span></li>
-                        <li><i class="fas fa-check"></i> <span data-i18n="features.50gb_storage">50GB Storage</span></li>
+                        <li><i class="fas fa-check"></i> <span>10GB Storage</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.domain_included">Domain included</span></li>
-                        <li><i class="fas fa-check"></i> <span data-i18n="features.content_changes_included">Content changes included</span></li>
+                        <li><i class="fas fa-times"></i> <span data-i18n="features.content_changes">Content changes</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.priority_support">Priority support</span></li>
                     </ul>
                     
@@ -1398,11 +2175,11 @@
                             <div class="price-options">
                                 <div class="price-option active" data-period="monthly">
                                     <div class="price-period" data-i18n="pricing.1_month">1 Month</div>
-                                    <div class="price">€50<span data-i18n="pricing.per_month">/month</span></div>
+                                    <div class="price">€100<span data-i18n="pricing.per_month">/month</span></div>
                                 </div>
                                 <div class="price-option" data-period="yearly">
                                     <div class="price-period" data-i18n="pricing.12_months">12 Months</div>
-                                    <div class="price">€40<span data-i18n="pricing.per_month">/month</span></div>
+                                    <div class="price">€85<span data-i18n="pricing.per_month">/month</span></div>
                                 </div>
                             </div>
                         </div>
@@ -1416,7 +2193,7 @@
                         <li><i class="fas fa-check"></i> <span data-i18n="features.advanced_system">Advanced system</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.blog_integrated">Integrated blog</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.premium_hosting">Premium hosting included</span></li>
-                        <li><i class="fas fa-check"></i> <span data-i18n="features.100gb_storage">100GB Storage</span></li>
+                        <li><i class="fas fa-check"></i> <span>20GB Storage</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.domain_included">Domain included</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.content_changes_included">Content changes included</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.dedicated_support">Dedicated support</span></li>
@@ -1431,103 +2208,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Order Page -->
-    <div class="order-page" id="orderPage">
-        <div class="order-container">
-            <div class="order-header">
-                <h2 data-i18n="order.title">Complete Your Order</h2>
-                <p data-i18n="order.subtitle">Choose the perfect plan for your business</p>
-            </div>
-            <div class="order-content">
-                <div class="order-steps">
-                    <div class="order-step">
-                        <h3><i class="fas fa-calendar-alt"></i> <span data-i18n="order.period">Period</span></h3>
-                        <div class="period-options">
-                            <div class="period-option active" data-period="monthly">
-                                <div class="period" data-i18n="pricing.1_month">1 Month</div>
-                            </div>
-                            <div class="period-option" data-period="yearly">
-                                <div class="period" data-i18n="pricing.12_months">12 Months</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="order-step">
-                        <h3><i class="fas fa-box"></i> <span data-i18n="order.plan">Plan</span></h3>
-                        <div class="plan-options">
-                            <div class="plan-option active" data-plan="basic">
-                                <h4 data-i18n="plans.basic">Basic</h4>
-                                <div class="price" id="basicPrice">€20<span data-i18n="pricing.per_month">/month</span></div>
-                            </div>
-                            <div class="plan-option" data-plan="business">
-                                <h4 data-i18n="plans.business">Business</h4>
-                                <div class="price" id="businessPrice">€35<span data-i18n="pricing.per_month">/month</span></div>
-                            </div>
-                            <div class="plan-option" data-plan="premium">
-                                <h4 data-i18n="plans.premium">Premium</h4>
-                                <div class="price" id="premiumPrice">€50<span data-i18n="pricing.per_month">/month</span></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="order-step" id="domainStep">
-                        <h3><i class="fas fa-globe"></i> <span data-i18n="order.domain">Domain</span></h3>
-                        <div class="domain-options">
-                            <div class="domain-option active" data-domain="none" data-price="0">
-                                <h4 data-i18n="domain.have_domain">I have a domain</h4>
-                                <div class="price" id="domainNonePrice">€0</div>
-                            </div>
-                            <div class="domain-option" data-domain="ro" data-price="7">
-                                <h4>.ro</h4>
-                                <div class="price" id="domainRoPrice">€7</div>
-                                <div class="domain-price" data-i18n="pricing.per_year">per year</div>
-                            </div>
-                            <div class="domain-option" data-domain="com" data-price="12">
-                                <h4>.com</h4>
-                                <div class="price" id="domainComPrice">€12</div>
-                                <div class="domain-price" data-i18n="pricing.per_year">per year</div>
-                            </div>
-                            <div class="domain-option" data-domain="eu" data-price="5">
-                                <h4>.eu</h4>
-                                <div class="price" id="domainEuPrice">€5</div>
-                                <div class="domain-price" data-i18n="pricing.per_year">per year</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="order-summary">
-                    <h3><i class="fas fa-receipt"></i> <span data-i18n="order.summary">Order Summary</span></h3>
-                    <div class="summary-item">
-                        <span data-i18n="order.plan_label">Plan</span> <span id="planName" data-i18n="plans.basic">Basic</span>
-                        <span id="planPrice">€20</span>
-                    </div>
-                    <div class="summary-item" id="domainItem">
-                        <span data-i18n="order.domain_label">Domain</span> <span id="domainName" data-i18n="domain.connected">connected</span>
-                        <span id="domainPrice">€0</span>
-                    </div>
-                    <div class="summary-item">
-                        <span data-i18n="order.period_label">Period</span>
-                        <span id="periodText" data-i18n="pricing.1_month">1 Month</span>
-                    </div>
-                    <div class="summary-item summary-total">
-                        <span data-i18n="order.total">Total Payment</span>
-                        <span id="totalPrice">€20</span>
-                    </div>
-                </div>
-
-                <div class="order-actions">
-                    <button class="btn back-btn" id="backBtn">
-                        <i class="fas fa-arrow-left"></i> <span data-i18n="cta.back">Back</span>
-                    </button>
-                    <button class="btn confirm-order-btn" id="confirmOrderBtn">
-                        <i class="fab fa-whatsapp"></i> <span data-i18n="cta.order_whatsapp">Order on WhatsApp</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Process Section -->
     <section class="process" id="process">
@@ -1565,6 +2245,259 @@
         </div>
     </section>
 
+    <!-- NEW: Why Choose Us Section -->
+    <section class="why-choose" id="why-choose">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-i18n="why_choose.title">Why Choose Our Service</h2>
+                <p data-i18n="why_choose.subtitle">We focus on what really matters for your business</p>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h4 data-i18n="why_choose.fast.title">Fast Delivery</h4>
+                    <p data-i18n="why_choose.fast.desc">Your website ready in days, not weeks. We prioritize quick turnaround without compromising quality.</p>
+                </div>
+                
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
+                        <i class="fas fa-euro-sign"></i>
+                    </div>
+                    <h4 data-i18n="why_choose.cost.title">Cost Effective</h4>
+                    <p data-i18n="why_choose.cost.desc">No hidden fees or unexpected costs. Everything is included in one transparent monthly price.</p>
+                </div>
+                
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h4 data-i18n="why_choose.support.title">Direct Support</h4>
+                    <p data-i18n="why_choose.support.desc">Get help directly from the developer. No call centers or automated responses.</p>
+                </div>
+                
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4 data-i18n="why_choose.hassle.title">Hassle-Free</h4>
+                    <p data-i18n="why_choose.hassle.desc">We handle everything - hosting, maintenance, updates. You focus on your business.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: Website Examples Section -->
+    <section class="examples" id="examples">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-i18n="examples.title">What You Get</h2>
+                <p data-i18n="examples.subtitle">Professional websites tailored to your needs</p>
+            </div>
+            
+            <div class="examples-grid">
+                <div class="example-card fade-in">
+                    <div class="example-image">
+                        Business Website
+                    </div>
+                    <div class="example-content">
+                        <h4 data-i18n="examples.business.title">Business Website</h4>
+                        <p data-i18n="examples.business.desc">Professional design with contact forms, service pages, and about section.</p>
+                    </div>
+                </div>
+                
+                <div class="example-card fade-in">
+                    <div class="example-image">
+                        Portfolio Site
+                    </div>
+                    <div class="example-content">
+                        <h4 data-i18n="examples.portfolio.title">Portfolio Website</h4>
+                        <p data-i18n="examples.portfolio.desc">Showcase your work with image galleries and project descriptions.</p>
+                    </div>
+                </div>
+                
+                <div class="example-card fade-in">
+                    <div class="example-image">
+                        Service Page
+                    </div>
+                    <div class="example-content">
+                        <h4 data-i18n="examples.service.title">Service Website</h4>
+                        <p data-i18n="examples.service.desc">Highlight your services with clear pricing and booking options.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-i18n="faq.title">Frequently Asked Questions</h2>
+                <p data-i18n="faq.subtitle">Find answers to common questions about our services</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <span data-i18n="faq.q1">How long does it take to get my website?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p data-i18n="faq.a1">For Basic and Business packages, your website is typically ready within 3-5 business days. Premium packages may take 7-10 days depending on complexity.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <span data-i18n="faq.q2">Do I need to manage anything after payment?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p data-i18n="faq.a2">No! After you make the payment, we handle everything for you. We'll design, develop, and launch your website. You just need to provide your content and we'll take care of the rest.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <span data-i18n="faq.q3">Do you provide ongoing support?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p data-i18n="faq.a3">Absolutely! All our packages include 24/7 support. Business and Premium packages receive priority support with faster response times.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <span data-i18n="faq.q4">What if I need changes after my website is live?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p data-i18n="faq.a4">Premium packages include content changes. For Basic and Business packages, we offer modification services at an additional cost, or you can use the admin panel for Business packages.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Page -->
+    <div class="order-page" id="orderPage">
+        <div class="order-container">
+            <div class="order-header">
+                <h2 data-i18n="order.title">Complete Your Order</h2>
+                <p data-i18n="order.subtitle">Choose the perfect plan for your business</p>
+            </div>
+            <div class="order-content">
+                <div class="order-steps">
+                    <div class="order-step">
+                        <h3><i class="fas fa-calendar-alt"></i> <span data-i18n="order.period">Period</span></h3>
+                        <div class="period-options">
+                            <div class="period-option active" data-period="monthly">
+                                <div class="period" data-i18n="pricing.1_month">1 Month</div>
+                            </div>
+                            <div class="period-option" data-period="yearly">
+                                <div class="period" data-i18n="pricing.12_months">12 Months</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-step">
+                        <h3><i class="fas fa-box"></i> <span data-i18n="order.plan">Plan</span></h3>
+                        <div class="plan-options">
+                            <div class="plan-option active" data-plan="basic">
+                                <h4 data-i18n="plans.basic">Basic</h4>
+                                <div class="price" id="basicPrice">€30<span data-i18n="pricing.per_month">/month</span></div>
+                            </div>
+                            <div class="plan-option" data-plan="business">
+                                <h4 data-i18n="plans.business">Business</h4>
+                                <div class="price" id="businessPrice">€60<span data-i18n="pricing.per_month">/month</span></div>
+                            </div>
+                            <div class="plan-option" data-plan="premium">
+                                <h4 data-i18n="plans.premium">Premium</h4>
+                                <div class="price" id="premiumPrice">€100<span data-i18n="pricing.per_month">/month</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-step" id="domainStep">
+                        <h3><i class="fas fa-globe"></i> <span data-i18n="order.domain">Domain</span></h3>
+                        <div class="domain-options">
+                            <div class="domain-option active" data-domain="none" data-price="0">
+                                <h4 data-i18n="domain.have_domain">I have a domain</h4>
+                                <div class="price" id="domainNonePrice">€0</div>
+                            </div>
+                            <div class="domain-option" data-domain="ro" data-price="10">
+                                <h4>.ro</h4>
+                                <div class="price" id="domainRoPrice">€10</div>
+                                <div class="domain-price" data-i18n="pricing.per_year">per year</div>
+                            </div>
+                            <div class="domain-option" data-domain="com" data-price="15">
+                                <h4>.com</h4>
+                                <div class="price" id="domainComPrice">€15</div>
+                                <div class="domain-price" data-i18n="pricing.per_year">per year</div>
+                            </div>
+                            <div class="domain-option" data-domain="eu" data-price="8">
+                                <h4>.eu</h4>
+                                <div class="price" id="domainEuPrice">€8</div>
+                                <div class="domain-price" data-i18n="pricing.per_year">per year</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-step" id="modificationsStep">
+                        <h3><i class="fas fa-edit"></i> <span data-i18n="order.modifications">Content Changes</span></h3>
+                        <div class="modifications-options">
+                            <div class="modification-option active" data-modification="none" data-price="0">
+                                <h4 data-i18n="modifications.no_changes">No changes needed</h4>
+                                <div class="price" id="modificationNonePrice">€0</div>
+                            </div>
+                            <div class="modification-option" data-modification="basic" data-price="10">
+                                <h4 data-i18n="modifications.basic_changes">Basic content changes</h4>
+                                <div class="price" id="modificationBasicPrice">€10</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="order-summary">
+                    <h3><i class="fas fa-receipt"></i> <span data-i18n="order.summary">Order Summary</span></h3>
+                    <div class="summary-item">
+                        <span data-i18n="order.plan_label">Plan</span> <span id="planName" data-i18n="plans.basic">Basic</span>
+                        <span id="planPrice">€30</span>
+                    </div>
+                    <div class="summary-item" id="domainItem">
+                        <span data-i18n="order.domain_label">Domain</span> <span id="domainName" data-i18n="domain.connected">connected</span>
+                        <span id="domainPrice">€0</span>
+                    </div>
+                    <div class="summary-item" id="modificationsItem">
+                        <span data-i18n="order.modifications_label">Content Changes</span> <span id="modificationsName" data-i18n="modifications.no_changes">No changes needed</span>
+                        <span id="modificationsPrice">€0</span>
+                    </div>
+                    <div class="summary-item">
+                        <span data-i18n="order.period_label">Period</span>
+                        <span id="periodText" data-i18n="pricing.1_month">1 Month</span>
+                    </div>
+                    <div class="summary-item summary-total">
+                        <span data-i18n="order.total">Total Payment</span>
+                        <span id="totalPrice">€30</span>
+                    </div>
+                </div>
+
+                <div class="order-actions">
+                    <button class="btn back-btn" id="backBtn">
+                        <i class="fas fa-arrow-left"></i> <span data-i18n="cta.back">Back</span>
+                    </button>
+                    <button class="btn confirm-order-btn" id="confirmOrderBtn">
+                        <i class="fab fa-whatsapp"></i> <span data-i18n="cta.order_whatsapp">Order on WhatsApp</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- CTA Section -->
     <section class="cta">
         <div class="container">
@@ -1572,6 +2505,9 @@
             <p data-i18n="cta.subtitle">Contact us now for a free consultation and personalized offer</p>
             <a href="https://wa.me/40729552767?text=Hello!%20I%20want%20a%20consultation%20about%20a%20website." class="btn btn-whatsapp">
                 <i class="fab fa-whatsapp"></i> <span data-i18n="cta.contact_whatsapp">Contact us on WhatsApp</span>
+            </a>
+            <a href="https://sites-lab.github.io/WebBuilderPro" class="btn btn-design" target="_blank">
+                <i class="fas fa-palette"></i> I want a design for my site
             </a>
         </div>
     </section>
@@ -1595,9 +2531,9 @@
                 <div class="footer-column">
                     <h4 data-i18n="footer.packages">Packages</h4>
                     <ul class="footer-links">
-                        <li><a href="#hosting">Basic - from €17/month</a></li>
-                        <li><a href="#hosting">Business - from €30/month</a></li>
-                        <li><a href="#hosting">Premium - from €40/month</a></li>
+                        <li><a href="#hosting">Basic - from €27/month</a></li>
+                        <li><a href="#hosting">Business - from €55/month</a></li>
+                        <li><a href="#hosting">Premium - from €85/month</a></li>
                     </ul>
                 </div>
                 
@@ -1622,17 +2558,30 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <!-- Design Float Button -->
+    <a href="https://sites-lab.github.io/WebBuilderPro" class="design-float" target="_blank">
+        <i class="fas fa-palette"></i>
+    </a>
+
+    <!-- NEW NOTIFICATION -->
+    <div class="notification" id="notification">
+        <i class="fas fa-bell"></i>
+        <span data-i18n="notification.message">Special offer: Get 10% off your first order!</span>
+        <button class="notification-close" id="notificationClose">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
     <script>
         // Language System
         const translations = {
             en: {
-                // Logo
-                "logo.title": "Your",
-                "logo.accent": "Web Builder",
-                
                 // Navigation
                 "nav.packages": "Packages",
                 "nav.how_it_works": "How It Works",
+                "nav.why_choose": "Why Choose Us",
+                "nav.examples": "Website Examples",
+                "nav.faq": "FAQ",
                 "nav.contact": "Contact",
                 
                 // Hero
@@ -1659,7 +2608,6 @@
                 "features.up_to_5_pages": "Up to 5 pages",
                 "features.contact_form": "Contact form",
                 "features.hosting_included": "Hosting included",
-                "features.10gb_storage": "10GB Storage",
                 "features.ssl_certificate": "SSL Certificate",
                 "features.support_24_7": "24/7 Support",
                 "features.domain_included": "Domain included",
@@ -1670,7 +2618,6 @@
                 "features.admin_system": "Admin system",
                 "features.photo_gallery": "Photo/video gallery",
                 "features.business_hosting": "Business hosting included",
-                "features.50gb_storage": "50GB Storage",
                 "features.content_changes_included": "Content changes included",
                 "features.priority_support": "Priority support",
                 "features.premium_site": "Premium ready-made website",
@@ -1679,7 +2626,6 @@
                 "features.advanced_system": "Advanced system",
                 "features.blog_integrated": "Integrated blog",
                 "features.premium_hosting": "Premium hosting included",
-                "features.100gb_storage": "100GB Storage",
                 "features.dedicated_support": "Dedicated support",
                 
                 // Pricing
@@ -1687,6 +2633,52 @@
                 "pricing.12_months": "12 Months",
                 "pricing.per_month": "/month",
                 "pricing.per_year": "per year",
+                
+                // Process
+                "process.title": "How It Works",
+                "process.subtitle": "Our simple and fast process",
+                "process.step1_title": "Choose Package",
+                "process.step1_desc": "Select the right package and contact us via WhatsApp or email",
+                "process.step2_title": "Consultation",
+                "process.step2_desc": "We discuss project details and establish exact requirements",
+                "process.step3_title": "Development",
+                "process.step3_desc": "Our team creates the website according to established specifications",
+                "process.step4_title": "Launch",
+                "process.step4_desc": "Your website is published and becomes accessible on the internet",
+                
+                // Why Choose Us
+                "why_choose.title": "Why Choose Our Service",
+                "why_choose.subtitle": "We focus on what really matters for your business",
+                "why_choose.fast.title": "Fast Delivery",
+                "why_choose.fast.desc": "Your website ready in days, not weeks. We prioritize quick turnaround without compromising quality.",
+                "why_choose.cost.title": "Cost Effective",
+                "why_choose.cost.desc": "No hidden fees or unexpected costs. Everything is included in one transparent monthly price.",
+                "why_choose.support.title": "Direct Support",
+                "why_choose.support.desc": "Get help directly from the developer. No call centers or automated responses.",
+                "why_choose.hassle.title": "Hassle-Free",
+                "why_choose.hassle.desc": "We handle everything - hosting, maintenance, updates. You focus on your business.",
+                
+                // Examples
+                "examples.title": "What You Get",
+                "examples.subtitle": "Professional websites tailored to your needs",
+                "examples.business.title": "Business Website",
+                "examples.business.desc": "Professional design with contact forms, service pages, and about section.",
+                "examples.portfolio.title": "Portfolio Website",
+                "examples.portfolio.desc": "Showcase your work with image galleries and project descriptions.",
+                "examples.service.title": "Service Website",
+                "examples.service.desc": "Highlight your services with clear pricing and booking options.",
+                
+                // FAQ
+                "faq.title": "Frequently Asked Questions",
+                "faq.subtitle": "Find answers to common questions about our services",
+                "faq.q1": "How long does it take to get my website?",
+                "faq.a1": "For Basic and Business packages, your website is typically ready within 3-5 business days. Premium packages may take 7-10 days depending on complexity.",
+                "faq.q2": "Do I need to manage anything after payment?",
+                "faq.a2": "No! After you make the payment, we handle everything for you. We'll design, develop, and launch your website. You just need to provide your content and we'll take care of the rest.",
+                "faq.q3": "Do you provide ongoing support?",
+                "faq.a3": "Absolutely! All our packages include 24/7 support. Business and Premium packages receive priority support with faster response times.",
+                "faq.q4": "What if I need changes after my website is live?",
+                "faq.a4": "Premium packages include content changes. For Basic and Business packages, we offer modification services at an additional cost, or you can use the admin panel for Business packages.",
                 
                 // CTA
                 "cta.choose_plan": "Choose Plan",
@@ -1702,9 +2694,11 @@
                 "order.period": "Period",
                 "order.plan": "Plan",
                 "order.domain": "Domain",
+                "order.modifications": "Content Changes",
                 "order.summary": "Order Summary",
                 "order.plan_label": "Plan",
                 "order.domain_label": "Domain",
+                "order.modifications_label": "Content Changes",
                 "order.period_label": "Period",
                 "order.total": "Total Payment",
                 
@@ -1712,34 +2706,26 @@
                 "domain.have_domain": "I have a domain",
                 "domain.connected": "connected",
                 
-                // Process
-                "process.title": "How It Works",
-                "process.subtitle": "Our simple and fast process",
-                "process.step1_title": "Choose Package",
-                "process.step1_desc": "Select the right package and contact us via WhatsApp or email",
-                "process.step2_title": "Consultation",
-                "process.step2_desc": "We discuss project details and establish exact requirements",
-                "process.step3_title": "Development",
-                "process.step3_desc": "Our team creates the website according to established specifications",
-                "process.step4_title": "Launch",
-                "process.step4_desc": "Your website is published and becomes accessible on the internet",
+                // Modifications
+                "modifications.no_changes": "No changes needed",
+                "modifications.basic_changes": "Basic content changes",
                 
                 // Footer
-                "footer.company": "Your Web Builder",
                 "footer.description": "Complete websites with hosting included. We transform your ideas into professional online presence.",
                 "footer.packages": "Packages",
                 "footer.contact": "Contact",
                 "footer.support": "Support: 24/7",
-                "footer.rights": "All rights reserved."
+                "footer.rights": "All rights reserved.",
+                
+                "notification.message": "Special offer: Get 10% off your first order!"
             },
             ro: {
-                // Logo
-                "logo.title": "Your",
-                "logo.accent": "Web Builder",
-                
                 // Navigation
                 "nav.packages": "Pachete",
                 "nav.how_it_works": "Cum Funcționează",
+                "nav.why_choose": "De Ce Să Ne Alegi",
+                "nav.examples": "Exemple Site-uri",
+                "nav.faq": "Întrebări Frecvente",
                 "nav.contact": "Contact",
                 
                 // Hero
@@ -1766,7 +2752,6 @@
                 "features.up_to_5_pages": "Până la 5 pagini",
                 "features.contact_form": "Formular de contact",
                 "features.hosting_included": "Hosting inclus",
-                "features.10gb_storage": "10GB Storage",
                 "features.ssl_certificate": "SSL Certificate",
                 "features.support_24_7": "Suport 24/7",
                 "features.domain_included": "Domeniu inclus",
@@ -1777,7 +2762,6 @@
                 "features.admin_system": "Sistem administrare",
                 "features.photo_gallery": "Galerie foto/video",
                 "features.business_hosting": "Hosting Business inclus",
-                "features.50gb_storage": "50GB Storage",
                 "features.content_changes_included": "Schimbări conținut incluse",
                 "features.priority_support": "Suport priority",
                 "features.premium_site": "Site Premium gata făcut",
@@ -1786,7 +2770,6 @@
                 "features.advanced_system": "Sistem avansat",
                 "features.blog_integrated": "Blog integrat",
                 "features.premium_hosting": "Hosting Premium inclus",
-                "features.100gb_storage": "100GB Storage",
                 "features.dedicated_support": "Suport dedicated",
                 
                 // Pricing
@@ -1794,6 +2777,52 @@
                 "pricing.12_months": "12 Luni",
                 "pricing.per_month": "/lună",
                 "pricing.per_year": "pe an",
+                
+                // Process
+                "process.title": "Cum Funcționează",
+                "process.subtitle": "Procesul nostru simplu și rapid",
+                "process.step1_title": "Alege Pachet",
+                "process.step1_desc": "Selectezi pachetul potrivit și ne contactezi prin WhatsApp sau email",
+                "process.step2_title": "Consultare",
+                "process.step2_desc": "Discutăm detaliile proiectului și stabilim cerințele exacte",
+                "process.step3_title": "Dezvoltare",
+                "process.step3_desc": "Echipa noastră creează site-ul conform specificațiilor stabilite",
+                "process.step4_title": "Lansare",
+                "process.step4_desc": "Site-ul tău este publicat și devine accesibil pe internet",
+                
+                // Why Choose Us
+                "why_choose.title": "De Ce Să Ne Alegi",
+                "why_choose.subtitle": "Ne concentrăm pe ceea ce contează cu adevărat pentru afacerea ta",
+                "why_choose.fast.title": "Livrare Rapidă",
+                "why_choose.fast.desc": "Site-ul tău gata în zile, nu săptămâni. Prioritizăm viteza fără a compromite calitatea.",
+                "why_choose.cost.title": "Cost Eficient",
+                "why_choose.cost.desc": "Fără taxe ascunse sau costuri neașteptate. Totul este inclus într-un preț lunar transparent.",
+                "why_choose.support.title": "Suport Direct",
+                "why_choose.support.desc": "Primești ajutor direct de la developer. Fără centre de apel sau răspunsuri automate.",
+                "why_choose.hassle.title": "Fără Bătăi de Cap",
+                "why_choose.hassle.desc": "Noi ne ocupăm de tot - hosting, întreținere, actualizări. Tu te concentrezi pe afacerea ta.",
+                
+                // Examples
+                "examples.title": "Ce Obții",
+                "examples.subtitle": "Site-uri profesionale adaptate nevoilor tale",
+                "examples.business.title": "Site de Afaceri",
+                "examples.business.desc": "Design profesional cu formulare de contact, pagini de servicii și secțiune about.",
+                "examples.portfolio.title": "Site Portofoliu",
+                "examples.portfolio.desc": "Prezintă-ți munca cu galerii de imagini și descrieri de proiecte.",
+                "examples.service.title": "Site de Servicii",
+                "examples.service.desc": "Evidențiază-ți serviciile cu prețuri clare și opțiuni de rezervare.",
+                
+                // FAQ
+                "faq.title": "Întrebări Frecvente",
+                "faq.subtitle": "Găsește răspunsuri la întrebările comune despre serviciile noastre",
+                "faq.q1": "Cât durează să obțin site-ul meu?",
+                "faq.a1": "Pentru pachetele Basic și Business, site-ul dvs. este de obicei gata în 3-5 zile lucrătoare. Pachetele Premium pot dura 7-10 zile în funcție de complexitate.",
+                "faq.q2": "Trebuie să gestionez ceva după plată?",
+                "faq.a2": "Nu! După ce efectuați plata, noi ne ocupăm de tot. Vom proiecta, dezvolta și lansa site-ul dvs. Trebuie doar să ne furnizați conținutul și noi ne ocupăm de restul.",
+                "faq.q3": "Oferiți suport continuu?",
+                "faq.a3": "Absolut! Toate pachetele noastre includ suport 24/7. Pachetele Business și Premium primesc suport prioritar cu timpi de răspuns mai rapizi.",
+                "faq.q4": "Ce se întâmplă dacă am nevoie de modificări după ce site-ul este live?",
+                "faq.a4": "Pachetele Premium includ modificări de conținut. Pentru pachetele Basic și Business, oferim servicii de modificare la un cost suplimentar, sau puteți folosi panoul de administrare pentru pachetele Business.",
                 
                 // CTA
                 "cta.choose_plan": "Alege Planul",
@@ -1809,9 +2838,11 @@
                 "order.period": "Perioada",
                 "order.plan": "Plan",
                 "order.domain": "Domeniu",
+                "order.modifications": "Modificări Conținut",
                 "order.summary": "Sumar Comandă",
                 "order.plan_label": "Plan",
                 "order.domain_label": "Domeniu",
+                "order.modifications_label": "Modificări Conținut",
                 "order.period_label": "Perioadă",
                 "order.total": "Total de Plată",
                 
@@ -1819,34 +2850,26 @@
                 "domain.have_domain": "Am domeniu",
                 "domain.connected": "conectat",
                 
-                // Process
-                "process.title": "Cum Funcționează",
-                "process.subtitle": "Procesul nostru simplu și rapid",
-                "process.step1_title": "Alege Pachet",
-                "process.step1_desc": "Selectezi pachetul potrivit și ne contactezi prin WhatsApp sau email",
-                "process.step2_title": "Consultare",
-                "process.step2_desc": "Discutăm detaliile proiectului și stabilim cerințele exacte",
-                "process.step3_title": "Dezvoltare",
-                "process.step3_desc": "Echipa noastră creează site-ul conform specificațiilor stabilite",
-                "process.step4_title": "Lansare",
-                "process.step4_desc": "Site-ul tău este publicat și devine accesibil pe internet",
+                // Modifications
+                "modifications.no_changes": "Nu sunt necesare modificări",
+                "modifications.basic_changes": "Modificări de bază conținut",
                 
                 // Footer
-                "footer.company": "Your Web Builder",
                 "footer.description": "Site-uri web complete cu hosting inclus. Transformăm ideile tale în prezență online profesională.",
                 "footer.packages": "Pachete",
                 "footer.contact": "Contact",
                 "footer.support": "Suport: 24/7",
-                "footer.rights": "Toate drepturile rezervate."
+                "footer.rights": "Toate drepturile rezervate.",
+                
+                "notification.message": "Ofertă specială: Primești 10% reducere la prima comandă!"
             },
             ru: {
-                // Logo
-                "logo.title": "Your",
-                "logo.accent": "Web Builder",
-                
                 // Navigation
                 "nav.packages": "Пакеты",
                 "nav.how_it_works": "Как Это Работает",
+                "nav.why_choose": "Почему Мы",
+                "nav.examples": "Примеры Сайтов",
+                "nav.faq": "ЧаВо",
                 "nav.contact": "Контакты",
                 
                 // Hero
@@ -1873,7 +2896,6 @@
                 "features.up_to_5_pages": "До 5 страниц",
                 "features.contact_form": "Контактная форма",
                 "features.hosting_included": "Хостинг включен",
-                "features.10gb_storage": "10GB Хранилище",
                 "features.ssl_certificate": "SSL Сертификат",
                 "features.support_24_7": "Поддержка 24/7",
                 "features.domain_included": "Домен включен",
@@ -1884,7 +2906,6 @@
                 "features.admin_system": "Система администрирования",
                 "features.photo_gallery": "Фото/видео галерея",
                 "features.business_hosting": "Бизнес хостинг включен",
-                "features.50gb_storage": "50GB Хранилище",
                 "features.content_changes_included": "Изменения контента включены",
                 "features.priority_support": "Приоритетная поддержка",
                 "features.premium_site": "Премиум готовый сайт",
@@ -1893,7 +2914,6 @@
                 "features.advanced_system": "Продвинутая система",
                 "features.blog_integrated": "Интегрированный блог",
                 "features.premium_hosting": "Премиум хостинг включен",
-                "features.100gb_storage": "100GB Хранилище",
                 "features.dedicated_support": "Выделенная поддержка",
                 
                 // Pricing
@@ -1901,6 +2921,52 @@
                 "pricing.12_months": "12 Месяцев",
                 "pricing.per_month": "/месяц",
                 "pricing.per_year": "в год",
+                
+                // Process
+                "process.title": "Как Это Работает",
+                "process.subtitle": "Наш простой и быстрый процесс",
+                "process.step1_title": "Выберите Пакет",
+                "process.step1_desc": "Выберите подходящий пакет и свяжитесь с нами через WhatsApp или email",
+                "process.step2_title": "Консультация",
+                "process.step2_desc": "Обсуждаем детали проекта и устанавливаем точные требования",
+                "process.step3_title": "Разработка",
+                "process.step3_desc": "Наша команда создает сайт согласно установленным спецификациям",
+                "process.step4_title": "Запуск",
+                "process.step4_desc": "Ваш сайт публикуется и становится доступным в интернете",
+                
+                // Why Choose Us
+                "why_choose.title": "Почему Выбирают Нас",
+                "why_choose.subtitle": "Мы фокусируемся на том, что действительно важно для вашего бизнеса",
+                "why_choose.fast.title": "Быстрая Доставка",
+                "why_choose.fast.desc": "Ваш сайт готов за дни, а не недели. Мы приоритизируем скорость без компромиссов в качестве.",
+                "why_choose.cost.title": "Экономически Эффективно",
+                "why_choose.cost.desc": "Никаких скрытых платежей или неожиданных расходов. Все включено в одну прозрачную ежемесячную цену.",
+                "why_choose.support.title": "Прямая Поддержка",
+                "why_choose.support.desc": "Получайте помощь напрямую от разработчика. Никаких колл-центров или автоматических ответов.",
+                "why_choose.hassle.title": "Без Хлопот",
+                "why_choose.hassle.desc": "Мы занимаемся всем - хостингом, обслуживанием, обновлениями. Вы фокусируетесь на своем бизнесе.",
+                
+                // Examples
+                "examples.title": "Что Вы Получаете",
+                "examples.subtitle": "Профессиональные сайты, адаптированные под ваши нужды",
+                "examples.business.title": "Бизнес Сайт",
+                "examples.business.desc": "Профессиональный дизайн с контактными формами, страницами услуг и разделом о компании.",
+                "examples.portfolio.title": "Сайт Портфолио",
+                "examples.portfolio.desc": "Покажите свои работы с галереями изображений и описаниями проектов.",
+                "examples.service.title": "Сайт Услуг",
+                "examples.service.desc": "Выделите свои услуги с четкими ценами и опциями бронирования.",
+                
+                // FAQ
+                "faq.title": "Часто Задаваемые Вопросы",
+                "faq.subtitle": "Найдите ответы на общие вопросы о наших услугах",
+                "faq.q1": "Сколько времени занимает создание моего сайта?",
+                "faq.a1": "Для базовых и бизнес-пакетов ваш сайт обычно готов в течение 3-5 рабочих дней. Премиум-пакеты могут занять 7-10 дней в зависимости от сложности.",
+                "faq.q2": "Нужно ли мне что-то управлять после оплаты?",
+                "faq.a2": "Нет! После того как вы произведете оплату, мы все сделаем за вас. Мы разработаем, создадим и запустим ваш сайт. Вам нужно только предоставить ваш контент, а мы позаботимся обо всем остальном.",
+                "faq.q3": "Вы предоставляете постоянную поддержку?",
+                "faq.a3": "Абсолютно! Все наши пакеты включают поддержку 24/7. Бизнес и премиум пакеты получают приоритетную поддержку с более быстрым временем ответа.",
+                "faq.q4": "Что если мне понадобятся изменения после запуска сайта?",
+                "faq.a4": "Премиум пакеты включают изменения контента. Для базовых и бизнес-пакетов мы предлагаем услуги модификации за дополнительную плату, или вы можете использовать панель администратора для бизнес-пакетов.",
                 
                 // CTA
                 "cta.choose_plan": "Выбрать План",
@@ -1916,9 +2982,11 @@
                 "order.period": "Период",
                 "order.plan": "План",
                 "order.domain": "Домен",
+                "order.modifications": "Изменения Контента",
                 "order.summary": "Сводка Заказа",
                 "order.plan_label": "План",
                 "order.domain_label": "Домен",
+                "order.modifications_label": "Изменения Контента",
                 "order.period_label": "Период",
                 "order.total": "Итого к Оплате",
                 
@@ -1926,25 +2994,18 @@
                 "domain.have_domain": "У меня есть домен",
                 "domain.connected": "подключен",
                 
-                // Process
-                "process.title": "Как Это Работает",
-                "process.subtitle": "Наш простой и быстрый процесс",
-                "process.step1_title": "Выберите Пакет",
-                "process.step1_desc": "Выберите подходящий пакет и свяжитесь с нами через WhatsApp или email",
-                "process.step2_title": "Консультация",
-                "process.step2_desc": "Обсуждаем детали проекта и устанавливаем точные требования",
-                "process.step3_title": "Разработка",
-                "process.step3_desc": "Наша команда создает сайт согласно установленным спецификациям",
-                "process.step4_title": "Запуск",
-                "process.step4_desc": "Ваш сайт публикуется и становится доступным в интернете",
+                // Modifications
+                "modifications.no_changes": "Изменения не нужны",
+                "modifications.basic_changes": "Базовые изменения контента",
                 
                 // Footer
-                "footer.company": "Your Web Builder",
                 "footer.description": "Готовые сайты с хостингом включительно. Превращаем ваши идеи в профессиональное онлайн-присутствие.",
                 "footer.packages": "Пакеты",
                 "footer.contact": "Контакты",
                 "footer.support": "Поддержка: 24/7",
-                "footer.rights": "Все права защищены."
+                "footer.rights": "Все права защищены.",
+                
+                "notification.message": "Специальное предложение: Получите 10% скидку на первый заказ!"
             }
         };
 
@@ -2105,22 +3166,30 @@
         const backBtn = document.getElementById('backBtn');
         const confirmOrderBtn = document.getElementById('confirmOrderBtn');
         const domainStep = document.getElementById('domainStep');
+        const modificationsStep = document.getElementById('modificationsStep');
         
         let selectedPlan = 'basic';
         let selectedPeriod = 'monthly';
         let selectedDomain = 'none';
+        let selectedModification = 'none';
         
+        // Actualizăm prețurile în JavaScript
         const planPrices = {
-            basic: { monthly: 20, yearly: 17 },
-            business: { monthly: 35, yearly: 30 },
-            premium: { monthly: 50, yearly: 40 }
+            basic: { monthly: 30, yearly: 27 },
+            business: { monthly: 60, yearly: 55 },
+            premium: { monthly: 100, yearly: 85 }
         };
         
         const domainPrices = {
             none: 0,
-            ro: 7,
-            com: 12,
-            eu: 5
+            ro: 10,
+            com: 15,
+            eu: 8
+        };
+        
+        const modificationPrices = {
+            none: 0,
+            basic: 10
         };
         
         const domainNames = {
@@ -2128,6 +3197,11 @@
             ro: '.ro',
             com: '.com',
             eu: '.eu'
+        };
+
+        const modificationNames = {
+            none: 'No changes needed',
+            basic: 'Basic content changes'
         };
 
         const planNames = {
@@ -2174,16 +3248,63 @@
                 
                 // Update domain prices based on selected plan
                 updateDomainPrices();
+                updateModificationPrices();
                 
-                // Show/hide domain step based on plan
+                // Add/remove premium class for styling
+                modificationsStep.classList.remove('premium-plan');
+                if (selectedPlan === 'premium') {
+                    modificationsStep.classList.add('premium-plan');
+                }
+                
+                // Show/hide domain and modifications steps based on plan
                 if (selectedPlan === 'basic') {
                     domainStep.style.display = 'block';
-                } else {
+                    modificationsStep.style.display = 'block';
+                    // Reset modifications selection for Basic
+                    document.querySelectorAll('.modification-option').forEach(opt => {
+                        opt.classList.remove('active', 'disabled');
+                        opt.style.opacity = '1';
+                        opt.style.pointerEvents = 'auto';
+                    });
+                    document.querySelector('.modification-option[data-modification="none"]').classList.add('active');
+                    selectedModification = 'none';
+                } else if (selectedPlan === 'business') {
                     domainStep.style.display = 'block';
-                    // Auto-select "Am domeniu" for Business/Premium
+                    // Auto-select "Am domeniu" for Business (domain included)
                     document.querySelectorAll('.domain-option').forEach(opt => opt.classList.remove('active'));
                     document.querySelector('.domain-option[data-domain="none"]').classList.add('active');
                     selectedDomain = 'none';
+                    modificationsStep.style.display = 'block';
+                    // Reset modifications selection for Business
+                    document.querySelectorAll('.modification-option').forEach(opt => {
+                        opt.classList.remove('active', 'disabled');
+                        opt.style.opacity = '1';
+                        opt.style.pointerEvents = 'auto';
+                    });
+                    document.querySelector('.modification-option[data-modification="none"]').classList.add('active');
+                    selectedModification = 'none';
+                } else {
+                    // Premium plan - domain and modifications included (FREE)
+                    domainStep.style.display = 'block';
+                    modificationsStep.style.display = 'block';
+                    // Auto-select "Am domeniu" for Premium (domain included)
+                    document.querySelectorAll('.domain-option').forEach(opt => opt.classList.remove('active'));
+                    document.querySelector('.domain-option[data-domain="none"]').classList.add('active');
+                    selectedDomain = 'none';
+                    // Auto-select "No changes needed" for Premium (modifications included)
+                    document.querySelectorAll('.modification-option').forEach(opt => {
+                        opt.classList.remove('active');
+                        if (opt.getAttribute('data-modification') === 'basic') {
+                            opt.classList.add('disabled');
+                            opt.style.opacity = '0.5';
+                            opt.style.pointerEvents = 'none';
+                        } else {
+                            opt.style.opacity = '1';
+                            opt.style.pointerEvents = 'auto';
+                        }
+                    });
+                    document.querySelector('.modification-option[data-modification="none"]').classList.add('active');
+                    selectedModification = 'none';
                 }
                 
                 updateSummary();
@@ -2200,6 +3321,24 @@
             });
         });
 
+         // Modifications selection
+         document.querySelectorAll('.modification-option').forEach(option => {
+             option.addEventListener('click', function() {
+                 // For Premium plan, modifications are always included (free)
+                 if (selectedPlan === 'premium') {
+                     // Keep "none" selected and show it as included
+                     document.querySelectorAll('.modification-option').forEach(opt => opt.classList.remove('active'));
+                     document.querySelector('.modification-option[data-modification="none"]').classList.add('active');
+                     selectedModification = 'none';
+                 } else {
+                     document.querySelectorAll('.modification-option').forEach(opt => opt.classList.remove('active'));
+                     this.classList.add('active');
+                     selectedModification = this.getAttribute('data-modification');
+                 }
+                 updateSummary();
+             });
+         });
+
         // Update plan prices based on selected period
         function updatePlanPrices() {
             const basicPrice = planPrices.basic[selectedPeriod];
@@ -2211,102 +3350,175 @@
             document.getElementById('premiumPrice').textContent = `€${premiumPrice}/month`;
         }
 
-        // Update domain prices based on selected plan
-        function updateDomainPrices() {
-            const domainNonePrice = document.getElementById('domainNonePrice');
-            const domainRoPrice = document.getElementById('domainRoPrice');
-            const domainComPrice = document.getElementById('domainComPrice');
-            const domainEuPrice = document.getElementById('domainEuPrice');
-            
-            if (selectedPlan === 'basic') {
-                domainNonePrice.textContent = '€0';
-                domainRoPrice.textContent = '€7';
-                domainComPrice.textContent = '€12';
-                domainEuPrice.textContent = '€5';
-            } else {
-                // Business and Premium plans include free domain
-                domainNonePrice.textContent = '€0';
-                domainRoPrice.textContent = '€0';
-                domainComPrice.textContent = '€0';
-                domainEuPrice.textContent = '€0';
-            }
-        }
+         // Update domain prices based on selected plan
+         function updateDomainPrices() {
+             const domainNonePrice = document.getElementById('domainNonePrice');
+             const domainRoPrice = document.getElementById('domainRoPrice');
+             const domainComPrice = document.getElementById('domainComPrice');
+             const domainEuPrice = document.getElementById('domainEuPrice');
+             
+             if (selectedPlan === 'basic') {
+                 domainNonePrice.textContent = '€0';
+                 domainRoPrice.textContent = '€10';
+                 domainComPrice.textContent = '€15';
+                 domainEuPrice.textContent = '€8';
+             } else {
+                 // Business and Premium plans include free domain
+                 domainNonePrice.textContent = '€0';
+                 domainRoPrice.textContent = '€0';
+                 domainComPrice.textContent = '€0';
+                 domainEuPrice.textContent = '€0';
+             }
+         }
+         
+         // Update modification prices based on selected plan
+         function updateModificationPrices() {
+             const modificationNonePrice = document.getElementById('modificationNonePrice');
+             const modificationBasicPrice = document.getElementById('modificationBasicPrice');
+             
+             if (selectedPlan === 'premium') {
+                 // Premium plan includes modifications for free
+                 modificationNonePrice.textContent = '€0';
+                 modificationBasicPrice.textContent = '€0';
+             } else {
+                 // Basic and Business plans have paid modifications
+                 modificationNonePrice.textContent = '€0';
+                 modificationBasicPrice.textContent = '€10';
+             }
+         }
 
-        // Update order summary
-        function updateSummary() {
-            const planPrice = planPrices[selectedPlan][selectedPeriod];
-            let domainPrice = domainPrices[selectedDomain];
-            const domainName = domainNames[selectedDomain];
-            const periodText = selectedPeriod === 'monthly' ? '1 Month' : '12 Months';
-            
-            // Domeniul este gratuit pentru planurile Business și Premium
-            if (selectedPlan !== 'basic') {
-                domainPrice = 0;
-            }
-            
-            let totalPrice;
-            if (selectedPeriod === 'monthly') {
-                totalPrice = planPrice;
-            } else {
-                totalPrice = planPrice * 12;
-            }
-            
-            // Add domain price only for Basic plan
-            if (selectedPlan === 'basic' && selectedDomain !== 'none') {
-                totalPrice += domainPrice;
-            }
-            
-            document.getElementById('planName').textContent = planNames[selectedPlan];
-            document.getElementById('planPrice').textContent = `€${planPrice}${selectedPeriod === 'yearly' ? '/month' : ''}`;
-            document.getElementById('domainName').textContent = domainName;
-            document.getElementById('domainPrice').textContent = selectedPlan === 'basic' && selectedDomain !== 'none' ? `€${domainPrice}` : '€0';
-            document.getElementById('periodText').textContent = periodText;
-            document.getElementById('totalPrice').textContent = `€${totalPrice}`;
-            
-            // Show/hide domain item
-            const domainItem = document.getElementById('domainItem');
-            if (selectedPlan === 'basic' && selectedDomain !== 'none') {
-                domainItem.style.display = 'flex';
-            } else {
-                domainItem.style.display = 'flex';
-            }
-        }
+         // Update order summary
+         function updateSummary() {
+             const planPrice = planPrices[selectedPlan][selectedPeriod];
+             let domainPrice = domainPrices[selectedDomain];
+             const domainName = domainNames[selectedDomain];
+             const periodText = selectedPeriod === 'monthly' ? '1 Month' : '12 Months';
+             let modificationPrice = modificationPrices[selectedModification];
+             let modificationName = modificationNames[selectedModification];
+             
+             // Domain is free for Business and Premium plans
+             if (selectedPlan !== 'basic') {
+                 domainPrice = 0;
+             }
+             
+             // Modifications are FREE for Premium plan - always show €0
+             if (selectedPlan === 'premium') {
+                 modificationPrice = 0;
+                 modificationName = 'Included in plan';
+             }
+             
+             let totalPrice;
+             if (selectedPeriod === 'monthly') {
+                 totalPrice = planPrice + modificationPrice;
+             } else {
+                 totalPrice = planPrice * 12 + modificationPrice;
+             }
+             
+             // Add domain price only for Basic plan
+             if (selectedPlan === 'basic' && selectedDomain !== 'none') {
+                 totalPrice += domainPrice;
+             }
+             
+             document.getElementById('planName').textContent = planNames[selectedPlan];
+             document.getElementById('planPrice').textContent = `€${planPrice}${selectedPeriod === 'yearly' ? '/month' : ''}`;
+             document.getElementById('domainName').textContent = domainName;
+             document.getElementById('domainPrice').textContent = selectedPlan === 'basic' && selectedDomain !== 'none' ? `€${domainPrice}` : '€0';
+             document.getElementById('modificationsName').textContent = selectedPlan === 'premium' ? 'Included in plan' : modificationName;
+             document.getElementById('modificationsPrice').textContent = selectedPlan === 'premium' ? '€0' : `€${modificationPrice}`;
+             document.getElementById('periodText').textContent = periodText;
+             document.getElementById('totalPrice').textContent = `€${totalPrice}`;
+             
+             // Animate price changes
+             const totalPriceEl = document.getElementById('totalPrice');
+             totalPriceEl.style.transform = 'scale(1.1)';
+             setTimeout(() => {
+                 totalPriceEl.style.transform = 'scale(1)';
+             }, 200);
+         }
 
-        // Open order page
-        function openOrderPage() {
-            // Set initial selections based on clicked plan
-            document.querySelectorAll('.plan-option').forEach(opt => opt.classList.remove('active'));
-            document.querySelector(`.plan-option[data-plan="${selectedPlan}"]`).classList.add('active');
-            
-            // Reset to monthly and no domain
-            selectedPeriod = 'monthly';
-            selectedDomain = 'none';
-            document.querySelectorAll('.period-option').forEach(opt => opt.classList.remove('active'));
-            document.querySelector('.period-option[data-period="monthly"]').classList.add('active');
-            document.querySelectorAll('.domain-option').forEach(opt => opt.classList.remove('active'));
-            document.querySelector('.domain-option[data-domain="none"]').classList.add('active');
-            
-            // Update prices and summary
-            updatePlanPrices();
-            updateDomainPrices();
-            
-            // Show/hide domain step
-            if (selectedPlan === 'basic') {
-                domainStep.style.display = 'block';
-            } else {
-                domainStep.style.display = 'block';
-            }
-            
-            updateSummary();
-            orderPage.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
+         // Open order page
+         function openOrderPage() {
+             // Set initial selections based on clicked plan
+             document.querySelectorAll('.plan-option').forEach(opt => opt.classList.remove('active'));
+             document.querySelector(`.plan-option[data-plan="${selectedPlan}"]`).classList.add('active');
+             
+             // Reset to monthly, no domain, no modifications
+             selectedPeriod = 'monthly';
+             selectedDomain = 'none';
+             selectedModification = 'none';
+             
+             document.querySelectorAll('.period-option').forEach(opt => opt.classList.remove('active'));
+             document.querySelector('.period-option[data-period="monthly"]').classList.add('active');
+             document.querySelectorAll('.domain-option').forEach(opt => opt.classList.remove('active'));
+             document.querySelector('.domain-option[data-domain="none"]').classList.add('active');
+             document.querySelectorAll('.modification-option').forEach(opt => opt.classList.remove('active'));
+             document.querySelector('.modification-option[data-modification="none"]').classList.add('active');
+             
+             // Update prices and summary
+             updatePlanPrices();
+             updateDomainPrices();
+             updateModificationPrices();
+             
+             // Add/remove premium class for styling
+             modificationsStep.classList.remove('premium-plan');
+             if (selectedPlan === 'premium') {
+                 modificationsStep.classList.add('premium-plan');
+                 // Disable basic modifications option for Premium
+                 document.querySelectorAll('.modification-option').forEach(opt => {
+                     if (opt.getAttribute('data-modification') === 'basic') {
+                         opt.classList.add('disabled');
+                         opt.style.opacity = '0.5';
+                         opt.style.pointerEvents = 'none';
+                     } else {
+                         opt.style.opacity = '1';
+                         opt.style.pointerEvents = 'auto';
+                     }
+                 });
+             } else {
+                 // Enable all modification options for Basic/Business
+                 document.querySelectorAll('.modification-option').forEach(opt => {
+                     opt.classList.remove('disabled');
+                     opt.style.opacity = '1';
+                     opt.style.pointerEvents = 'auto';
+                 });
+             }
+             
+             // Show/hide domain and modifications steps based on plan
+             if (selectedPlan === 'basic') {
+                 domainStep.style.display = 'block';
+                 modificationsStep.style.display = 'block';
+             } else if (selectedPlan === 'business') {
+                 domainStep.style.display = 'block';
+                 modificationsStep.style.display = 'block';
+             } else {
+                 domainStep.style.display = 'block';
+                 modificationsStep.style.display = 'block';
+             }
+             
+             updateSummary();
+             orderPage.style.display = 'block';
+             document.body.style.overflow = 'hidden';
+             
+             // Animate order page entrance
+             setTimeout(() => {
+                 orderPage.style.opacity = '1';
+                 const orderContainer = document.querySelector('.order-container');
+                 orderContainer.style.transform = 'scale(1)';
+                 orderContainer.style.opacity = '1';
+             }, 10);
+         }
 
-        // Close order page
-        function closeOrderPage() {
-            orderPage.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
+         // Close order page
+         function closeOrderPage() {
+             orderPage.style.opacity = '0';
+             const orderContainer = document.querySelector('.order-container');
+             orderContainer.style.transform = 'scale(0.95)';
+             orderContainer.style.opacity = '0';
+             setTimeout(() => {
+                 orderPage.style.display = 'none';
+                 document.body.style.overflow = 'auto';
+             }, 300);
+         }
 
         // Confirm order and send WhatsApp message
         confirmOrderBtn.addEventListener('click', function() {
@@ -2314,17 +3526,24 @@
             let domainPrice = domainPrices[selectedDomain];
             const domainName = domainNames[selectedDomain];
             const periodText = selectedPeriod === 'monthly' ? '1 Month' : '12 Months';
+            let modificationPrice = modificationPrices[selectedModification];
+            const modificationName = modificationNames[selectedModification];
             
             // Domeniul este gratuit pentru planurile Business și Premium
             if (selectedPlan !== 'basic') {
                 domainPrice = 0;
             }
             
+            // Modificările sunt gratuite pentru planul Premium
+            if (selectedPlan === 'premium') {
+                modificationPrice = 0;
+            }
+            
             let totalPrice;
             if (selectedPeriod === 'monthly') {
-                totalPrice = planPrice;
+                totalPrice = planPrice + modificationPrice;
             } else {
-                totalPrice = planPrice * 12;
+                totalPrice = planPrice * 12 + modificationPrice;
             }
             
             // Add domain price only for Basic plan
@@ -2336,7 +3555,8 @@
             
 📦 Plan: ${planNames[selectedPlan]}
 ⏰ Period: ${periodText}
-${selectedPlan === 'basic' && selectedDomain !== 'none' ? `🌐 Domain: ${domainName}` : '🌐 Domain: I connect existing domain'}
+${selectedPlan === 'basic' && selectedDomain !== 'none' ? `🌐 Domain: ${domainName}` : '🌐 Domain: Included in plan'}
+${selectedPlan === 'premium' ? '✏️ Content Changes: Included in plan' : selectedModification !== 'none' ? `✏️ Content Changes: ${modificationName}` : '✏️ Content Changes: No changes needed'}
 💰 Total: €${totalPrice}`;
             
             const encodedMessage = encodeURIComponent(message);
@@ -2353,16 +3573,80 @@ ${selectedPlan === 'basic' && selectedDomain !== 'none' ? `🌐 Domain: ${domain
         };
 
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+            entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
+                    entry.target.style.transitionDelay = `${index * 0.1}s`;
+                    entry.target.classList.add('visible');
                 }
             });
         }, observerOptions);
 
         // Observe elements for animation
-        document.querySelectorAll('.hosting-package, .step').forEach(el => {
+        document.querySelectorAll('.fade-in').forEach(el => {
             observer.observe(el);
+        });
+
+        // NEW FEATURES - Add this JavaScript at the end of your existing script
+        
+        // FAQ Accordion Functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Notification System
+        const notification = document.getElementById('notification');
+        const notificationClose = document.getElementById('notificationClose');
+        
+        // Show notification after 3 seconds
+        setTimeout(() => {
+            notification.classList.add('show');
+        }, 3000);
+        
+        // Close notification
+        notificationClose.addEventListener('click', () => {
+            notification.classList.remove('show');
+        });
+        
+        // Auto-hide notification after 10 seconds
+        setTimeout(() => {
+            if (notification.classList.contains('show')) {
+                notification.classList.remove('show');
+            }
+        }, 10000);
+        
+        // Fix for the Business plan issue - ensure all plan options are properly initialized
+        document.addEventListener('DOMContentLoaded', function() {
+            // Make sure all plan options are properly set
+            const businessPlanOptions = document.querySelectorAll('.price-option[data-period]');
+            businessPlanOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Update active state
+                    const parent = this.closest('.price-options');
+                    parent.querySelectorAll('.price-option').forEach(opt => {
+                        opt.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    // Update prices based on selection
+                    const period = this.getAttribute('data-period');
+                    const plan = this.closest('.hosting-package, .mobile-plan').querySelector('.package-badge').textContent.toLowerCase();
+                    
+                    // Update the displayed price
+                    const priceElement = this.querySelector('.price');
+                    if (period === 'monthly') {
+                        if (plan === 'basic') priceElement.innerHTML = '€30<span data-i18n="pricing.per_month">/month</span>';
+                        if (plan === 'business') priceElement.innerHTML = '€60<span data-i18n="pricing.per_month">/month</span>';
+                        if (plan === 'premium') priceElement.innerHTML = '€100<span data-i18n="pricing.per_month">/month</span>';
+                    } else {
+                        if (plan === 'basic') priceElement.innerHTML = '€27<span data-i18n="pricing.per_month">/month</span>';
+                        if (plan === 'business') priceElement.innerHTML = '€55<span data-i18n="pricing.per_month">/month</span>';
+                        if (plan === 'premium') priceElement.innerHTML = '€85<span data-i18n="pricing.per_month">/month</span>';
+                    }
+                });
+            });
         });
 
         // Initialize everything when page loads
