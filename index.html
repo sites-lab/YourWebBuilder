@@ -20,6 +20,7 @@
             --gradient-dark: linear-gradient(135deg, #4338ca 0%, #6d28d9 50%, #db2777 100%);
             --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
             --whatsapp: #25D366;
+            --telegram: #0088cc;
             --discount: #f43f5e;
             --text-primary: #0f172a;
             --text-secondary: #475569;
@@ -92,17 +93,17 @@
             transform: scale(1.05);
         }
         
-        /* Header Styles */
+        /* Enhanced Header Styles */
         header {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
             color: var(--text-primary);
-            padding: 18px 0;
+            padding: 12px 0;
             box-shadow: var(--shadow-sm);
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid rgba(203, 213, 225, 0.5);
         }
         
         .header-content {
@@ -117,19 +118,37 @@
             gap: 12px;
         }
         
-        .logo i {
-            font-size: 28px;
+        .logo-icon {
+            width: 40px;
+            height: 40px;
             background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
         }
         
         .logo h1 {
             font-size: 22px;
-            font-weight: 700;
+            font-weight: 800;
             color: var(--text-primary);
             letter-spacing: -0.5px;
+            line-height: 1.1;
+        }
+        
+        .logo-tagline {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
         
         .logo span {
@@ -170,11 +189,27 @@
             font-size: 15px;
             padding: 8px 16px;
             border-radius: 8px;
+            position: relative;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        nav a:hover::after {
+            width: 80%;
         }
         
         nav a:hover {
             color: var(--secondary);
-            background: rgba(99, 102, 241, 0.08);
         }
         
         /* Hero Section */
@@ -299,15 +334,6 @@
             background: #20ba5a;
         }
 
-        .btn-design {
-            background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
-            margin-left: 16px;
-        }
-        
-        .btn-design:hover {
-            background: linear-gradient(135deg, #7C3AED 0%, #DB2777 100%);
-        }
-        
         .btn-secondary {
             background-color: rgba(255, 255, 255, 0.15);
             border: 2px solid rgba(255, 255, 255, 0.3);
@@ -357,16 +383,17 @@
         
          .hosting-package {
              background: white;
-             border-radius: 20px;
-             box-shadow: var(--shadow);
+             border-radius: 24px;
+             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
              padding: 40px 32px;
-             transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
              display: flex;
              flex-direction: column;
              height: 100%;
              position: relative;
-             border: 1px solid var(--border);
+             border: 1px solid rgba(0, 0, 0, 0.05);
              overflow: hidden;
+             backdrop-filter: blur(10px);
          }
          
          .hosting-package::before {
@@ -391,37 +418,34 @@
          }
         
         .hosting-package.featured {
+            transform: translateY(-10px) scale(1.02);
             border: 2px solid var(--secondary);
-            box-shadow: var(--shadow-lg);
-            background: linear-gradient(to bottom, #ffffff 0%, #f0f4ff 100%);
+            box-shadow: 0 20px 50px rgba(79, 70, 229, 0.15);
             position: relative;
+            overflow: visible;
         }
         
-        .hosting-package.featured::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient);
-            border-radius: 20px 20px 0 0;
+        /* Fixed: Remove the ::before line on featured plans */
+        .hosting-package.featured::before {
+            display: none;
         }
         
         .popular-badge {
             position: absolute;
-            top: -14px;
-            left: 50%;
-            transform: translateX(-50%);
+            top: 0;
+            left: 0;
+            right: 0;
             background: var(--gradient);
             color: white;
-            padding: 8px 24px;
-            border-radius: 24px;
-            font-size: 12px;
-            font-weight: 700;
-            z-index: 2;
-            letter-spacing: 0.5px;
-            box-shadow: var(--shadow-lg);
+            padding: 5px 5px;
+            font-size: 14px;
+            font-weight: 750;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 8px rgba(79, 70, 229, 0.2);
+            z-index: 1;
+            border-radius: 20px 20px 0 0;
         }
         
         .package-badge {
@@ -459,9 +483,9 @@
         
         .package-header {
             text-align: center;
-            margin-bottom: 32px;
-            padding-bottom: 24px;
-            border-bottom: 1px solid var(--border);
+            margin: 20px 0 32px;
+            position: relative;
+            padding-top: 10px;
         }
         
         .package-header h3 {
@@ -559,6 +583,95 @@
         @keyframes pulse-badge {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
+        }
+        
+        .package-features {
+            padding: 20px 0;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .package-features ul {
+            list-style: none;
+            margin: 0;
+            padding: 0 12px;
+            flex-grow: 1;
+        }
+        
+        .package-features li {
+            padding: 14px 16px;
+            margin: 4px 0;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+        
+        .package-features li:hover {
+            transform: translateX(4px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-color: rgba(79, 70, 229, 0.1);
+            background: white;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: space-between;
+        }
+        
+        .feature-text {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 15px;
+            color: var(--text-primary);
+        }
+        
+        .feature-value {
+            font-weight: 600;
+            color: var(--secondary);
+            background: rgba(79, 70, 229, 0.08);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 13px;
+            margin-left: 8px;
+        }
+        
+        .feature-icon {
+            font-size: 16px;
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+        
+        .feature-included .feature-icon {
+            color: #10b981;
+            background: rgba(16, 185, 129, 0.1);
+        }
+        
+        .feature-excluded .feature-icon {
+            color: #ef4444;
+            background: rgba(239, 68, 68, 0.1);
+        }
+        
+        .feature-included .feature-text {
+            color: var(--text-primary);
+        }
+        
+        .feature-excluded .feature-text {
+            color: #94a3b8;
+            text-decoration: line-through;
         }
         
         .features-list {
@@ -762,37 +875,6 @@
             transition: transform 0.3s ease;
         }
         
-        .order-step:hover {
-            box-shadow: var(--shadow-lg);
-            transform: translateX(4px);
-        }
-        
-        .order-step:hover::before {
-            transform: scaleY(1);
-        }
-        
-        .order-step h3 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .order-step h3 i {
-            color: var(--secondary);
-            font-size: 18px;
-        }
-        
-        .period-options {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 0;
-        }
-        
         .plan-options {
             display: grid;
             grid-template-columns: 1fr;
@@ -807,7 +889,6 @@
             margin-bottom: 0;
         }
 
-        /* Modifications Section Styles */
         .modifications-options {
             display: grid;
             grid-template-columns: 1fr;
@@ -859,57 +940,11 @@
              transform: scale(1.05) translateY(-2px);
          }
          
-         .plan-option.active::before, .period-option.active::before, .domain-option.active::before,          .modification-option.active::before {
+         .plan-option.active::before, .period-option.active::before, .domain-option.active::before, .modification-option.active::before {
              background: rgba(255, 255, 255, 0.2);
          }
          
-         /* Premium plan - modifications included indicator */
-         .modification-option {
-             position: relative;
-         }
-         
-         .modification-option.disabled {
-             opacity: 0.5;
-             cursor: not-allowed;
-         }
-         
-         /* Add a badge for included features when Premium is selected */
-         .premium-plan .modification-option.active[data-modification="none"]::after {
-             content: 'Included in Premium';
-             position: absolute;
-             top: -10px;
-             right: -10px;
-             background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
-             color: white;
-             padding: 5px 12px;
-             border-radius: 12px;
-             font-size: 10px;
-             font-weight: 700;
-             box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
-             animation: pulse-badge 2s ease-in-out infinite;
-             white-space: nowrap;
-             z-index: 10;
-         }
-         
-         /* Show included badge for domain in Business/Premium */
-         .order-step:has(.plan-option.active[data-plan="business"]) .domain-option.active[data-domain="none"]::after,
-         .order-step:has(.plan-option.active[data-plan="premium"]) .domain-option.active[data-domain="none"]::after {
-             content: 'Included';
-             position: absolute;
-             top: -10px;
-             right: -10px;
-             background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
-             color: white;
-             padding: 5px 12px;
-             border-radius: 12px;
-             font-size: 10px;
-             font-weight: 700;
-             box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
-             animation: pulse-badge 2s ease-in-out infinite;
-             z-index: 10;
-         }
-        
-        .plan-option h4, .domain-option h4, .modification-option h4 {
+         .plan-option h4, .domain-option h4, .modification-option h4 {
             font-size: 17px;
             font-weight: 700;
             margin-bottom: 8px;
@@ -1250,6 +1285,14 @@
             color: var(--text-secondary);
             font-size: 18px;
             font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .example-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         .example-content {
@@ -1266,6 +1309,24 @@
             color: var(--text-secondary);
             font-size: 14px;
             line-height: 1.5;
+        }
+        
+        .example-btn {
+            display: inline-block;
+            background: var(--gradient);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        
+        .example-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
         }
         
         /* FAQ Section */
@@ -1536,12 +1597,12 @@
             box-shadow: 0 12px 40px rgba(37, 211, 102, 0.5);
         }
 
-        /* Design Button Float */
-        .design-float {
+        /* Telegram Float Button */
+        .telegram-float {
             position: fixed;
             bottom: 110px;
             right: 32px;
-            background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+            background: linear-gradient(135deg, #0088cc 0%, #0077b5 100%);
             color: white;
             width: 64px;
             height: 64px;
@@ -1549,23 +1610,23 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
-            box-shadow: 0 8px 24px rgba(139, 92, 246, 0.4);
+            font-size: 28px;
+            box-shadow: 0 8px 24px rgba(0, 136, 204, 0.4);
             z-index: 1000;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
-            animation: pulse-design 2s ease-in-out infinite;
+            animation: pulse-telegram 2s ease-in-out infinite;
         }
         
-        @keyframes pulse-design {
-            0%, 100% { box-shadow: 0 8px 24px rgba(139, 92, 246, 0.4); }
-            50% { box-shadow: 0 8px 32px rgba(139, 92, 246, 0.6); }
+        @keyframes pulse-telegram {
+            0%, 100% { box-shadow: 0 8px 24px rgba(0, 136, 204, 0.4); }
+            50% { box-shadow: 0 8px 32px rgba(0, 136, 204, 0.6); }
         }
         
-        .design-float:hover {
+        .telegram-float:hover {
             transform: scale(1.15) translateY(-4px);
-            background: linear-gradient(135deg, #7C3AED 0%, #DB2777 100%);
-            box-shadow: 0 12px 40px rgba(139, 92, 246, 0.5);
+            background: linear-gradient(135deg, #0077b5 0%, #006699 100%);
+            box-shadow: 0 12px 40px rgba(0, 136, 204, 0.5);
         }
         
         /* Enhanced Mobile Styles */
@@ -1654,7 +1715,7 @@
                 font-size: 17px;
             }
             
-            .btn-secondary, .btn-design {
+            .btn-secondary {
                 margin-left: 0;
                 margin-top: 16px;
                 display: block;
@@ -1792,7 +1853,7 @@
                 font-size: 17px;
             }
 
-            .design-float {
+            .telegram-float {
                 bottom: 110px;
                 right: 10px;
                 width: 50px;
@@ -1815,16 +1876,7 @@
             }
             
             /* Notification */
-            .notification {
-                left: 10px;
-                right: 10px;
-                bottom: 90px;
-                transform: translateY(150%);
-            }
             
-            .notification.show {
-                transform: translateY(0);
-            }
         }
         
         @media (max-width: 480px) {
@@ -1841,6 +1893,12 @@
             }
             
             .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 22px;
+            }
+            
+            .telegram-float {
                 width: 50px;
                 height: 50px;
                 font-size: 22px;
@@ -1901,13 +1959,18 @@
         <button class="lang-btn" data-lang="ru">RU</button>
     </div>
 
-    <!-- Header -->
+    <!-- Enhanced Header -->
     <header>
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <i class="fas fa-code"></i>
-                    <h1>Your Web Builder</h1>
+                    <div class="logo-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>Your Web <span>Builder</span></h1>
+                        <div class="logo-tagline">Complete Websites with Hosting</div>
+                    </div>
                 </div>
                 
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -1936,9 +1999,6 @@
                 <p data-i18n="hero.subtitle">Transform your ideas into professional online presence. Ready-made website + professional hosting - all in one convenient package.</p>
                 <a href="#hosting" class="btn" data-i18n="hero.cta_see_packages">See Packages</a>
                 <a href="#contact" class="btn btn-secondary" data-i18n="hero.cta_contact">Contact Us</a>
-                <a href="https://sites-lab.github.io/WebBuilderPro" class="btn btn-design" target="_blank">
-                    <i class="fas fa-palette"></i> I want a design for my site
-                </a>
             </div>
         </div>
     </section>
@@ -1962,12 +2022,12 @@
                             <div class="price-options">
                                 <div class="price-option active" data-period="monthly">
                                     <div class="price-period" data-i18n="pricing.1_month">1 Month</div>
-                                    <div class="price">€30<span data-i18n="pricing.per_month">/month</span></div>
+                                    <div class="price">€25<span data-i18n="pricing.per_month">/month</span></div>
                                 </div>
                                 <div class="price-option" data-period="yearly">
                                     <div class="price-period" data-i18n="pricing.12_months">12 Months</div>
-                                    <div class="price">€27<span data-i18n="pricing.per_month">/month</span></div>
-                                    <div class="economy-badge">Save €36</div>
+                                    <div class="price">€23<span data-i18n="pricing.per_month">/month</span></div>
+                                    <div class="economy-badge">Save €24</div>
                                 </div>
                             </div>
                         </div>
@@ -1980,7 +2040,7 @@
                         <li><i class="fas fa-check"></i> <span data-i18n="features.up_to_5_pages">Up to 5 pages</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.contact_form">Contact form</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.hosting_included">Hosting included</span></li>
-                        <li><i class="fas fa-check"></i> <span>2GB Storage</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.2gb_storage">2GB Storage</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.ssl_certificate">SSL Certificate</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.support_24_7">24/7 Support</span></li>
                         <li><i class="fas fa-times"></i> <span data-i18n="features.domain_included">Domain included</span></li>
@@ -1996,7 +2056,7 @@
                 
                 <!-- Business Plan -->
                 <div class="hosting-package featured fade-in">
-                    <div class="popular-badge">POPULAR</div>
+                    <div class="popular-badge" data-i18n="plans.popular">MOST POPULAR</div>
                     <div class="package-badge" data-i18n="plans.business">Business</div>
                     <div class="package-header">
                         <h3 data-i18n="plans.business">Business</h3>
@@ -2004,11 +2064,11 @@
                             <div class="price-options">
                                 <div class="price-option active" data-period="monthly">
                                     <div class="price-period" data-i18n="pricing.1_month">1 Month</div>
-                                    <div class="price">€60<span data-i18n="pricing.per_month">/month</span></div>
+                                    <div class="price">€45<span data-i18n="pricing.per_month">/month</span></div>
                                 </div>
                                 <div class="price-option" data-period="yearly">
                                     <div class="price-period" data-i18n="pricing.12_months">12 Months</div>
-                                    <div class="price">€55<span data-i18n="pricing.per_month">/month</span></div>
+                                    <div class="price">€40<span data-i18n="pricing.per_month">/month</span></div>
                                     <div class="economy-badge">Save €60</div>
                                 </div>
                             </div>
@@ -2022,8 +2082,8 @@
                         <li><i class="fas fa-check"></i> <span data-i18n="features.up_to_10_pages">Up to 10 pages</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.admin_system">Admin system</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.photo_gallery">Photo/video gallery</span></li>
-                        <li><i class="fas fa-check"></i> <span data-i18n="features.business_hosting">Business hosting included</span></li>
-                        <li><i class="fas fa-check"></i> <span>10GB Storage</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.premium_hosting">Premium hosting with 99.9% uptime</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.10gb_storage">10GB Storage</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.domain_included">Domain included</span></li>
                         <li><i class="fas fa-times"></i> <span data-i18n="features.content_changes">Content changes</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.priority_support">Priority support</span></li>
@@ -2045,12 +2105,12 @@
                             <div class="price-options">
                                 <div class="price-option active" data-period="monthly">
                                     <div class="price-period" data-i18n="pricing.1_month">1 Month</div>
-                                    <div class="price">€100<span data-i18n="pricing.per_month">/month</span></div>
+                                    <div class="price">€80<span data-i18n="pricing.per_month">/month</span></div>
                                 </div>
                                 <div class="price-option" data-period="yearly">
                                     <div class="price-period" data-i18n="pricing.12_months">12 Months</div>
-                                    <div class="price">€85<span data-i18n="pricing.per_month">/month</span></div>
-                                    <div class="economy-badge">Save €180</div>
+                                    <div class="price">€70<span data-i18n="pricing.per_month">/month</span></div>
+                                    <div class="economy-badge">Save €120</div>
                                 </div>
                             </div>
                         </div>
@@ -2063,8 +2123,8 @@
                         <li><i class="fas fa-check"></i> <span data-i18n="features.unlimited_pages">Unlimited pages</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.advanced_system">Advanced system</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.blog_integrated">Integrated blog</span></li>
-                        <li><i class="fas fa-check"></i> <span data-i18n="features.premium_hosting">Premium hosting included</span></li>
-                        <li><i class="fas fa-check"></i> <span>20GB Storage</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.enterprise_hosting">Enterprise hosting with CDN</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.20gb_storage">20GB Storage</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.domain_included">Domain included</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.content_changes_included">Content changes included</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.dedicated_support">Dedicated support</span></li>
@@ -2095,11 +2155,11 @@
                             <div class="price-options">
                                 <div class="price-option active" data-period="monthly">
                                     <div class="price-period" data-i18n="pricing.1_month">1 Month</div>
-                                    <div class="price">€30<span data-i18n="pricing.per_month">/month</span></div>
+                                    <div class="price">€25<span data-i18n="pricing.per_month">/month</span></div>
                                 </div>
                                 <div class="price-option" data-period="yearly">
                                     <div class="price-period" data-i18n="pricing.12_months">12 Months</div>
-                                    <div class="price">€27<span data-i18n="pricing.per_month">/month</span></div>
+                                    <div class="price">€23<span data-i18n="pricing.per_month">/month</span></div>
                                 </div>
                             </div>
                         </div>
@@ -2112,7 +2172,7 @@
                         <li><i class="fas fa-check"></i> <span data-i18n="features.up_to_5_pages">Up to 5 pages</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.contact_form">Contact form</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.hosting_included">Hosting included</span></li>
-                        <li><i class="fas fa-check"></i> <span>2GB Storage</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.2gb_storage">2GB Storage</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.ssl_certificate">SSL Certificate</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.support_24_7">24/7 Support</span></li>
                         <li><i class="fas fa-times"></i> <span data-i18n="features.domain_included">Domain included</span></li>
@@ -2135,11 +2195,11 @@
                             <div class="price-options">
                                 <div class="price-option active" data-period="monthly">
                                     <div class="price-period" data-i18n="pricing.1_month">1 Month</div>
-                                    <div class="price">€60<span data-i18n="pricing.per_month">/month</span></div>
+                                    <div class="price">€45<span data-i18n="pricing.per_month">/month</span></div>
                                 </div>
                                 <div class="price-option" data-period="yearly">
                                     <div class="price-period" data-i18n="pricing.12_months">12 Months</div>
-                                    <div class="price">€55<span data-i18n="pricing.per_month">/month</span></div>
+                                    <div class="price">€40<span data-i18n="pricing.per_month">/month</span></div>
                                 </div>
                             </div>
                         </div>
@@ -2152,8 +2212,8 @@
                         <li><i class="fas fa-check"></i> <span data-i18n="features.up_to_10_pages">Up to 10 pages</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.admin_system">Admin system</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.photo_gallery">Photo/video gallery</span></li>
-                        <li><i class="fas fa-check"></i> <span data-i18n="features.business_hosting">Business hosting included</span></li>
-                        <li><i class="fas fa-check"></i> <span>10GB Storage</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.premium_hosting">Premium hosting with 99.9% uptime</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.10gb_storage">10GB Storage</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.domain_included">Domain included</span></li>
                         <li><i class="fas fa-times"></i> <span data-i18n="features.content_changes">Content changes</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.priority_support">Priority support</span></li>
@@ -2175,11 +2235,11 @@
                             <div class="price-options">
                                 <div class="price-option active" data-period="monthly">
                                     <div class="price-period" data-i18n="pricing.1_month">1 Month</div>
-                                    <div class="price">€100<span data-i18n="pricing.per_month">/month</span></div>
+                                    <div class="price">€80<span data-i18n="pricing.per_month">/month</span></div>
                                 </div>
                                 <div class="price-option" data-period="yearly">
                                     <div class="price-period" data-i18n="pricing.12_months">12 Months</div>
-                                    <div class="price">€85<span data-i18n="pricing.per_month">/month</span></div>
+                                    <div class="price">€70<span data-i18n="pricing.per_month">/month</span></div>
                                 </div>
                             </div>
                         </div>
@@ -2192,8 +2252,8 @@
                         <li><i class="fas fa-check"></i> <span data-i18n="features.unlimited_pages">Unlimited pages</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.advanced_system">Advanced system</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.blog_integrated">Integrated blog</span></li>
-                        <li><i class="fas fa-check"></i> <span data-i18n="features.premium_hosting">Premium hosting included</span></li>
-                        <li><i class="fas fa-check"></i> <span>20GB Storage</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.enterprise_hosting">Enterprise hosting with CDN</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="features.20gb_storage">20GB Storage</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.domain_included">Domain included</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.content_changes_included">Content changes included</span></li>
                         <li><i class="fas fa-check"></i> <span data-i18n="features.dedicated_support">Dedicated support</span></li>
@@ -2245,7 +2305,7 @@
         </div>
     </section>
 
-    <!-- NEW: Why Choose Us Section -->
+    <!-- Why Choose Us Section -->
     <section class="why-choose" id="why-choose">
         <div class="container">
             <div class="section-title">
@@ -2289,7 +2349,7 @@
         </div>
     </section>
 
-    <!-- NEW: Website Examples Section -->
+    <!-- Website Examples Section -->
     <section class="examples" id="examples">
         <div class="container">
             <div class="section-title">
@@ -2300,31 +2360,34 @@
             <div class="examples-grid">
                 <div class="example-card fade-in">
                     <div class="example-image">
-                        Business Website
+                        <img src="https://images.unsplash.com/photo-1493857671505-72967e2e2760?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Business Website">
                     </div>
                     <div class="example-content">
-                        <h4 data-i18n="examples.business.title">Business Website</h4>
-                        <p data-i18n="examples.business.desc">Professional design with contact forms, service pages, and about section.</p>
+                        <h4>Basic Plan</h4>
+                        <p>Simple design with contact forms, service pages, and about section.</p>
+                        <a href="https://example-sites.github.io/coffee-shop-example/" class="example-btn" target="_blank">View Example</a>
                     </div>
                 </div>
                 
                 <div class="example-card fade-in">
                     <div class="example-image">
-                        Portfolio Site
+                        <img src="https://images.unsplash.com/photo-1644447381290-85358ae625cb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Portfolio Site">
                     </div>
                     <div class="example-content">
-                        <h4 data-i18n="examples.portfolio.title">Portfolio Website</h4>
-                        <p data-i18n="examples.portfolio.desc">Showcase your work with image galleries and project descriptions.</p>
+                        <h4>Business Plan</h4>
+                        <p>Showcase your work with image galleries and project descriptions.</p>
+                        <a href="https://example-sites.github.io/BurgerHaven/" class="example-btn" target="_blank">View Example</a>
                     </div>
                 </div>
                 
                 <div class="example-card fade-in">
                     <div class="example-image">
-                        Service Page
+                        <img src="https://images.unsplash.com/photo-1637228393246-c38a4b3d2011?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Service Page">
                     </div>
                     <div class="example-content">
-                        <h4 data-i18n="examples.service.title">Service Website</h4>
-                        <p data-i18n="examples.service.desc">Highlight your services with clear pricing and booking options.</p>
+                        <h4>Premium Plan</h4>
+                        <p>Highlight your services with clear pricing and booking options.</p>
+                        <a href="https://example-sites.github.io/Premium-Online-Store/" class="example-btn" target="_blank">View Example</a>
                     </div>
                 </div>
             </div>
@@ -2409,15 +2472,15 @@
                         <div class="plan-options">
                             <div class="plan-option active" data-plan="basic">
                                 <h4 data-i18n="plans.basic">Basic</h4>
-                                <div class="price" id="basicPrice">€30<span data-i18n="pricing.per_month">/month</span></div>
+                                <div class="price" id="basicPrice">€25<span data-i18n="pricing.per_month">/month</span></div>
                             </div>
                             <div class="plan-option" data-plan="business">
                                 <h4 data-i18n="plans.business">Business</h4>
-                                <div class="price" id="businessPrice">€60<span data-i18n="pricing.per_month">/month</span></div>
+                                <div class="price" id="businessPrice">€45<span data-i18n="pricing.per_month">/month</span></div>
                             </div>
                             <div class="plan-option" data-plan="premium">
                                 <h4 data-i18n="plans.premium">Premium</h4>
-                                <div class="price" id="premiumPrice">€100<span data-i18n="pricing.per_month">/month</span></div>
+                                <div class="price" id="premiumPrice">€80<span data-i18n="pricing.per_month">/month</span></div>
                             </div>
                         </div>
                     </div>
@@ -2456,7 +2519,7 @@
                             </div>
                             <div class="modification-option" data-modification="basic" data-price="10">
                                 <h4 data-i18n="modifications.basic_changes">Basic content changes</h4>
-                                <div class="price" id="modificationBasicPrice">€10</div>
+                                <div class="price" id="modificationBasicPrice">€10<span data-i18n="pricing.per_month">/month</span></div>
                             </div>
                         </div>
                     </div>
@@ -2466,7 +2529,7 @@
                     <h3><i class="fas fa-receipt"></i> <span data-i18n="order.summary">Order Summary</span></h3>
                     <div class="summary-item">
                         <span data-i18n="order.plan_label">Plan</span> <span id="planName" data-i18n="plans.basic">Basic</span>
-                        <span id="planPrice">€30</span>
+                        <span id="planPrice">€25</span>
                     </div>
                     <div class="summary-item" id="domainItem">
                         <span data-i18n="order.domain_label">Domain</span> <span id="domainName" data-i18n="domain.connected">connected</span>
@@ -2482,7 +2545,7 @@
                     </div>
                     <div class="summary-item summary-total">
                         <span data-i18n="order.total">Total Payment</span>
-                        <span id="totalPrice">€30</span>
+                        <span id="totalPrice">€25</span>
                     </div>
                 </div>
 
@@ -2491,7 +2554,7 @@
                         <i class="fas fa-arrow-left"></i> <span data-i18n="cta.back">Back</span>
                     </button>
                     <button class="btn confirm-order-btn" id="confirmOrderBtn">
-                        <i class="fab fa-whatsapp"></i> <span data-i18n="cta.order_whatsapp">Order on WhatsApp</span>
+                        <i class="fas fa-credit-card"></i> <span data-i18n="cta.order_payment">Proceed to Payment</span>
                     </button>
                 </div>
             </div>
@@ -2505,9 +2568,6 @@
             <p data-i18n="cta.subtitle">Contact us now for a free consultation and personalized offer</p>
             <a href="https://wa.me/40729552767?text=Hello!%20I%20want%20a%20consultation%20about%20a%20website." class="btn btn-whatsapp">
                 <i class="fab fa-whatsapp"></i> <span data-i18n="cta.contact_whatsapp">Contact us on WhatsApp</span>
-            </a>
-            <a href="https://sites-lab.github.io/WebBuilderPro" class="btn btn-design" target="_blank">
-                <i class="fas fa-palette"></i> I want a design for my site
             </a>
         </div>
     </section>
@@ -2525,15 +2585,16 @@
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="https://wa.me/40729552767"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://t.me/LoveBomboclaut"><i class="fab fa-telegram"></i></a>
                     </div>
                 </div>
                 
                 <div class="footer-column">
                     <h4 data-i18n="footer.packages">Packages</h4>
                     <ul class="footer-links">
-                        <li><a href="#hosting">Basic - from €27/month</a></li>
-                        <li><a href="#hosting">Business - from €55/month</a></li>
-                        <li><a href="#hosting">Premium - from €85/month</a></li>
+                        <li><a href="#hosting">Basic - from €23/month</a></li>
+                        <li><a href="#hosting">Business - from €40/month</a></li>
+                        <li><a href="#hosting">Premium - from €70/month</a></li>
                     </ul>
                 </div>
                 
@@ -2542,6 +2603,7 @@
                     <ul class="footer-links">
                         <li><i class="fab fa-whatsapp"></i> +40 729 552 767</li>
                         <li><i class="fas fa-envelope"></i> boghack18@gmail.com</li>
+                        <li><i class="fab fa-telegram"></i> @LoveBomboclaut</li>
                         <li><i class="fas fa-clock"></i> <span data-i18n="footer.support">Support: 24/7</span></li>
                     </ul>
                 </div>
@@ -2558,9 +2620,9 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Design Float Button -->
-    <a href="https://sites-lab.github.io/WebBuilderPro" class="design-float" target="_blank">
-        <i class="fas fa-palette"></i>
+    <!-- Telegram Float Button -->
+    <a href="https://t.me/LoveBomboclaut" class="telegram-float" target="_blank">
+        <i class="fab fa-telegram"></i>
     </a>
 
     <!-- NEW NOTIFICATION -->
@@ -2598,6 +2660,7 @@
                 "plans.basic": "Basic",
                 "plans.business": "Business",
                 "plans.premium": "Premium",
+                "plans.popular": "MOST POPULAR",
                 "plans.basic_description": "Perfect for starting out",
                 "plans.business_description": "Ideal for businesses",
                 "plans.premium_description": "Complete solution",
@@ -2608,6 +2671,7 @@
                 "features.up_to_5_pages": "Up to 5 pages",
                 "features.contact_form": "Contact form",
                 "features.hosting_included": "Hosting included",
+                "features.2gb_storage": "2GB Storage",
                 "features.ssl_certificate": "SSL Certificate",
                 "features.support_24_7": "24/7 Support",
                 "features.domain_included": "Domain included",
@@ -2617,7 +2681,8 @@
                 "features.up_to_10_pages": "Up to 10 pages",
                 "features.admin_system": "Admin system",
                 "features.photo_gallery": "Photo/video gallery",
-                "features.business_hosting": "Business hosting included",
+                "features.premium_hosting": "Premium hosting with 99.9% uptime",
+                "features.10gb_storage": "10GB Storage",
                 "features.content_changes_included": "Content changes included",
                 "features.priority_support": "Priority support",
                 "features.premium_site": "Premium ready-made website",
@@ -2625,7 +2690,8 @@
                 "features.unlimited_pages": "Unlimited pages",
                 "features.advanced_system": "Advanced system",
                 "features.blog_integrated": "Integrated blog",
-                "features.premium_hosting": "Premium hosting included",
+                "features.enterprise_hosting": "Enterprise hosting with CDN",
+                "features.20gb_storage": "20GB Storage",
                 "features.dedicated_support": "Dedicated support",
                 
                 // Pricing
@@ -2661,11 +2727,11 @@
                 // Examples
                 "examples.title": "What You Get",
                 "examples.subtitle": "Professional websites tailored to your needs",
-                "examples.business.title": "Business Website",
+                "examples.business.title": "Basic Plan",
                 "examples.business.desc": "Professional design with contact forms, service pages, and about section.",
-                "examples.portfolio.title": "Portfolio Website",
+                "examples.portfolio.title": "Business Plan",
                 "examples.portfolio.desc": "Showcase your work with image galleries and project descriptions.",
-                "examples.service.title": "Service Website",
+                "examples.service.title": "Premium Plan",
                 "examples.service.desc": "Highlight your services with clear pricing and booking options.",
                 
                 // FAQ
@@ -2683,7 +2749,7 @@
                 // CTA
                 "cta.choose_plan": "Choose Plan",
                 "cta.back": "Back",
-                "cta.order_whatsapp": "Order on WhatsApp",
+                "cta.order_payment": "Proceed to Payment",
                 "cta.contact_whatsapp": "Contact us on WhatsApp",
                 "cta.title": "Ready to Create Your Online Presence?",
                 "cta.subtitle": "Contact us now for a free consultation and personalized offer",
@@ -2742,6 +2808,7 @@
                 "plans.basic": "Basic",
                 "plans.business": "Business",
                 "plans.premium": "Premium",
+                "plans.popular": "CEL MAI POPULAR",
                 "plans.basic_description": "Perfect pentru început",
                 "plans.business_description": "Ideal pentru afaceri",
                 "plans.premium_description": "Soluție completă",
@@ -2752,6 +2819,7 @@
                 "features.up_to_5_pages": "Până la 5 pagini",
                 "features.contact_form": "Formular de contact",
                 "features.hosting_included": "Hosting inclus",
+                "features.2gb_storage": "2GB Spațiu de stocare",
                 "features.ssl_certificate": "SSL Certificate",
                 "features.support_24_7": "Suport 24/7",
                 "features.domain_included": "Domeniu inclus",
@@ -2761,7 +2829,8 @@
                 "features.up_to_10_pages": "Până la 10 pagini",
                 "features.admin_system": "Sistem administrare",
                 "features.photo_gallery": "Galerie foto/video",
-                "features.business_hosting": "Hosting Business inclus",
+                "features.premium_hosting": "Hosting premium cu 99.9% uptime",
+                "features.10gb_storage": "10GB Spațiu de stocare",
                 "features.content_changes_included": "Schimbări conținut incluse",
                 "features.priority_support": "Suport priority",
                 "features.premium_site": "Site Premium gata făcut",
@@ -2769,7 +2838,8 @@
                 "features.unlimited_pages": "Pagini nelimitate",
                 "features.advanced_system": "Sistem avansat",
                 "features.blog_integrated": "Blog integrat",
-                "features.premium_hosting": "Hosting Premium inclus",
+                "features.enterprise_hosting": "Hosting enterprise cu CDN",
+                "features.20gb_storage": "20GB Spațiu de stocare",
                 "features.dedicated_support": "Suport dedicated",
                 
                 // Pricing
@@ -2827,7 +2897,7 @@
                 // CTA
                 "cta.choose_plan": "Alege Planul",
                 "cta.back": "Înapoi",
-                "cta.order_whatsapp": "Comandă pe WhatsApp",
+                "cta.order_payment": "Continuă către Plată",
                 "cta.contact_whatsapp": "Contactează-ne pe WhatsApp",
                 "cta.title": "Gata să îți creezi prezența online?",
                 "cta.subtitle": "Contactează-ne acum pentru o consultație gratuită și ofertă personalizată",
@@ -2886,6 +2956,7 @@
                 "plans.basic": "Базовый",
                 "plans.business": "Бизнес",
                 "plans.premium": "Премиум",
+                "plans.popular": "САМЫЙ ПОПУЛЯРНЫЙ",
                 "plans.basic_description": "Идеально для начала",
                 "plans.business_description": "Идеально для бизнеса",
                 "plans.premium_description": "Полное решение",
@@ -2896,6 +2967,7 @@
                 "features.up_to_5_pages": "До 5 страниц",
                 "features.contact_form": "Контактная форма",
                 "features.hosting_included": "Хостинг включен",
+                "features.2gb_storage": "2GB Хранилище",
                 "features.ssl_certificate": "SSL Сертификат",
                 "features.support_24_7": "Поддержка 24/7",
                 "features.domain_included": "Домен включен",
@@ -2905,7 +2977,8 @@
                 "features.up_to_10_pages": "До 10 страниц",
                 "features.admin_system": "Система администрирования",
                 "features.photo_gallery": "Фото/видео галерея",
-                "features.business_hosting": "Бизнес хостинг включен",
+                "features.premium_hosting": "Премиум хостинг с 99.9% uptime",
+                "features.10gb_storage": "10GB Хранилище",
                 "features.content_changes_included": "Изменения контента включены",
                 "features.priority_support": "Приоритетная поддержка",
                 "features.premium_site": "Премиум готовый сайт",
@@ -2913,7 +2986,8 @@
                 "features.unlimited_pages": "Неограниченно страниц",
                 "features.advanced_system": "Продвинутая система",
                 "features.blog_integrated": "Интегрированный блог",
-                "features.premium_hosting": "Премиум хостинг включен",
+                "features.enterprise_hosting": "Enterprise хостинг с CDN",
+                "features.20gb_storage": "20GB Хранилище",
                 "features.dedicated_support": "Выделенная поддержка",
                 
                 // Pricing
@@ -2971,7 +3045,7 @@
                 // CTA
                 "cta.choose_plan": "Выбрать План",
                 "cta.back": "Назад",
-                "cta.order_whatsapp": "Заказать в WhatsApp",
+                "cta.order_payment": "Перейти к Оплате",
                 "cta.contact_whatsapp": "Связаться в WhatsApp",
                 "cta.title": "Готовы Создать Свое Онлайн-Присутствие?",
                 "cta.subtitle": "Свяжитесь с нами для бесплатной консультации и персонализированного предложения",
@@ -3167,31 +3241,32 @@
         const confirmOrderBtn = document.getElementById('confirmOrderBtn');
         const domainStep = document.getElementById('domainStep');
         const modificationsStep = document.getElementById('modificationsStep');
-        
+
         let selectedPlan = 'basic';
         let selectedPeriod = 'monthly';
         let selectedDomain = 'none';
         let selectedModification = 'none';
-        
-        // Actualizăm prețurile în JavaScript
+
+        // Updated plan prices
         const planPrices = {
-            basic: { monthly: 30, yearly: 27 },
-            business: { monthly: 60, yearly: 55 },
-            premium: { monthly: 100, yearly: 85 }
+            basic: { monthly: 25, yearly: 23 },
+            business: { monthly: 45, yearly: 40 },
+            premium: { monthly: 80, yearly: 70 }
         };
-        
+
         const domainPrices = {
             none: 0,
             ro: 10,
             com: 15,
             eu: 8
         };
-        
+
+        // Updated modification prices - €10/month for Basic and Business plans
         const modificationPrices = {
             none: 0,
-            basic: 10
+            basic: 10 // €10 per month
         };
-        
+
         const domainNames = {
             none: 'connected',
             ro: '.ro',
@@ -3235,6 +3310,7 @@
                 selectedPeriod = this.getAttribute('data-period');
                 updatePlanPrices();
                 updateDomainPrices();
+                updateModificationPrices();
                 updateSummary();
             });
         });
@@ -3250,58 +3326,32 @@
                 updateDomainPrices();
                 updateModificationPrices();
                 
-                // Add/remove premium class for styling
-                modificationsStep.classList.remove('premium-plan');
-                if (selectedPlan === 'premium') {
-                    modificationsStep.classList.add('premium-plan');
-                }
-                
                 // Show/hide domain and modifications steps based on plan
                 if (selectedPlan === 'basic') {
                     domainStep.style.display = 'block';
                     modificationsStep.style.display = 'block';
                     // Reset modifications selection for Basic
                     document.querySelectorAll('.modification-option').forEach(opt => {
-                        opt.classList.remove('active', 'disabled');
-                        opt.style.opacity = '1';
-                        opt.style.pointerEvents = 'auto';
+                        opt.classList.remove('active');
                     });
                     document.querySelector('.modification-option[data-modification="none"]').classList.add('active');
                     selectedModification = 'none';
                 } else if (selectedPlan === 'business') {
                     domainStep.style.display = 'block';
-                    // Auto-select "Am domeniu" for Business (domain included)
-                    document.querySelectorAll('.domain-option').forEach(opt => opt.classList.remove('active'));
-                    document.querySelector('.domain-option[data-domain="none"]').classList.add('active');
-                    selectedDomain = 'none';
                     modificationsStep.style.display = 'block';
                     // Reset modifications selection for Business
                     document.querySelectorAll('.modification-option').forEach(opt => {
-                        opt.classList.remove('active', 'disabled');
-                        opt.style.opacity = '1';
-                        opt.style.pointerEvents = 'auto';
+                        opt.classList.remove('active');
                     });
                     document.querySelector('.modification-option[data-modification="none"]').classList.add('active');
                     selectedModification = 'none';
                 } else {
-                    // Premium plan - domain and modifications included (FREE)
+                    // Premium plan - domain included, modifications included (FREE)
                     domainStep.style.display = 'block';
                     modificationsStep.style.display = 'block';
-                    // Auto-select "Am domeniu" for Premium (domain included)
-                    document.querySelectorAll('.domain-option').forEach(opt => opt.classList.remove('active'));
-                    document.querySelector('.domain-option[data-domain="none"]').classList.add('active');
-                    selectedDomain = 'none';
                     // Auto-select "No changes needed" for Premium (modifications included)
                     document.querySelectorAll('.modification-option').forEach(opt => {
                         opt.classList.remove('active');
-                        if (opt.getAttribute('data-modification') === 'basic') {
-                            opt.classList.add('disabled');
-                            opt.style.opacity = '0.5';
-                            opt.style.pointerEvents = 'none';
-                        } else {
-                            opt.style.opacity = '1';
-                            opt.style.pointerEvents = 'auto';
-                        }
                     });
                     document.querySelector('.modification-option[data-modification="none"]').classList.add('active');
                     selectedModification = 'none';
@@ -3324,20 +3374,12 @@
          // Modifications selection
          document.querySelectorAll('.modification-option').forEach(option => {
              option.addEventListener('click', function() {
-                 // For Premium plan, modifications are always included (free)
-                 if (selectedPlan === 'premium') {
-                     // Keep "none" selected and show it as included
-                     document.querySelectorAll('.modification-option').forEach(opt => opt.classList.remove('active'));
-                     document.querySelector('.modification-option[data-modification="none"]').classList.add('active');
-                     selectedModification = 'none';
-                 } else {
-                     document.querySelectorAll('.modification-option').forEach(opt => opt.classList.remove('active'));
-                     this.classList.add('active');
-                     selectedModification = this.getAttribute('data-modification');
-                 }
+                 document.querySelectorAll('.modification-option').forEach(opt => opt.classList.remove('active'));
+                 this.classList.add('active');
+                 selectedModification = this.getAttribute('data-modification');
                  updateSummary();
              });
-         });
+        });
 
         // Update plan prices based on selected period
         function updatePlanPrices() {
@@ -3362,8 +3404,13 @@
                  domainRoPrice.textContent = '€10';
                  domainComPrice.textContent = '€15';
                  domainEuPrice.textContent = '€8';
+             } else if (selectedPlan === 'business') {
+                 domainNonePrice.textContent = '€0';
+                 domainRoPrice.textContent = '€10';
+                 domainComPrice.textContent = '€15';
+                 domainEuPrice.textContent = '€8';
              } else {
-                 // Business and Premium plans include free domain
+                 // Premium plan includes free domain
                  domainNonePrice.textContent = '€0';
                  domainRoPrice.textContent = '€0';
                  domainComPrice.textContent = '€0';
@@ -3383,7 +3430,7 @@
              } else {
                  // Basic and Business plans have paid modifications
                  modificationNonePrice.textContent = '€0';
-                 modificationBasicPrice.textContent = '€10';
+                 modificationBasicPrice.textContent = '€10/month';
              }
          }
 
@@ -3396,12 +3443,12 @@
              let modificationPrice = modificationPrices[selectedModification];
              let modificationName = modificationNames[selectedModification];
              
-             // Domain is free for Business and Premium plans
-             if (selectedPlan !== 'basic') {
+             // Domain is free for Premium plan only
+             if (selectedPlan === 'premium') {
                  domainPrice = 0;
              }
              
-             // Modifications are FREE for Premium plan - always show €0
+             // Modifications are FREE for Premium plan - regardless of selection
              if (selectedPlan === 'premium') {
                  modificationPrice = 0;
                  modificationName = 'Included in plan';
@@ -3411,20 +3458,23 @@
              if (selectedPeriod === 'monthly') {
                  totalPrice = planPrice + modificationPrice;
              } else {
-                 totalPrice = planPrice * 12 + modificationPrice;
+                 // For yearly plans, modifications cost €10/month × 12 months = €120
+                 // BUT only for Basic and Business plans - Premium is always free
+                 const yearlyModificationPrice = (selectedPlan !== 'premium' && selectedModification === 'basic') ? 120 : 0;
+                 totalPrice = planPrice * 12 + yearlyModificationPrice;
              }
              
-             // Add domain price only for Basic plan
-             if (selectedPlan === 'basic' && selectedDomain !== 'none') {
+             // Add domain price for Basic and Business plans
+             if (selectedPlan !== 'premium' && selectedDomain !== 'none') {
                  totalPrice += domainPrice;
              }
              
              document.getElementById('planName').textContent = planNames[selectedPlan];
              document.getElementById('planPrice').textContent = `€${planPrice}${selectedPeriod === 'yearly' ? '/month' : ''}`;
              document.getElementById('domainName').textContent = domainName;
-             document.getElementById('domainPrice').textContent = selectedPlan === 'basic' && selectedDomain !== 'none' ? `€${domainPrice}` : '€0';
+             document.getElementById('domainPrice').textContent = selectedPlan === 'premium' ? '€0' : (selectedDomain === 'none' ? '€0' : `€${domainPrice}`);
              document.getElementById('modificationsName').textContent = selectedPlan === 'premium' ? 'Included in plan' : modificationName;
-             document.getElementById('modificationsPrice').textContent = selectedPlan === 'premium' ? '€0' : `€${modificationPrice}`;
+             document.getElementById('modificationsPrice').textContent = selectedPlan === 'premium' ? '€0' : (selectedPeriod === 'monthly' ? `€${modificationPrice}` : `€${modificationPrice * 12}`);
              document.getElementById('periodText').textContent = periodText;
              document.getElementById('totalPrice').textContent = `€${totalPrice}`;
              
@@ -3458,30 +3508,7 @@
              updatePlanPrices();
              updateDomainPrices();
              updateModificationPrices();
-             
-             // Add/remove premium class for styling
-             modificationsStep.classList.remove('premium-plan');
-             if (selectedPlan === 'premium') {
-                 modificationsStep.classList.add('premium-plan');
-                 // Disable basic modifications option for Premium
-                 document.querySelectorAll('.modification-option').forEach(opt => {
-                     if (opt.getAttribute('data-modification') === 'basic') {
-                         opt.classList.add('disabled');
-                         opt.style.opacity = '0.5';
-                         opt.style.pointerEvents = 'none';
-                     } else {
-                         opt.style.opacity = '1';
-                         opt.style.pointerEvents = 'auto';
-                     }
-                 });
-             } else {
-                 // Enable all modification options for Basic/Business
-                 document.querySelectorAll('.modification-option').forEach(opt => {
-                     opt.classList.remove('disabled');
-                     opt.style.opacity = '1';
-                     opt.style.pointerEvents = 'auto';
-                 });
-             }
+             updateSummary();
              
              // Show/hide domain and modifications steps based on plan
              if (selectedPlan === 'basic') {
@@ -3495,7 +3522,6 @@
                  modificationsStep.style.display = 'block';
              }
              
-             updateSummary();
              orderPage.style.display = 'block';
              document.body.style.overflow = 'hidden';
              
@@ -3520,7 +3546,7 @@
              }, 300);
          }
 
-        // Confirm order and send WhatsApp message
+        // Confirm order and redirect to payment.php
         confirmOrderBtn.addEventListener('click', function() {
             const planPrice = planPrices[selectedPlan][selectedPeriod];
             let domainPrice = domainPrices[selectedDomain];
@@ -3529,12 +3555,12 @@
             let modificationPrice = modificationPrices[selectedModification];
             const modificationName = modificationNames[selectedModification];
             
-            // Domeniul este gratuit pentru planurile Business și Premium
-            if (selectedPlan !== 'basic') {
+            // Domain is free for Premium plan only
+            if (selectedPlan === 'premium') {
                 domainPrice = 0;
             }
             
-            // Modificările sunt gratuite pentru planul Premium
+            // Modifications are free for Premium plan
             if (selectedPlan === 'premium') {
                 modificationPrice = 0;
             }
@@ -3543,27 +3569,20 @@
             if (selectedPeriod === 'monthly') {
                 totalPrice = planPrice + modificationPrice;
             } else {
-                totalPrice = planPrice * 12 + modificationPrice;
+                // For yearly plans, modifications cost €10/month × 12 months = €120
+                // BUT only for Basic and Business plans - Premium is always free
+                const yearlyModificationPrice = (selectedPlan !== 'premium' && selectedModification === 'basic') ? 120 : 0;
+                totalPrice = planPrice * 12 + yearlyModificationPrice;
             }
             
-            // Add domain price only for Basic plan
-            if (selectedPlan === 'basic' && selectedDomain !== 'none') {
+            // Add domain price for Basic and Business plans
+            if (selectedPlan !== 'premium' && selectedDomain !== 'none') {
                 totalPrice += domainPrice;
             }
             
-            const message = `Hello! I want to order the following package:
-            
-📦 Plan: ${planNames[selectedPlan]}
-⏰ Period: ${periodText}
-${selectedPlan === 'basic' && selectedDomain !== 'none' ? `🌐 Domain: ${domainName}` : '🌐 Domain: Included in plan'}
-${selectedPlan === 'premium' ? '✏️ Content Changes: Included in plan' : selectedModification !== 'none' ? `✏️ Content Changes: ${modificationName}` : '✏️ Content Changes: No changes needed'}
-💰 Total: €${totalPrice}`;
-            
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/40729552767?text=${encodedMessage}`;
-            
-            window.open(whatsappUrl, '_blank');
-            closeOrderPage();
+            // Redirect to payment.php with all parameters
+            const paymentUrl = `payment.php?plan=${selectedPlan}&period=${selectedPeriod}&price=${totalPrice}`;
+            window.location.href = paymentUrl;
         });
 
         // Add fade-in animation on scroll
@@ -3637,13 +3656,13 @@ ${selectedPlan === 'premium' ? '✏️ Content Changes: Included in plan' : sele
                     // Update the displayed price
                     const priceElement = this.querySelector('.price');
                     if (period === 'monthly') {
-                        if (plan === 'basic') priceElement.innerHTML = '€30<span data-i18n="pricing.per_month">/month</span>';
-                        if (plan === 'business') priceElement.innerHTML = '€60<span data-i18n="pricing.per_month">/month</span>';
-                        if (plan === 'premium') priceElement.innerHTML = '€100<span data-i18n="pricing.per_month">/month</span>';
+                        if (plan === 'basic') priceElement.innerHTML = '€25<span data-i18n="pricing.per_month">/month</span>';
+                        if (plan === 'business') priceElement.innerHTML = '€45<span data-i18n="pricing.per_month">/month</span>';
+                        if (plan === 'premium') priceElement.innerHTML = '€80<span data-i18n="pricing.per_month">/month</span>';
                     } else {
-                        if (plan === 'basic') priceElement.innerHTML = '€27<span data-i18n="pricing.per_month">/month</span>';
-                        if (plan === 'business') priceElement.innerHTML = '€55<span data-i18n="pricing.per_month">/month</span>';
-                        if (plan === 'premium') priceElement.innerHTML = '€85<span data-i18n="pricing.per_month">/month</span>';
+                        if (plan === 'basic') priceElement.innerHTML = '€23<span data-i18n="pricing.per_month">/month</span>';
+                        if (plan === 'business') priceElement.innerHTML = '€40<span data-i18n="pricing.per_month">/month</span>';
+                        if (plan === 'premium') priceElement.innerHTML = '€70<span data-i18n="pricing.per_month">/month</span>';
                     }
                 });
             });
