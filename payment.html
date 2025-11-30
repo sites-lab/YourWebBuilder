@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Instructions - Your Web Builder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --secondary: #4f46e5;
+            --accent: #7c3aed;
+            --light: #f1f5f9;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --crypto: #f7931a;
+            --gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #ec4899 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .payment-container {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 1000px;
+            width: 100%;
+            margin: 20px;
+            position: relative;
+        }
+        
+        .language-selector {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .language-btn {
+            background: white;
+            border: 2px solid #e2e8f0;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--primary);
+        }
+        
+        .language-btn:hover {
+            border-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        .language-btn.active {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+        
+        .header-section {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 25px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: white;
+            font-size: 36px;
+        }
+        
+        .header-section h1 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 32px;
+        }
+        
+        .header-section p {
+            color: #64748b;
+            font-size: 18px;
+        }
+        
+        .order-details {
+            background: var(--light);
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .order-details h3 {
+            color: var(--primary);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 22px;
+        }
+        
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .detail-label {
+            font-size: 14px;
+            color: #64748b;
+            font-weight: 500;
+        }
+        
+        .detail-value {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 16px;
+            word-break: break-word;
+        }
+        
+        .payment-methods {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 40px;
+            align-items: start;
+            transform: translateX(-17px); /* Move both cards to the left */
+        }
+        
+        @media (max-width: 768px) {
+            .payment-methods {
+                grid-template-columns: 1fr;
+                transform: translateX(0); /* Reset for mobile */
+            }
+        }
+        
+        .payment-method {
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            min-height: 450px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .payment-method:hover {
+            border-color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .payment-method.bank {
+            border-color: #0ea5e9;
+            background: #f0f9ff;
+        }
+        
+        .payment-method.crypto {
+            border-color: var(--crypto);
+            background: #fef7ed;
+        }
+        
+        .method-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .method-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+        
+        .method-icon.bank {
+            background: #0ea5e9;
+        }
+        
+        .method-icon.crypto {
+            background: var(--crypto);
+        }
+        
+        .method-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .method-subtitle {
+            color: #64748b;
+            font-size: 14px;
+        }
+        
+        .payment-instructions {
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+        
+        .instructions-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .instructions-list li {
+            padding: 12px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .instruction-number {
+            background: var(--secondary);
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .bank-details, .crypto-details {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            margin-top: auto;
+        }
+        
+        .crypto-details {
+            background: white !important;
+        }
+        
+        .bank-details h4, .crypto-details h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+        
+        .detail-label-small {
+            font-weight: 600;
+            color: #64748b;
+            font-size: 14px;
+        }
+        
+        .detail-value-code {
+            font-family: 'Courier New', monospace;
+            background: #f1f5f9;
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .copy-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .copy-btn {
+            background: transparent;
+            color: #64748b;
+            border: 1px solid #d1d5db;
+            padding: 6px 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            min-width: 60px;
+        }
+        
+        .copy-btn:hover {
+            background: #f3f4f6;
+            border-color: #9ca3af;
+        }
+        
+        .copy-btn.copied {
+            background: #dcfce7;
+            border-color: #22c55e;
+            color: #166534;
+        }
+        
+        .security-notice {
+            background: #fef2f2;
+            border: 2px solid #ef4444;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            text-align: center;
+        }
+        
+        .security-notice p {
+            color: #dc2626;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 15px;
+        }
+        
+        .next-steps {
+            background: #f0fdf4;
+            border: 2px solid var(--success);
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 35px;
+        }
+        
+        .next-steps h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 22px;
+        }
+        
+        .steps-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .steps-list li {
+            padding: 12px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .steps-list i {
+            color: var(--success);
+            margin-top: 2px;
+            font-size: 16px;
+        }
+        
+        /* Floating Action Buttons */
+        .floating-actions {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+        
+        .floating-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .floating-btn:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+        }
+        
+        .floating-btn.whatsapp {
+            background: #25D366;
+            color: white;
+        }
+        
+        .floating-btn.telegram {
+            background: #0088cc;
+            color: white;
+        }
+        
+        .floating-btn.email {
+            background: #ea4335;
+            color: white;
+        }
+        
+        .floating-btn.back {
+            background: rgba(107, 114, 128, 0.7);
+            color: white;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .floating-btn.back:hover {
+            background: rgba(107, 114, 128, 0.9);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .floating-btn i {
+            font-size: 24px;
+        }
+        
+        /* Loading Screen Styles */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .loading-screen.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .loading-spinner {
+            width: 80px;
+            height: 80px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-left: 4px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 30px;
+        }
+        
+        .loading-content {
+            text-align: center;
+            max-width: 500px;
+            padding: 0 20px;
+            color: white;
+        }
+        
+        .loading-content h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .loading-content p {
+            font-size: 18px;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+        
+        .loading-content .warning {
+            color: #fbbf24;
+            font-size: 16px;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .payment-container {
+                padding: 30px 25px;
+                margin: 15px;
+            }
+            
+            .header-section h1 {
+                font-size: 26px;
+            }
+            
+            .detail-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .payment-method {
+                padding: 25px;
+                min-height: auto;
+            }
+            
+            .floating-actions {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .language-selector {
+                position: static;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+            
+            .loading-content h2 {
+                font-size: 24px;
+            }
+            
+            .loading-content p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="payment-container">
+        <!-- Language Selector -->
+        <div class="language-selector">
+            <span style="font-weight: 600; color: var(--primary); margin-right: 10px;" data-i18n="language">Language:</span>
+            <a href="#" class="language-btn active" data-lang="en">EN</a>
+            <a href="#" class="language-btn" data-lang="ro">RO</a>
+            <a href="#" class="language-btn" data-lang="ru">RU</a>
+        </div>
+        
+        <div class="header-section">
+            <div class="success-icon">
+                <i class="fas fa-lock"></i>
+            </div>
+            <h1 data-i18n="complete_payment">Complete Your Payment</h1>
+            <p data-i18n="choose_method">Choose your preferred payment method below</p>
+        </div>
+        
+        <div class="order-details">
+            <h3><i class="fas fa-receipt"></i> <span data-i18n="order_summary">Order Summary</span></h3>
+            <div class="detail-grid">
+                <div class="detail-item">
+                    <span class="detail-label" data-i18n="order_id">Order ID</span>
+                    <span class="detail-value" id="orderId">WB20250101120000ABC123</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label" data-i18n="plan">Plan</span>
+                    <span class="detail-value" id="planValue">Business</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label" data-i18n="period">Period</span>
+                    <span class="detail-value" id="periodValue">1 Month</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label" data-i18n="amount_due">Amount Due</span>
+                    <span class="detail-value" id="amountValue">€50.00</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label" data-i18n="business">Business</span>
+                    <span class="detail-value" id="businessValue">Your Business</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label" data-i18n="email">Email</span>
+                    <span class="detail-value" id="emailValue">your@business.com</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="payment-methods">
+            <!-- Bank Transfer -->
+            <div class="payment-method bank">
+                <div class="method-header">
+                    <div class="method-icon bank">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div>
+                        <div class="method-title" data-i18n="bank_transfer">Bank Transfer</div>
+                        <div class="method-subtitle" data-i18n="fast_secure">Fast & Secure • Worldwide</div>
+                    </div>
+                </div>
+                
+                <div class="payment-instructions">
+                    <ul class="instructions-list">
+                        <li>
+                            <div class="instruction-number">1</div>
+                            <div data-i18n="bank_step1">Use your bank's app or online banking</div>
+                        </li>
+                        <li>
+                            <div class="instruction-number">2</div>
+                            <div data-i18n="bank_step2">Send payment to our bank card</div>
+                        </li>
+                        <li>
+                            <div class="instruction-number">3</div>
+                            <div data-i18n="bank_step3">Include Order ID in payment description</div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bank-details">
+                    <h4><i class="fas fa-credit-card"></i> <span data-i18n="bank_details">Bank Details</span></h4>
+                    <div class="detail-row">
+                        <span class="detail-label-small" data-i18n="card_number">Card Number:</span>
+                        <div class="copy-container">
+                            <span class="detail-value-code">4149 6090 4027 1852</span>
+                            <button class="copy-btn" onclick="copyToClipboard('4149609040271852', this)">
+                                <i class="far fa-copy"></i> <span data-i18n="copy">Copy</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label-small" data-i18n="recipient_name">Recipient Name:</span>
+                        <div class="copy-container">
+                            <span class="detail-value-code">Bogdan Balika</span>
+                            <button class="copy-btn" onclick="copyToClipboard('Bogdan Balika', this)">
+                                <i class="far fa-copy"></i> <span data-i18n="copy">Copy</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label-small" data-i18n="reference">Reference:</span>
+                        <div class="copy-container">
+                            <span class="detail-value-code" id="referenceCode">WB20250101120000ABC123</span>
+                            <button class="copy-btn" onclick="copyToClipboard(document.getElementById('referenceCode').textContent, this)">
+                                <i class="far fa-copy"></i> <span data-i18n="copy">Copy</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label-small" data-i18n="amount">Amount:</span>
+                        <span class="detail-value-code" id="paymentAmount">€50.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cryptocurrency -->
+            <div class="payment-method crypto">
+                <div class="method-header">
+                    <div class="method-icon crypto">
+                        <i class="fab fa-bitcoin"></i>
+                    </div>
+                    <div>
+                        <div class="method-title" data-i18n="cryptocurrency">Cryptocurrency</div>
+                        <div class="method-subtitle" data-i18n="crypto_subtitle">BTC, ETH, USDT • Fast & Global</div>
+                    </div>
+                </div>
+                
+                <div class="payment-instructions">
+                    <ul class="instructions-list">
+                        <li>
+                            <div class="instruction-number">1</div>
+                            <div data-i18n="crypto_step1">Contact us for crypto payment details</div>
+                        </li>
+                        <li>
+                            <div class="instruction-number">2</div>
+                            <div data-i18n="crypto_step2">We'll provide exact amount and address</div>
+                        </li>
+                        <li>
+                            <div class="instruction-number">3</div>
+                            <div data-i18n="crypto_step3">Fast confirmation and start working</div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="crypto-details">
+                    <h4><i class="fas fa-coins"></i> <span data-i18n="crypto_payment">Crypto Payment</span></h4>
+                    <div class="detail-row">
+                        <span class="detail-label-small" data-i18n="supported">Supported:</span>
+                        <span class="detail-value-code">BTC, ETH, USDT</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label-small" data-i18n="process">Process:</span>
+                        <span class="detail-value-code" data-i18n="contact_for_details">Contact for Details</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label-small" data-i18n="reference">Reference:</span>
+                        <div class="copy-container">
+                            <span class="detail-value-code" id="cryptoReference">WB20250101120000ABC123</span>
+                            <button class="copy-btn" onclick="copyToClipboard(document.getElementById('cryptoReference').textContent, this)">
+                                <i class="far fa-copy"></i> <span data-i18n="copy">Copy</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="security-notice">
+            <p>
+                <i class="fas fa-shield-alt"></i>
+                <span data-i18n="security_notice">Never share your card details with anyone. Only send payments through official banking apps.</span>
+            </p>
+        </div>
+        
+        <div class="next-steps">
+            <h3><i class="fas fa-list-check"></i> <span data-i18n="what_happens">What Happens After Payment?</span></h3>
+            <ul class="steps-list">
+                <li>
+                    <i class="fas fa-check-circle"></i>
+                    <span data-i18n="step1">We'll verify your payment (usually within 1-2 hours)</span>
+                </li>
+                <li>
+                    <i class="fas fa-comment"></i>
+                    <span data-i18n="step2">We'll contact you to discuss your website requirements</span>
+                </li>
+                <li>
+                    <i class="fas fa-code"></i>
+                    <span data-i18n="step3">Our team starts working on your website immediately</span>
+                </li>
+                <li>
+                    <i class="fas fa-rocket"></i>
+                    <span data-i18n="step4">Your website will be live according to the package timeline</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-actions">
+        <a href="https://wa.me/40729552767" 
+           class="floating-btn whatsapp" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        
+        <a href="https://t.me/LoveBomboclaut" 
+           class="floating-btn telegram" target="_blank">
+            <i class="fab fa-telegram"></i>
+        </a>
+        
+        <a href="mailto:boghack18@gmail.com"
+           class="floating-btn email">
+            <i class="fas fa-envelope"></i>
+        </a>
+        
+        <a href="#" class="floating-btn back" onclick="showLoadingScreen()">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-spinner"></div>
+        <div class="loading-content">
+            <h2 data-i18n="loading_title">Redirecting to Home</h2>
+            <p data-i18n="loading_message">Thank you for your order! Redirecting you back to homepage...</p>
+            <p class="warning" data-i18n="loading_warning">Do not close this page</p>
+        </div>
+    </div>
+
+    <script>
+        // Language system
+        const translations = {
+            en: {
+                'title': 'Payment Instructions - Your Web Builder',
+                'complete_payment': 'Complete Your Payment',
+                'choose_method': 'Choose your preferred payment method below',
+                'order_summary': 'Order Summary',
+                'order_id': 'Order ID',
+                'plan': 'Plan',
+                'period': 'Period',
+                'amount_due': 'Amount Due',
+                'business': 'Business',
+                'email': 'Email',
+                'bank_transfer': 'Bank Transfer',
+                'fast_secure': 'Fast & Secure • Worldwide',
+                'bank_step1': 'Use your bank\'s app or online banking',
+                'bank_step2': 'Send payment to our bank card',
+                'bank_step3': 'Include Order ID in payment description',
+                'bank_details': 'Bank Details',
+                'card_number': 'Card Number:',
+                'recipient_name': 'Recipient Name:',
+                'reference': 'Reference:',
+                'amount': 'Amount:',
+                'cryptocurrency': 'Cryptocurrency',
+                'crypto_subtitle': 'BTC, ETH, USDT • Fast & Global',
+                'crypto_step1': 'Contact us for crypto payment details',
+                'crypto_step2': 'We\'ll provide exact amount and address',
+                'crypto_step3': 'Fast confirmation and start working',
+                'crypto_payment': 'Crypto Payment',
+                'supported': 'Supported:',
+                'process': 'Process:',
+                'contact_for_details': 'Contact for Details',
+                'security_notice': 'Never share your card details with anyone. Only send payments through official banking apps.',
+                'what_happens': 'What Happens After Payment?',
+                'step1': 'We\'ll verify your payment (usually within 1-2 hours)',
+                'step2': 'We\'ll contact you to discuss your website requirements',
+                'step3': 'Our team starts working on your website immediately',
+                'step4': 'Your website will be live according to the package timeline',
+                'pay_bank': 'Pay via Bank Transfer',
+                'contact_help': 'Get Help on Telegram',
+                'email_support': 'Email Support',
+                'back_home': 'Back to Home',
+                'language': 'Language',
+                'month': '1 Month',
+                'year': '12 Months',
+                'loading_title': 'Redirecting to Home',
+                'loading_message': 'Thank you for your order! Redirecting you back to homepage...',
+                'loading_warning': 'Do not close this page',
+                'copy': 'Copy',
+                'copied': 'Copied!',
+                'contact_whatsapp': 'Contact on WhatsApp'
+            },
+            ro: {
+                'title': 'Instrucțiuni de Plată - Creatorul tău de Website',
+                'complete_payment': 'Finalizează Plata',
+                'choose_method': 'Alege metoda de plată preferată mai jos',
+                'order_summary': 'Rezumatul Comenzii',
+                'order_id': 'ID Comandă',
+                'plan': 'Plan',
+                'period': 'Perioadă',
+                'amount_due': 'Suma de Plată',
+                'business': 'Afacere',
+                'email': 'Email',
+                'bank_transfer': 'Transfer Bancar',
+                'fast_secure': 'Rapid & Securizat • La nivel mondial',
+                'bank_step1': 'Folosește aplicația băncii sau internet banking',
+                'bank_step2': 'Trimite plata către cardul nostru bancar',
+                'bank_step3': 'Include ID-ul comenzii în descrierea plății',
+                'bank_details': 'Detalii Bancare',
+                'card_number': 'Număr Card:',
+                'recipient_name': 'Nume Beneficiar:',
+                'reference': 'Referință:',
+                'amount': 'Suma:',
+                'cryptocurrency': 'Criptomonedă',
+                'crypto_subtitle': 'BTC, ETH, USDT • Rapid & Global',
+                'crypto_step1': 'Contactează-ne pentru detalii de plată crypto',
+                'crypto_step2': 'Vom furniza suma exactă și adresa',
+                'crypto_step3': 'Confirmare rapidă și începerea lucrului',
+                'crypto_payment': 'Plată Crypto',
+                'supported': 'Acceptate:',
+                'process': 'Proces:',
+                'contact_for_details': 'Contactează pentru Detalii',
+                'security_notice': 'Nu împărtăși niciodată detaliile cardului cu nimeni. Trimite plăți doраprin aplicațiile oficiale ale băncii.',
+                'what_happens': 'Ce Se Întâmplă După Plată?',
+                'step1': 'Vom verifica plata (de obicei în 1-2 ore)',
+                'step2': 'Vom lua legătura pentru a discuta cerințele website-ului',
+                'step3': 'Echipa noastră începe lucrul imediat la website-ul tău',
+                'step4': 'Website-ul tău va fi live conform calendarului pachetului',
+                'pay_bank': 'Plătește prin Transfer Bancar',
+                'contact_help': 'Ajutor pe Telegram',
+                'email_support': 'Suport Email',
+                'back_home': 'Înapoi acasă',
+                'language': 'Limba',
+                'month': '1 Lună',
+                'year': '12 Luni',
+                'loading_title': 'Redirecționare către Acasă',
+                'loading_message': 'Vă mulțumim pentru comandă! Vă redirecționăm înapoi la pagina principală...',
+                'loading_warning': 'Nu închideți această pagină',
+                'copy': 'Copiază',
+                'copied': 'Copiat!',
+                'contact_whatsapp': 'Contactează pe WhatsApp'
+            },
+            ru: {
+                'title': 'Инструкции по Оплате - Ваш Веб-Разработчик',
+                'complete_payment': 'Завершите Ваш Платеж',
+                'choose_method': 'Выберите предпочтительный способ оплаты ниже',
+                'order_summary': 'Сводка Заказа',
+                'order_id': 'ID Заказа',
+                'plan': 'План',
+                'period': 'Период',
+                'amount_due': 'Сумма к Оплате',
+                'business': 'Бизнес',
+                'email': 'Email',
+                'bank_transfer': 'Банковский Перевод',
+                'fast_secure': 'Быстро & Безопасно • По всему миру',
+                'bank_step1': 'Используйте приложение банка или интернет-банкинг',
+                'bank_step2': 'Отправьте платеж на нашу банковскую карту',
+                'bank_step3': 'Укажите ID заказа в описании платежа',
+                'bank_details': 'Банковские Реквизиты',
+                'card_number': 'Номер Карты:',
+                'recipient_name': 'Имя Получателя:',
+                'reference': 'Референс:',
+                'amount': 'Сумма:',
+                'cryptocurrency': 'Криптовалюта',
+                'crypto_subtitle': 'BTC, ETH, USDT • Быстро & Глобально',
+                'crypto_step1': 'Свяжитесь с нами для деталей оплаты криптовалютой',
+                'crypto_step2': 'Мы предоставим точную сумму и адрес',
+                'crypto_step3': 'Быстрое подтверждение и начало работы',
+                'crypto_payment': 'Крипто Платеж',
+                'supported': 'Поддерживается:',
+                'process': 'Процесс:',
+                'contact_for_details': 'Свяжитесь для Деталей',
+                'security_notice': 'Никогда не сообщайте данные вашей карты никому. Отправляйте платежи только через официальные банковские приложения.',
+                'what_happens': 'Что Происходит После Оплаты?',
+                'step1': 'Мы проверим ваш платеж (обычно в течение 1-2 часов)',
+                'step2': 'Мы свяжемся с вами для обсуждения требований к сайту',
+                'step3': 'Наша команда немедленно начинает работу над вашим сайтом',
+                'step4': 'Ваш сайт будет запущен в соответствии с графиком пакета',
+                'pay_bank': 'Оплатить Банковским Переводом',
+                'contact_help': 'Помощь в Telegram',
+                'email_support': 'Поддержка по Email',
+                'back_home': 'Назад на Главную',
+                'language': 'Язык',
+                'month': '1 Месяц',
+                'year': '12 Месяцев',
+                'loading_title': 'Перенаправление на Главную',
+                'loading_message': 'Спасибо за ваш заказ! Перенаправляем вас обратно на главную страницу...',
+                'loading_warning': 'Не закрывайте эту страницу',
+                'copy': 'Копировать',
+                'copied': 'Скопировано!',
+                'contact_whatsapp': 'Связаться в WhatsApp'
+            }
+        };
+
+        let currentLang = 'en';
+
+        // Initialize page with URL parameters
+        function initializePage() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const plan = urlParams.get('plan') || 'business';
+            const period = urlParams.get('period') || 'monthly';
+            const amount = urlParams.get('amount') || '50';
+            const email = urlParams.get('email') || 'your@business.com';
+            const businessName = urlParams.get('business_name') || 'Your Business';
+            
+            // Generate order ID
+            const orderId = 'WB' + new Date().toISOString().replace(/[-:T.Z]/g, '').slice(0, 14) + Math.random().toString(36).substring(2, 8).toUpperCase();
+            
+            // Update display
+            document.getElementById('orderId').textContent = orderId;
+            document.getElementById('planValue').textContent = capitalizeFirst(plan);
+            document.getElementById('periodValue').textContent = period === 'monthly' ? '1 Month' : '12 Months';
+            document.getElementById('amountValue').textContent = `€${parseFloat(amount).toFixed(2)}`;
+            document.getElementById('businessValue').textContent = businessName;
+            document.getElementById('emailValue').textContent = email;
+            document.getElementById('referenceCode').textContent = orderId;
+            document.getElementById('cryptoReference').textContent = orderId;
+            document.getElementById('paymentAmount').textContent = `€${parseFloat(amount).toFixed(2)}`;
+            
+            // Initialize language
+            const storedLang = localStorage.getItem('preferredLang') || 'en';
+            changeLanguage(storedLang);
+        }
+
+        function capitalizeFirst(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('preferredLang', lang);
+            
+            // Update all elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            
+            // Update active language button
+            document.querySelectorAll('.language-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        // Language button click handler
+        document.querySelectorAll('.language-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const lang = this.getAttribute('data-lang');
+                changeLanguage(lang);
+            });
+        });
+
+        function copyToClipboard(text, button) {
+            navigator.clipboard.writeText(text).then(function() {
+                // Show success feedback
+                const originalHTML = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check"></i> ' + translations[currentLang]['copied'];
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.innerHTML = originalHTML;
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Failed to copy: ', err);
+                alert('Failed to copy to clipboard');
+            });
+        }
+
+        function showLoadingScreen() {
+            const loadingScreen = document.getElementById('loadingScreen');
+            loadingScreen.classList.add('active');
+            
+            // Redirect to index.html after 3 seconds
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 3000);
+            
+            // Prevent default link behavior
+            return false;
+        }
+
+        // Add click event to back button
+        document.querySelector('.floating-btn.back').addEventListener('click', function(e) {
+            e.preventDefault();
+            showLoadingScreen();
+        });
+
+        // Initialize the page
+        initializePage();
+    </script>
+</body>
+</html>
