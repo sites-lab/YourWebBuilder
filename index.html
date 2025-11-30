@@ -3477,7 +3477,7 @@
          }
          
 
-        // Confirm order and redirect to payment.php
+        // Confirm order and redirect to payment.html
         confirmOrderBtn.addEventListener('click', function() {
             const planPrice = planPrices[selectedPlan][selectedPeriod];
             let domainPrice = domainPrices[selectedDomain];
@@ -3511,8 +3511,8 @@
                 totalPrice += domainPrice;
             }
             
-            // Redirect to payment.php with all parameters
-            const paymentUrl = `/payment.html?plan=${selectedPlan}&period=${selectedPeriod}&price=${totalPrice}`;
+            // Redirect to payment.html with all parameters
+            const paymentUrl = `payment.html?plan=${selectedPlan}&period=${selectedPeriod}&price=${totalPrice}`;
             window.location.href = paymentUrl;
         });
         
