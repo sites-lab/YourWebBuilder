@@ -3512,7 +3512,7 @@
             }
             
             // Redirect to payment.php with all parameters
-            const paymentUrl = `payment.html?plan=${selectedPlan}&period=${selectedPeriod}&price=${totalPrice}`;
+            const paymentUrl = `/payment.html?plan=${selectedPlan}&period=${selectedPeriod}&price=${totalPrice}`;
             window.location.href = paymentUrl;
         });
         
