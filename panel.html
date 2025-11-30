@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Your Payment - Your Web Builder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --secondary: #4f46e5;
+            --accent: #7c3aed;
+            --light: #f1f5f9;
+            --dark: #020617;
+            --success: #22c55e;
+            --gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #ec4899 100%);
+            --gradient-dark: linear-gradient(135deg, #4338ca 0%, #6d28d9 50%, #db2777 100%);
+            --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            --telegram: #0088cc;
+            --whatsapp: #25D366;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --border: #cbd5e1;
+            --shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.1), 0 2px 4px -1px rgba(79, 70, 229, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(79, 70, 229, 0.15), 0 4px 6px -2px rgba(79, 70, 229, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: white;
+        }
+        
+        .payment-container {
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(20px);
+            padding: 50px;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            max-width: 600px;
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .payment-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+        }
+        
+        .payment-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .payment-header h1 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .payment-header p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 18px;
+        }
+        
+        .order-summary {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .order-summary h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .order-summary h3 i {
+            color: var(--secondary);
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .summary-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .summary-total {
+            font-size: 24px;
+            font-weight: 800;
+            color: white;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid;
+            border-image: var(--gradient) 1;
+        }
+        
+        .total-price {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .payment-methods {
+            margin-bottom: 30px;
+        }
+        
+        .payment-methods h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .payment-methods h3 i {
+            color: var(--secondary);
+        }
+        
+        .payment-option {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .payment-option:hover {
+            border-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        .payment-option.active {
+            border-color: var(--secondary);
+            background: rgba(79, 70, 229, 0.2);
+        }
+        
+        .payment-method-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .payment-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--gradient);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: var(--shadow-lg);
+            width: 100%;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 15px 35px -5px rgba(79, 70, 229, 0.4);
+            background: var(--gradient-dark);
+        }
+        
+        .btn-back {
+            background: rgba(255, 255, 255, 0.1);
+            margin-top: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-back:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .telegram-float {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: var(--telegram);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 8px 25px rgba(0, 136, 204, 0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--whatsapp);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .back-float {
+            position: fixed;
+            bottom: 170px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .language-selector {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+        }
+        
+        .language-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .language-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .language-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .language-options {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 5px;
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            min-width: 150px;
+            display: none;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+        
+        .language-options.show {
+            display: block;
+        }
+        
+        .language-option {
+            padding: 10px 15px;
+            color: white;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .language-option:last-child {
+            border-bottom: none;
+        }
+        
+        .language-option:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .language-option.active {
+            background: var(--gradient);
+        }
+        
+        /* Loading Screen Styles */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .loading-screen.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .loading-spinner {
+            width: 80px;
+            height: 80px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-left: 4px solid var(--secondary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 30px;
+        }
+        
+        .loading-content {
+            text-align: center;
+            max-width: 500px;
+            padding: 0 20px;
+        }
+        
+        .loading-content h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .loading-content p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .loading-content .warning {
+            color: #fbbf24;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .telegram-float:hover, .whatsapp-float:hover, .back-float:hover {
+            transform: scale(1.15);
+        }
+        
+        .telegram-float:hover {
+            box-shadow: 0 12px 30px rgba(0, 136, 204, 0.6);
+        }
+        
+        .whatsapp-float:hover {
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
+        }
+        
+        .back-float:hover {
+            box-shadow: 0 12px 30px rgba(255, 255, 255, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .payment-container {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+            
+            .payment-header h1 {
+                font-size: 28px;
+            }
+            
+            .order-summary {
+                padding: 20px;
+            }
+            
+            .language-selector {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin-bottom: 20px;
+                display: flex;
+                justify-content: center;
+            }
+            
+            .telegram-float, .whatsapp-float, .back-float {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+            
+            .telegram-float {
+                bottom: 80px;
+            }
+            
+            .back-float {
+                bottom: 140px;
+            }
+            
+            .loading-content h2 {
+                font-size: 24px;
+            }
+            
+            .loading-content p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="payment-container">
+        <div class="language-selector">
+            <div class="language-dropdown">
+                <button class="language-btn" onclick="toggleLanguageMenu()">
+                    <i class="fas fa-globe"></i>
+                    <span id="currentLanguage">English</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="language-options" id="languageOptions">
+                    <a href="#" class="language-option active" data-lang="en">English</a>
+                    <a href="#" class="language-option" data-lang="ro">Română</a>
+                    <a href="#" class="language-option" data-lang="ru">Русский</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="payment-header">
+            <h1><i class="fas fa-lock"></i> <span data-i18n="title">Complete Your Payment</span></h1>
+            <p data-i18n="subtitle">Secure payment processing</p>
+        </div>
+        
+        <div class="order-summary">
+            <h3><i class="fas fa-receipt"></i> <span data-i18n="order_summary">Order Summary</span></h3>
+            <div class="summary-item">
+                <span data-i18n="plan">Plan:</span>
+                <span id="planValue">Business</span>
+            </div>
+            <div class="summary-item">
+                <span data-i18n="period">Period:</span>
+                <span id="periodValue">1 Month</span>
+            </div>
+            <div class="summary-item">
+                <span data-i18n="payment_type">Payment Type:</span>
+                <span id="paymentTypeValue">Monthly Subscription</span>
+            </div>
+            <div class="summary-item summary-total">
+                <span data-i18n="total_amount">Total Amount:</span>
+                <span class="total-price" id="totalAmount">€50.00</span>
+            </div>
+        </div>
+        
+        <form action="panel.html" method="GET" class="payment-form" id="paymentForm">
+            <input type="hidden" name="plan" id="planInput" value="business">
+            <input type="hidden" name="period" id="periodInput" value="monthly">
+            <input type="hidden" name="amount" id="amountInput" value="50">
+            
+            <div class="form-group">
+                <label for="email"><i class="fas fa-envelope"></i> <span data-i18n="email_address">Your Email Address</span></label>
+                <input type="email" id="email" name="email" required placeholder="your@business.com">
+            </div>
+            
+            <div class="form-group">
+                <label for="business_name"><i class="fas fa-building"></i> <span data-i18n="business_name">Business Name</span></label>
+                <input type="text" id="business_name" name="business_name" required placeholder="Business Name">
+            </div>
+            
+            <div class="payment-methods">
+                <h3><i class="fas fa-credit-card"></i> <span data-i18n="payment_method">Payment Method</span></h3>
+                
+                <div class="payment-option active">
+                    <div class="payment-method-header">
+                        <div class="payment-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <div>
+                            <h4 data-i18n="pay">Pay</h4>
+                            <p data-i18n="go_to_payment_methods">Go to payment methods</p>
+                        </div>
+                    </div>
+                    <input type="hidden" name="payment_method" value="pay">
+                </div>
+            </div>
+
+            <button type="submit" class="btn" id="submitBtn">
+                <i class="fas fa-credit-card"></i> <span data-i18n="proceed_to_payment">Proceed to Payment Instructions</span>
+            </button>
+            
+            <a href="index.html" class="btn btn-back">
+                <i class="fas fa-arrow-left"></i> <span data-i18n="back_to_home">Back to Home</span>
+            </a>
+        </form>
+    </div>
+    
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-spinner"></div>
+        <div class="loading-content">
+            <h2 data-i18n="processing_payment">Processing Your Payment</h2>
+            <p data-i18n="please_wait">Please wait while we redirect you to the payment gateway...</p>
+            <p class="warning" data-i18n="do_not_close">Do not close or refresh this page</p>
+        </div>
+    </div>
+    
+    <a href="https://t.me/LoveBomboclaut" class="telegram-float" target="_blank" title="Contact us on Telegram">
+        <i class="fab fa-telegram"></i>
+    </a>
+    
+    <a href="https://wa.me/40729552767" class="whatsapp-float" target="_blank" title="Contact us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <a href="index.html" class="back-float" title="Back to Home">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+
+    <script>
+        // Language system
+        const translations = {
+            en: {
+                'title': 'Complete Your Payment',
+                'subtitle': 'Secure payment processing',
+                'order_summary': 'Order Summary',
+                'plan': 'Plan',
+                'period': 'Period',
+                'payment_type': 'Payment Type',
+                'monthly_subscription': 'Monthly Subscription',
+                'annual_payment': 'Annual Payment',
+                'total_amount': 'Total Amount',
+                'email_address': 'Your Email Address',
+                'business_name': 'Business Name',
+                'payment_method': 'Payment Method',
+                'proceed_to_payment': 'Proceed to Payment Instructions',
+                'back_to_home': 'Back to Home',
+                'month': 'Month',
+                'months': 'Months',
+                'select_language': 'Select Language',
+                'english': 'English',
+                'romanian': 'Romanian',
+                'russian': 'Russian',
+                'contact_telegram': 'Contact us on Telegram',
+                'contact_whatsapp': 'Contact us on WhatsApp',
+                'pay': 'Pay',
+                'go_to_payment_methods': 'Go to payment methods',
+                'processing_payment': 'Processing Your Payment',
+                'please_wait': 'Please wait while we redirect you to the payment gateway...',
+                'do_not_close': 'Do not close or refresh this page'
+            },
+            ro: {
+                'title': 'Finalizați Plata',
+                'subtitle': 'Procesare plată securizată',
+                'order_summary': 'Rezumat Comandă',
+                'plan': 'Plan',
+                'period': 'Perioadă',
+                'payment_type': 'Tip Plată',
+                'monthly_subscription': 'Abonament Lunar',
+                'annual_payment': 'Plată Anuală',
+                'total_amount': 'Suma Totală',
+                'email_address': 'Adresa Dvs. de Email',
+                'business_name': 'Numele Afacerii',
+                'payment_method': 'Metodă de Plată',
+                'proceed_to_payment': 'Continuă către Instrucțiuni de Plată',
+                'back_to_home': 'Înapoi acasă',
+                'month': 'Lună',
+                'months': 'Luni',
+                'select_language': 'Selectați Limba',
+                'english': 'Engleză',
+                'romanian': 'Română',
+                'russian': 'Rusă',
+                'contact_telegram': 'Contactați-ne pe Telegram',
+                'contact_whatsapp': 'Contactați-ne pe WhatsApp',
+                'pay': 'Plătește',
+                'go_to_payment_methods': 'Mergi la metode de plată',
+                'processing_payment': 'Procesăm Plata Dvs.',
+                'please_wait': 'Vă rugăm să așteptați în timp ce vă redirecționăm către gateway-ul de plată...',
+                'do_not_close': 'Nu închideți sau reîmprospătați această pagină'
+            },
+            ru: {
+                'title': 'Завершите Оплату',
+                'subtitle': 'Безопасная обработка платежа',
+                'order_summary': 'Сводка Заказа',
+                'plan': 'План',
+                'period': 'Период',
+                'payment_type': 'Тип Оплаты',
+                'monthly_subscription': 'Месячная Подписка',
+                'annual_payment': 'Годовая Оплата',
+                'total_amount': 'Общая Сумма',
+                'email_address': 'Ваш Email Адрес',
+                'business_name': 'Название Бизнеса',
+                'payment_method': 'Способ Оплаты',
+                'proceed_to_payment': 'Перейти к Инструкциям по Оплате',
+                'back_to_home': 'Вернуться на главную',
+                'month': 'Месяц',
+                'months': 'Месяцев',
+                'select_language': 'Выберите Язык',
+                'english': 'Английский',
+                'romanian': 'Румынский',
+                'russian': 'Русский',
+                'contact_telegram': 'Свяжитесь с нами в Telegram',
+                'contact_whatsapp': 'Свяжитесь с нами в WhatsApp',
+                'pay': 'Оплатить',
+                'go_to_payment_methods': 'Перейти к методам оплаты',
+                'processing_payment': 'Обрабатываем Ваш Платеж',
+                'please_wait': 'Пожалуйста, подождите, пока мы перенаправляем вас к платежному шлюзу...',
+                'do_not_close': 'Не закрывайте и не обновляйте эту страницу'
+            }
+        };
+
+        let currentLang = 'en';
+
+        // Initialize page with URL parameters
+        function initializePage() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const plan = urlParams.get('plan') || 'business';
+            const period = urlParams.get('period') || 'monthly';
+            const price = urlParams.get('price') || '50';
+            
+            // Update form values
+            document.getElementById('planInput').value = plan;
+            document.getElementById('periodInput').value = period;
+            document.getElementById('amountInput').value = price;
+            
+            // Update display
+            document.getElementById('planValue').textContent = capitalizeFirst(plan);
+            document.getElementById('periodValue').textContent = period === 'monthly' ? '1 Month' : '12 Months';
+            document.getElementById('paymentTypeValue').textContent = period === 'monthly' ? 'Monthly Subscription' : 'Annual Payment';
+            document.getElementById('totalAmount').textContent = `€${parseFloat(price).toFixed(2)}`;
+            
+            // Initialize language
+            const storedLang = localStorage.getItem('preferredLang') || 'en';
+            changeLanguage(storedLang);
+        }
+
+        function capitalizeFirst(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('preferredLang', lang);
+            
+            // Update all elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            
+            // Update current language display
+            document.getElementById('currentLanguage').textContent = 
+                lang === 'en' ? 'English' : 
+                lang === 'ro' ? 'Română' : 'Русский';
+                
+            // Update active language option
+            document.querySelectorAll('.language-option').forEach(option => {
+                option.classList.remove('active');
+                if (option.getAttribute('data-lang') === lang) {
+                    option.classList.add('active');
+                }
+            });
+        }
+
+        function toggleLanguageMenu() {
+            const menu = document.getElementById('languageOptions');
+            menu.classList.toggle('show');
+        }
+
+        // Close language menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const languageDropdown = document.querySelector('.language-dropdown');
+            if (!languageDropdown.contains(event.target)) {
+                document.getElementById('languageOptions').classList.remove('show');
+            }
+        });
+
+        // Language option click handler
+        document.querySelectorAll('.language-option').forEach(option => {
+            option.addEventListener('click', function(e) {
+                e.preventDefault();
+                const lang = this.getAttribute('data-lang');
+                changeLanguage(lang);
+                document.getElementById('languageOptions').classList.remove('show');
+            });
+        });
+
+        // Loading screen functionality
+        document.getElementById('paymentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate form
+            const email = document.getElementById('email').value;
+            const businessName = document.getElementById('business_name').value;
+            
+            if (!email || !businessName) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            // Show loading screen
+            document.getElementById('loadingScreen').classList.add('active');
+            
+            // Disable submit button to prevent multiple submissions
+            document.getElementById('submitBtn').disabled = true;
+            
+            // Submit the form after a short delay to show the loading screen
+            setTimeout(() => {
+                this.submit();
+            }, 2000);
+        });
+
+        // Initialize the page
+        initializePage();
+    </script>
+</body>
+</html>
